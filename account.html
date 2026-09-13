@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Your VEXDYN account and profile." />
+  <title>Account — VEXDYN</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="auth.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo-link" aria-label="VEXDYN Home">
+        <img src="vexdyn-logo-wordmark-alpha.png" alt="VEXDYN" class="logo-swap" height="36" />
+      </a>
+      <nav class="nav-desktop" aria-label="Main">
+        <a href="index.html">Home</a>
+        <a href="websites.html">Websites</a>
+        <a href="build.html">Build</a>
+        <a href="learn.html">Learn</a>
+        <a href="plus.html">VEXDYN+</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <div class="auth-nav" id="authNav" aria-live="polite"><span class="auth-nav-skeleton"></span></div>
+        <button class="menu-toggle" id="menuToggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+  <nav class="nav-mobile" id="navMobile" aria-label="Mobile">
+    <a href="index.html">Home</a>
+    <a href="websites.html">Websites</a>
+    <a href="build.html">Build</a>
+    <a href="learn.html">Learn</a>
+    <a href="plus.html">VEXDYN+</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <div class="nav-mobile-auth" id="authNavMobile"></div>
+  </nav>
+
+  <main class="main">
+    <div class="page-hero reveal">
+      <span class="section-label">Your VEXDYN</span>
+      <h1>Account</h1>
+      <p>Manage your profile across Learn, Lab, Forge and VEXDYN+.</p>
+    </div>
+
+    <section class="section" style="padding-top:0">
+      <div class="account-shell">
+
+        <div class="account-loading" id="accountLoading">Loading your account…</div>
+
+        <div id="accountContent" hidden>
+          <div class="v-card reveal account-header-card">
+            <div class="account-avatar" id="accountAvatar">?</div>
+            <div class="account-identity">
+              <h2 id="accountFullName">—</h2>
+              <p id="accountUsername">—</p>
+              <span class="account-badge" id="accountVerifiedBadge">—</span>
+            </div>
+          </div>
+
+          <div class="account-grid">
+            <div class="v-card reveal">
+              <h2 class="v-card-title" style="margin-bottom:16px">Profile details</h2>
+
+              <div class="auth-error" id="accountError" role="alert"></div>
+              <div class="auth-success" id="accountSuccess" role="status"></div>
+
+              <form id="accountForm" novalidate>
+                <div class="form-group">
+                  <label for="accEmail">Email</label>
+                  <div class="account-field-static" id="accEmail">—</div>
+                </div>
+                <div class="form-group">
+                  <label for="accFullName">Full name</label>
+                  <input type="text" id="accFullName" name="fullName" autocomplete="name" />
+                </div>
+                <div class="form-group">
+                  <label for="accUsername">Username</label>
+                  <input type="text" id="accUsername" name="username" autocomplete="username" pattern="[a-zA-Z0-9_\.]{3,24}" />
+                </div>
+                <button type="submit" class="btn btn-primary" id="accountSaveBtn">SAVE CHANGES →</button>
+              </form>
+            </div>
+
+            <div class="v-card reveal reveal-delay-1">
+              <h2 class="v-card-title" style="margin-bottom:16px">Session</h2>
+              <p class="v-card-desc" style="margin-bottom:18px">You're signed in to VEXDYN. Signing out will end your session on this device.</p>
+              <button type="button" class="btn btn-secondary btn-block" data-auth-logout>LOGOUT →</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="vexdyn-logo-wordmark-alpha.png" alt="VEXDYN" class="logo-swap" height="32" />
+        <p>Technology, tools and knowledge for turning digital ideas into reality.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Platform</h4>
+        <a href="websites.html">Websites</a>
+        <a href="build.html">Build</a>
+        <a href="learn.html">Learn</a>
+        <a href="plus.html">VEXDYN+</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Founder</h4>
+        <div class="founder-card">
+          <span class="founder-name">David Augustine</span>
+          <span class="founder-title">Creator & Owner</span>
+          <span class="founder-contact">07025664141</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 VEXDYN. All rights reserved.</span>
+      <span>Build What's Next.</span>
+    </div>
+  </footer>
+
+<script src="script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="auth.js"></script>
+<script>
+(function () {
+  "use strict";
+  var client = window.vexdynAuth && window.vexdynAuth.client;
+  if (!client) { console.error("VEXDYN Auth unavailable on account page."); return; }
+
+  var loadingEl = document.getElementById("accountLoading");
+  var contentEl = document.getElementById("accountContent");
+  var errorBox = document.getElementById("accountError");
+  var successBox = document.getElementById("accountSuccess");
+
+  function showError(msg) {
+    successBox.classList.remove("visible");
+    errorBox.textContent = msg;
+    errorBox.classList.add("visible");
+  }
+  function showSuccess(msg) {
+    errorBox.classList.remove("visible");
+    successBox.textContent = msg;
+    successBox.classList.add("visible");
+  }
+
+  function initials(name) {
+    if (!name) return "?";
+    var parts = name.trim().split(/\s+/);
+    var chars = parts.slice(0, 2).map(function (p) { return p.charAt(0).toUpperCase(); });
+    return chars.join("") || "?";
+  }
+
+  function renderProfile(user, profile) {
+    document.getElementById("accEmail").textContent = user.email || "—";
+
+    var fullName = (profile && profile.full_name) || (user.user_metadata && user.user_metadata.full_name) || "";
+    var username = (profile && profile.username) || (user.user_metadata && user.user_metadata.username) || "";
+    var avatarUrl = profile && profile.avatar_url;
+
+    document.getElementById("accountFullName").textContent = fullName || "VEXDYN Member";
+    document.getElementById("accountUsername").textContent = username ? "@" + username : "";
+    document.getElementById("accFullName").value = fullName;
+    document.getElementById("accUsername").value = username;
+
+    var avatarEl = document.getElementById("accountAvatar");
+    if (avatarUrl) {
+      avatarEl.innerHTML = '<img src="' + avatarUrl.replace(/"/g, "&quot;") + '" alt="" />';
+    } else {
+      avatarEl.textContent = initials(fullName);
+    }
+
+    var badge = document.getElementById("accountVerifiedBadge");
+    if (user.email_confirmed_at) {
+      badge.textContent = "Email verified";
+      badge.className = "account-badge verified";
+    } else {
+      badge.textContent = "Email not verified";
+      badge.className = "account-badge unverified";
+    }
+
+    loadingEl.hidden = true;
+    contentEl.hidden = false;
+  }
+
+  function loadAccount() {
+    client.auth.getSession().then(function (r) {
+      var session = r && r.data ? r.data.session : null;
+      if (!session) {
+        window.location.href = "login.html";
+        return;
+      }
+      var user = session.user;
+
+      client.from("profiles").select("*").eq("id", user.id).single().then(function (result) {
+        // A missing profile row (result.error) shouldn't block the page —
+        // fall back to auth metadata so the user still sees their info.
+        renderProfile(user, result.data || null);
+      });
+    });
+  }
+
+  loadAccount();
+
+  document.getElementById("accountForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    errorBox.classList.remove("visible");
+    successBox.classList.remove("visible");
+
+    var fullName = document.getElementById("accFullName").value.trim();
+    var username = document.getElementById("accUsername").value.trim();
+    var saveBtn = document.getElementById("accountSaveBtn");
+
+    if (username && !/^[a-zA-Z0-9_.]{3,24}$/.test(username)) {
+      showError("Username must be 3–24 characters: letters, numbers, dots or underscores.");
+      return;
+    }
+
+    saveBtn.disabled = true;
+    saveBtn.textContent = "SAVING…";
+
+    client.auth.getSession().then(function (r) {
+      var session = r && r.data ? r.data.session : null;
+      if (!session) { window.location.href = "login.html"; return; }
+
+      client.from("profiles").update({
+        full_name: fullName,
+        username: username
+      }).eq("id", session.user.id).then(function (result) {
+        saveBtn.disabled = false;
+        saveBtn.textContent = "SAVE CHANGES →";
+        if (result.error) {
+          showError(result.error.message || "Could not save your changes.");
+          return;
+        }
+        document.getElementById("accountFullName").textContent = fullName || "VEXDYN Member";
+        document.getElementById("accountUsername").textContent = username ? "@" + username : "";
+        document.getElementById("accountAvatar").textContent = initials(fullName);
+        showSuccess("Profile updated.");
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>

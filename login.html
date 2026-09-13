@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Sign in to your VEXDYN account." />
+  <title>Sign In — VEXDYN</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="auth.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo-link" aria-label="VEXDYN Home">
+        <img src="vexdyn-logo-wordmark-alpha.png" alt="VEXDYN" class="logo-swap" height="36" />
+      </a>
+      <nav class="nav-desktop" aria-label="Main">
+        <a href="index.html">Home</a>
+        <a href="websites.html">Websites</a>
+        <a href="build.html">Build</a>
+        <a href="learn.html">Learn</a>
+        <a href="plus.html">VEXDYN+</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <div class="auth-nav" id="authNav" aria-live="polite"><span class="auth-nav-skeleton"></span></div>
+        <button class="menu-toggle" id="menuToggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+  <nav class="nav-mobile" id="navMobile" aria-label="Mobile">
+    <a href="index.html">Home</a>
+    <a href="websites.html">Websites</a>
+    <a href="build.html">Build</a>
+    <a href="learn.html">Learn</a>
+    <a href="plus.html">VEXDYN+</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <div class="nav-mobile-auth" id="authNavMobile"></div>
+  </nav>
+
+  <main class="main">
+    <div class="page-hero reveal">
+      <span class="section-label">Welcome back</span>
+      <h1>Sign in.</h1>
+      <p>Access Learn, Lab, Forge and your VEXDYN+ plan.</p>
+    </div>
+
+    <section class="section" style="padding-top:0">
+      <div class="auth-shell">
+        <div class="auth-card reveal">
+          <h2 class="auth-card-title">Sign In</h2>
+          <p class="auth-card-sub">Enter your VEXDYN account details.</p>
+
+          <div class="auth-error" id="loginError" role="alert"></div>
+
+          <form class="auth-form" id="loginForm" novalidate>
+            <div class="form-group">
+              <label for="loginEmail">Email</label>
+              <input type="email" id="loginEmail" name="email" autocomplete="email" required placeholder="you@example.com" />
+            </div>
+            <div class="form-group">
+              <label for="loginPassword">Password</label>
+              <input type="password" id="loginPassword" name="password" autocomplete="current-password" required placeholder="Your password" />
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block" id="loginSubmit">SIGN IN →</button>
+          </form>
+
+          <div class="auth-links">
+            <a href="forgot-password.html">Forgot password?</a>
+            <span>New here? <a href="signup.html">Create account</a></span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="vexdyn-logo-wordmark-alpha.png" alt="VEXDYN" class="logo-swap" height="32" />
+        <p>Technology, tools and knowledge for turning digital ideas into reality.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Platform</h4>
+        <a href="websites.html">Websites</a>
+        <a href="build.html">Build</a>
+        <a href="learn.html">Learn</a>
+        <a href="plus.html">VEXDYN+</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Founder</h4>
+        <div class="founder-card">
+          <span class="founder-name">David Augustine</span>
+          <span class="founder-title">Creator & Owner</span>
+          <span class="founder-contact">07025664141</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 VEXDYN. All rights reserved.</span>
+      <span>Build What's Next.</span>
+    </div>
+  </footer>
+
+<script src="script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="auth.js"></script>
+<script>
+(function () {
+  "use strict";
+  var client = window.vexdynAuth && window.vexdynAuth.client;
+  if (!client) { console.error("VEXDYN Auth unavailable on login page."); return; }
+
+  client.auth.getSession().then(function (r) {
+    if (r && r.data && r.data.session) window.location.href = "account.html";
+  });
+
+  var form = document.getElementById("loginForm");
+  var errorBox = document.getElementById("loginError");
+  var submitBtn = document.getElementById("loginSubmit");
+
+  function showError(msg) {
+    errorBox.textContent = msg;
+    errorBox.classList.add("visible");
+  }
+  function clearError() {
+    errorBox.textContent = "";
+    errorBox.classList.remove("visible");
+  }
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    clearError();
+
+    var email = document.getElementById("loginEmail").value.trim();
+    var password = document.getElementById("loginPassword").value;
+
+    if (!email || !password) {
+      showError("Enter your email and password.");
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = "SIGNING IN…";
+
+    client.auth.signInWithPassword({ email: email, password: password }).then(function (result) {
+      if (result.error) {
+        var msg = result.error.message || "";
+        if (/confirm/i.test(msg)) {
+          showError("Please verify your email before signing in. Check your inbox for the confirmation link.");
+        } else {
+          showError("Incorrect email or password.");
+        }
+        submitBtn.disabled = false;
+        submitBtn.textContent = "SIGN IN →";
+        return;
+      }
+      window.location.href = "account.html";
+    }).catch(function () {
+      showError("Something went wrong. Please check your connection and try again.");
+      submitBtn.disabled = false;
+      submitBtn.textContent = "SIGN IN →";
+    });
+  });
+})();
+</script>
+</body>
+</html>

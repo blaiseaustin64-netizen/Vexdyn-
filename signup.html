@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Create your VEXDYN account — access Learn, Lab, Forge, VEXDYN+ and more." />
+  <title>Create Account — VEXDYN</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="auth.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo-link" aria-label="VEXDYN Home">
+        <img src="vexdyn-logo-wordmark-alpha.png" alt="VEXDYN" class="logo-swap" height="36" />
+      </a>
+      <nav class="nav-desktop" aria-label="Main">
+        <a href="index.html">Home</a>
+        <a href="websites.html">Websites</a>
+        <a href="build.html">Build</a>
+        <a href="learn.html">Learn</a>
+        <a href="plus.html">VEXDYN+</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <div class="auth-nav" id="authNav" aria-live="polite"><span class="auth-nav-skeleton"></span></div>
+        <button class="menu-toggle" id="menuToggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+  <nav class="nav-mobile" id="navMobile" aria-label="Mobile">
+    <a href="index.html">Home</a>
+    <a href="websites.html">Websites</a>
+    <a href="build.html">Build</a>
+    <a href="learn.html">Learn</a>
+    <a href="plus.html">VEXDYN+</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <div class="nav-mobile-auth" id="authNavMobile"></div>
+  </nav>
+
+  <main class="main">
+    <div class="page-hero reveal">
+      <span class="section-label">Join VEXDYN</span>
+      <h1>Create your account.</h1>
+      <p>One VEXDYN account for Learn, Lab, Forge and VEXDYN+.</p>
+    </div>
+
+    <section class="section" style="padding-top:0">
+      <div class="auth-shell">
+        <div class="auth-card reveal">
+
+          <!-- Signup form -->
+          <div id="signupFormPanel">
+            <h2 class="auth-card-title">Create Account</h2>
+            <p class="auth-card-sub">It only takes a minute.</p>
+
+            <div class="auth-error" id="signupError" role="alert"></div>
+
+            <form class="auth-form" id="signupForm" novalidate>
+              <div class="form-group">
+                <label for="fullName">Full name</label>
+                <input type="text" id="fullName" name="fullName" autocomplete="name" required placeholder="Jane Doe" />
+              </div>
+              <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" autocomplete="username" required placeholder="janedoe" pattern="[a-zA-Z0-9_\.]{3,24}" />
+              </div>
+              <div class="form-group">
+                <label for="signupEmail">Email</label>
+                <input type="email" id="signupEmail" name="email" autocomplete="email" required placeholder="you@example.com" />
+              </div>
+              <div class="form-group">
+                <label for="signupPassword">Password</label>
+                <input type="password" id="signupPassword" name="password" autocomplete="new-password" required placeholder="At least 8 characters" minlength="8" />
+              </div>
+              <div class="pw-meter"><div class="pw-meter-fill" id="pwMeterFill"></div></div>
+              <div class="pw-hint" id="pwHint">Use 8+ characters with a mix of letters and numbers.</div>
+              <div class="form-group">
+                <label for="confirmPassword">Confirm password</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" autocomplete="new-password" required placeholder="Re-enter your password" minlength="8" />
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block" id="signupSubmit">CREATE ACCOUNT →</button>
+            </form>
+
+            <div class="auth-links">
+              <span>Already have an account? <a href="login.html">Sign in</a></span>
+            </div>
+          </div>
+
+          <!-- Verification state (shown after a successful signup) -->
+          <div class="auth-state-panel" id="verifyPanel">
+            <div class="auth-state-icon">✉️</div>
+            <h2 class="auth-card-title" style="text-align:center">Check your email</h2>
+            <p>We've sent a verification link to <strong id="verifyEmailTarget"></strong>. Confirm your email to activate your VEXDYN account.</p>
+            <p style="font-size:0.8rem">Didn't get it? Check spam, or <a href="signup.html" id="resendLink" style="color:var(--accent);font-weight:600">try signing up again</a> in a minute.</p>
+            <a href="login.html" class="btn btn-secondary btn-block">GO TO SIGN IN →</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="vexdyn-logo-wordmark-alpha.png" alt="VEXDYN" class="logo-swap" height="32" />
+        <p>Technology, tools and knowledge for turning digital ideas into reality.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Platform</h4>
+        <a href="websites.html">Websites</a>
+        <a href="build.html">Build</a>
+        <a href="learn.html">Learn</a>
+        <a href="plus.html">VEXDYN+</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Founder</h4>
+        <div class="founder-card">
+          <span class="founder-name">David Augustine</span>
+          <span class="founder-title">Creator & Owner</span>
+          <span class="founder-contact">07025664141</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 VEXDYN. All rights reserved.</span>
+      <span>Build What's Next.</span>
+    </div>
+  </footer>
+
+<script src="script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="auth.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  function afterAuthReady(fn) {
+    if (window.vexdynAuth && window.vexdynAuth.client) { fn(); return; }
+    document.addEventListener("vexdyn:auth-nav-rendered", fn, { once: true });
+  }
+
+  afterAuthReady(function () {
+    var client = window.vexdynAuth.client;
+    if (!client) return;
+
+    // If already signed in, no need to sign up again.
+    client.auth.getSession().then(function (r) {
+      if (r && r.data && r.data.session) window.location.href = "account.html";
+    });
+
+    var form = document.getElementById("signupForm");
+    var errorBox = document.getElementById("signupError");
+    var submitBtn = document.getElementById("signupSubmit");
+    var pwInput = document.getElementById("signupPassword");
+    var pwMeterFill = document.getElementById("pwMeterFill");
+
+    function showError(msg) {
+      errorBox.textContent = msg;
+      errorBox.classList.add("visible");
+    }
+    function clearError() {
+      errorBox.textContent = "";
+      errorBox.classList.remove("visible");
+    }
+
+    function pwScore(pw) {
+      var score = 0;
+      if (pw.length >= 8) score++;
+      if (pw.length >= 12) score++;
+      if (/[A-Z]/.test(pw) && /[a-z]/.test(pw)) score++;
+      if (/[0-9]/.test(pw)) score++;
+      if (/[^A-Za-z0-9]/.test(pw)) score++;
+      return Math.min(score, 4);
+    }
+    pwInput.addEventListener("input", function () {
+      var score = pwScore(pwInput.value);
+      var pct = (score / 4) * 100;
+      pwMeterFill.style.width = pct + "%";
+      var colors = ["#c8515a", "#d99a3f", "#d9c93f", "#7fbf6a"];
+      pwMeterFill.style.background = pwInput.value ? colors[Math.max(score - 1, 0)] : "var(--border)";
+    });
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      clearError();
+
+      var fullName = document.getElementById("fullName").value.trim();
+      var username = document.getElementById("username").value.trim();
+      var email = document.getElementById("signupEmail").value.trim();
+      var password = pwInput.value;
+      var confirmPassword = document.getElementById("confirmPassword").value;
+
+      if (!fullName || !username || !email || !password || !confirmPassword) {
+        showError("Please fill in every field.");
+        return;
+      }
+      if (!/^[a-zA-Z0-9_.]{3,24}$/.test(username)) {
+        showError("Username must be 3–24 characters: letters, numbers, dots or underscores.");
+        return;
+      }
+      if (password.length < 8) {
+        showError("Password must be at least 8 characters.");
+        return;
+      }
+      if (password !== confirmPassword) {
+        showError("Passwords do not match.");
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = "CREATING ACCOUNT…";
+
+      client.auth.signUp({
+        email: email,
+        password: password,
+        options: {
+          data: {
+            full_name: fullName,
+            username: username
+          },
+          emailRedirectTo: window.location.origin + "/account.html"
+        }
+      }).then(function (result) {
+        if (result.error) {
+          showError(result.error.message || "Could not create your account. Please try again.");
+          submitBtn.disabled = false;
+          submitBtn.textContent = "CREATE ACCOUNT →";
+          return;
+        }
+
+        var user = result.data ? result.data.user : null;
+        // identities.length === 0 means an account with this email already exists.
+        if (user && user.identities && user.identities.length === 0) {
+          showError("An account with this email already exists. Try signing in instead.");
+          submitBtn.disabled = false;
+          submitBtn.textContent = "CREATE ACCOUNT →";
+          return;
+        }
+
+        document.getElementById("verifyEmailTarget").textContent = email;
+        document.getElementById("signupFormPanel").style.display = "none";
+        document.getElementById("verifyPanel").classList.add("visible");
+      }).catch(function () {
+        showError("Something went wrong. Please check your connection and try again.");
+        submitBtn.disabled = false;
+        submitBtn.textContent = "CREATE ACCOUNT →";
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>

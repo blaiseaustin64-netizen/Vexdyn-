@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="VEXDYN — Create Beyond Limits. Power Your Digital Future. Technology ecosystem for learning, practice, creation and intelligence." />
+  <title>VEXDYN — Create Beyond Limits</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="auth.css" />
+</head>
+<body>
+  <!-- CINEMATIC INTRO (preserved) -->
+  <div class="loader-overlay" id="loader" aria-hidden="true">
+    <div class="loader-stage">
+      <img src="vexdyn-symbol.png" alt="" class="loader-symbol" id="loaderSymbol" width="100" height="100" />
+      <div class="loader-sweep" id="loaderSweep"></div>
+      <img src="vexdyn-logo-wordmark.png" alt="VEXDYN" class="loader-lockup" id="loaderLockup" width="200" />
+      <div class="loader-system" id="loaderSystem">
+        <div class="loader-sys-label">VEXDYN</div>
+        <div class="loader-sys-msg" id="loaderSysMsg">SYSTEM INITIALIZING</div>
+        <div class="loader-progress"><div class="loader-progress-fill" id="loaderProgressFill"></div></div>
+      </div>
+      <div class="loader-final" id="loaderFinal">
+        <div class="loader-line" id="loaderLine1">THE NEXT</div>
+        <div class="loader-line" id="loaderLine2">BEGINS HERE.</div>
+      </div>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo-link" aria-label="VEXDYN Home">
+        <img src="vexdyn-logo-wordmark-alpha.png" alt="VEXDYN" class="logo-swap" height="36" />
+      </a>
+      <nav class="nav-desktop" aria-label="Main">
+        <a href="index.html" class="active">Home</a>
+        <a href="websites.html">Websites</a>
+        <a href="build.html">Build</a>
+        <a href="learn.html">Learn</a>
+        <a href="plus.html">VEXDYN+</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <div class="auth-nav" id="authNav" aria-live="polite"><span class="auth-nav-skeleton"></span></div>
+        <button class="menu-toggle" id="menuToggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="nav-mobile" id="navMobile" aria-label="Mobile">
+    <a href="index.html" class="active">Home</a>
+    <a href="websites.html">Websites</a>
+    <a href="build.html">Build</a>
+    <a href="learn.html">Learn</a>
+    <a href="plus.html">VEXDYN+</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <div class="nav-mobile-auth" id="authNavMobile"></div>
+  </nav>
+
+  <main class="main">
+    <!-- HERO — two-column + geometric silver lines + code animation -->
+    <section class="hero" id="hero">
+      <div class="hero-geo-lines" aria-hidden="true">
+        <svg class="hero-geo-svg" viewBox="0 0 1200 640" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="geoStroke" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#c8cad0" stop-opacity="0.55"/>
+              <stop offset="50%" stop-color="#f2f2f0" stop-opacity="0.35"/>
+              <stop offset="100%" stop-color="#9a9da4" stop-opacity="0.2"/>
+            </linearGradient>
+          </defs>
+          <!-- intentional architectural paths -->
+          <g fill="none" stroke="url(#geoStroke)" stroke-width="1">
+            <path d="M0 420 L180 420 L260 280 L420 280"/>
+            <path d="M120 640 L120 380 L320 180 L520 180"/>
+            <path d="M0 120 L240 120 L340 40 L520 40"/>
+            <path d="M680 0 L680 160 L860 160 L940 280 L1200 280"/>
+            <path d="M760 640 L760 400 L920 240 L1100 240 L1200 180"/>
+            <path d="M400 640 L520 480 L700 480 L820 360"/>
+            <path d="M0 520 L140 520 L200 560"/>
+            <path d="M1000 640 L1000 500 L1120 420 L1200 420"/>
+            <path d="M540 0 L540 100 L620 100"/>
+            <path d="M200 0 L200 60"/>
+            <path d="M900 0 L900 80 L980 80"/>
+          </g>
+          <g fill="#c8cad0">
+            <circle cx="260" cy="280" r="2.2" opacity="0.7"/>
+            <circle cx="420" cy="280" r="2.2" opacity="0.55"/>
+            <circle cx="320" cy="180" r="2" opacity="0.6"/>
+            <circle cx="520" cy="180" r="2" opacity="0.5"/>
+            <circle cx="680" cy="160" r="2.2" opacity="0.65"/>
+            <circle cx="940" cy="280" r="2" opacity="0.55"/>
+            <circle cx="920" cy="240" r="2" opacity="0.5"/>
+            <circle cx="700" cy="480" r="2" opacity="0.45"/>
+            <circle cx="820" cy="360" r="2.2" opacity="0.55"/>
+            <circle cx="1120" cy="420" r="2" opacity="0.5"/>
+          </g>
+          <!-- faint secondary connectors -->
+          <g fill="none" stroke="#9a9da4" stroke-width="0.6" opacity="0.35">
+            <path d="M420 280 L520 180"/>
+            <path d="M680 160 L820 360"/>
+            <path d="M520 480 L680 160"/>
+          </g>
+        </svg>
+      </div>
+      <div class="hero-shell">
+        <div class="hero-grid">
+          <div class="hero-col hero-col-mark reveal">
+            <img src="vexdyn-wordmark-true-transparent.png" alt="VEXDYN" class="hero-wordmark" />
+          </div>
+          <div class="hero-col hero-col-headline hero-headline-desktop reveal reveal-delay-1">
+            <h1 class="hero-headline">
+              <span class="hero-headline-light">CREATE BEYOND LIMITS.</span>
+              <span class="hero-headline-bold">POWER YOUR DIGITAL FUTURE.</span>
+            </h1>
+          </div>
+        </div>
+        <div class="hero-code-wrap">
+          <div class="code-transform" id="codeTransform" aria-live="polite">0100110100101101</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mobile-only headline (hidden on desktop) -->
+    <section class="section hero-headline-mobile-section" id="hero-headline-mobile" aria-label="Headline">
+      <div class="reveal">
+        <h1 class="hero-headline hero-headline-mobile">
+          <span class="hero-headline-light">CREATE BEYOND LIMITS.</span>
+          <span class="hero-headline-bold">POWER YOUR DIGITAL FUTURE.</span>
+        </h1>
+      </div>
+    </section>
+
+    <!-- Hero CTAs -->
+    <section class="section hero-cta-section" id="hero-ctas">
+      <div class="hero-ctas hero-cta-row reveal">
+        <a href="learn.html" class="btn btn-primary btn-lg">Explore VEXDYN</a>
+        <a href="build.html" class="btn btn-secondary btn-lg">Start a Project</a>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section statement-section" id="statement">
+      <div class="statement-inner reveal">
+        <span class="section-label">ABOUT</span>
+        <p class="vexdyn-intro">VEXDYN is a premium technology platform built to help people create, build, and learn.</p>
+        <p class="vexdyn-intro">We give creators and businesses the tools and knowledge to turn digital ideas into reality — without generic templates, without empty promises.</p>
+        <p class="vexdyn-intro">VEXDYN starts with professional website creation and structured technical learning. What comes next will expand the ecosystem.</p>
+      </div>
+    </section>
+
+
+
+    <!-- WEBSITE CREATION -->
+    <section class="section website-creation" id="website-creation">
+      <div class="reveal">
+        <div class="wc-header">
+          <div class="wc-section-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 8h18"/><path d="M8 20h8"/><path d="M12 18v2"/></svg>
+          </div>
+          <div>
+            <span class="section-label">Website Creation</span>
+            <h2 class="section-title">NEED A WEBSITE?</h2>
+            <p class="section-sub">Tell us what you're building. We'll bring it to life.</p>
+          </div>
+        </div>
+      </div>
+      <div class="wc-grid">
+        <article class="wc-card reveal">
+          <div class="wc-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V9l7-5 7 5v12"/><path d="M9 21v-6h6v6"/><path d="M9 12h.01"/><path d="M15 12h.01"/></svg>
+          </div>
+          <h3 class="wc-card-title">Business</h3>
+          <p class="wc-card-desc">Professional sites for companies, services and local businesses.</p>
+        </article>
+        <article class="wc-card reveal reveal-delay-1">
+          <div class="wc-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          </div>
+          <h3 class="wc-card-title">Commerce</h3>
+          <p class="wc-card-desc">Restaurants, fashion brands and retail experiences.</p>
+        </article>
+        <article class="wc-card reveal reveal-delay-2">
+          <div class="wc-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 19V5"/><path d="M5 12l7-7 7 7"/><path d="M5 19h14"/></svg>
+          </div>
+          <h3 class="wc-card-title">Creative</h3>
+          <p class="wc-card-desc">Portfolios, agencies and personal brands.</p>
+        </article>
+        <article class="wc-card reveal reveal-delay-3">
+          <div class="wc-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3"/><path d="M12 19v3"/><path d="M2 12h3"/><path d="M19 12h3"/><path d="m4.9 4.9 2.1 2.1"/><path d="m17 17 2.1 2.1"/><path d="m4.9 19.1 2.1-2.1"/><path d="m17 7 2.1-2.1"/></svg>
+          </div>
+          <h3 class="wc-card-title">Custom</h3>
+          <p class="wc-card-desc">Landing pages and fully custom projects.</p>
+        </article>
+      </div>
+      <div class="text-center mt-10 reveal" style="margin-top:28px">
+        <a href="build.html" class="btn btn-primary btn-lg">START A PROJECT <span class="arrow">→</span></a>
+      </div>
+    </section>
+
+    <!-- CREATE + WHAT — two column sticky + timeline -->
+    <section class="section create-what-section" id="create">
+      <div class="create-what-grid">
+        <div class="create-sticky-col">
+          <article class="create-card" id="what">
+            <span class="section-label">Creation</span>
+            <h2 class="section-title">CREATE SOMETHING REAL</h2>
+            <p class="create-card-text">Understanding technology is only half the equation. VEXDYN exists to help you use it — to turn knowledge into real digital experiences that work.</p>
+            <p class="create-card-text">Learn the foundations. Practice with purpose. Create with VEXDYN Forge — or let VEXDYN build it for you.</p>
+          </article>
+        </div>
+        <div class="what-timeline-col">
+          <span class="section-label">Platform</span>
+          <h2 class="section-title">WHAT VEXDYN IS</h2>
+          <p class="section-sub">A connected digital ecosystem, built in four layers:</p>
+          <div class="vexdyn-timeline" id="vexdynTimeline">
+            <div class="timeline-track" aria-hidden="true">
+              <div class="timeline-fill" id="timelineFill"></div>
+            </div>
+            <div class="timeline-steps">
+              <article class="timeline-step" data-step="0">
+                <span class="timeline-dot" aria-hidden="true"></span>
+                <div class="timeline-body">
+                  <span class="timeline-label">01</span>
+                  <h3 class="timeline-heading">Learn</h3>
+                  <p class="timeline-desc">structured, practical technology education</p>
+                </div>
+              </article>
+              <article class="timeline-step" data-step="1">
+                <span class="timeline-dot" aria-hidden="true"></span>
+                <div class="timeline-body">
+                  <span class="timeline-label">02</span>
+                  <h3 class="timeline-heading">Practice</h3>
+                  <p class="timeline-desc">apply what you learn in real environments</p>
+                </div>
+              </article>
+              <article class="timeline-step" data-step="2">
+                <span class="timeline-dot" aria-hidden="true"></span>
+                <div class="timeline-body">
+                  <span class="timeline-label">03</span>
+                  <h3 class="timeline-heading">Create</h3>
+                  <p class="timeline-desc">build real, working digital experiences</p>
+                </div>
+              </article>
+              <article class="timeline-step" data-step="3">
+                <span class="timeline-dot" aria-hidden="true"></span>
+                <div class="timeline-body">
+                  <span class="timeline-label">04</span>
+                  <h3 class="timeline-heading">Explore</h3>
+                  <p class="timeline-desc">intelligent systems, ahead of the curve</p>
+                </div>
+              </article>
+            </div>
+          </div>
+          <p class="section-sub" style="margin-top:24px">VEXDYN isn't a course platform. It isn't a template store. It's the infrastructure between wanting to build and actually building.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- VEXDYN SYSTEM -->
+    <section class="section" id="ecosystem">
+      <div class="reveal text-center">
+        <span class="section-label">System</span>
+        <h2 class="section-title">VEXDYN SYSTEM</h2>
+        <p class="section-sub mx-auto">A connected space for everything you can build with VEXDYN.</p>
+        <div style="margin-top:28px">
+          <a href="system.html" class="btn btn-primary btn-lg">ENTER VEXDYN SYSTEM <span class="arrow">→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FUTURE VISION -->
+    <section class="section" id="vision">
+      <div class="reveal" style="max-width:600px">
+        <span class="section-label">Vision</span>
+        <h2 class="section-title">THE FUTURE IS BEING BUILT</h2>
+        <p class="section-sub">Technology doesn't wait. VEXDYN builds the tools that help people move with it — not catch up to it.</p>
+      </div>
+    </section>
+
+    <!-- THE FUTURE IS GLOBAL + CANVAS GLOBE -->
+    <section class="section globe-section" id="global">
+      <div class="reveal text-center">
+        <span class="section-label">Global</span>
+        <h2 class="section-title">THE FUTURE IS GLOBAL</h2>
+        <p class="section-sub mx-auto">VEXDYN is designed as a connected digital system — not a single local tool.</p>
+      </div>
+      <div class="globe-stage reveal reveal-delay-1" id="globeStage">
+        <div class="globe-wrap" id="globeWrap">
+          <div class="globe-stars" id="globeStars" aria-hidden="true"></div>
+          <canvas id="vexdynGlobe3d" aria-label="Dotted world technology globe"></canvas>
+        </div>
+        <aside class="globe-anno globe-anno-1" data-anno="0">
+          <div class="globe-anno-stat">LEARN</div>
+          <div class="globe-anno-text">Structured paths into modern web technology</div>
+        </aside>
+        <aside class="globe-anno globe-anno-2" data-anno="1">
+          <div class="globe-anno-stat">CREATE</div>
+          <div class="globe-anno-text">Build digital experiences with Forge</div>
+        </aside>
+        <aside class="globe-anno globe-anno-3" data-anno="2">
+          <div class="globe-anno-stat">CONNECT</div>
+          <div class="globe-anno-text">A system designed for a connected world</div>
+        </aside>
+      </div>
+      <p class="globe-caption reveal">A vision of connected creation — learning, practice, building and intelligence across a digital world.</p>
+    </section>
+
+
+    <!-- START WHERE YOU ARE -->
+    <section class="final-cta-section" id="ready">
+      <div class="reveal">
+        <h2 class="section-title" style="margin-bottom:12px">START WHERE YOU ARE</h2>
+        <p class="section-sub mx-auto">Whether you're learning your first line of code or launching your next product — VEXDYN meets you there.</p>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="contact">
+      <div class="reveal text-center">
+        <span class="section-label">Contact</span>
+        <h2 class="section-title">GET IN TOUCH</h2>
+        <p class="section-sub mx-auto">Questions about websites, learning or the platform.</p>
+      </div>
+      <div class="contact-cards reveal reveal-delay-1">
+        <a class="contact-card email" href="mailto:hellovexdyn@gmail.com">
+          <div class="contact-icon" aria-hidden="true">✉</div>
+          <div>
+            <div class="contact-card-label">EMAIL</div>
+            <div class="contact-card-value">hellovexdyn@gmail.com</div>
+          </div>
+        </a>
+        <a class="contact-card wa" href="https://wa.me/2347025664141" target="_blank" rel="noopener noreferrer">
+          <div class="contact-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </div>
+          <div>
+            <div class="contact-card-label">WHATSAPP</div>
+            <div class="contact-card-value">Chat with VEXDYN</div>
+          </div>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="vexdyn-logo-wordmark-alpha.png" alt="VEXDYN" class="logo-swap" height="32" />
+        <p class="footer-tagline">CREATE BEYOND LIMITS.<br>POWER YOUR DIGITAL FUTURE.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Platform</h4>
+        <a href="learn.html">Learn</a>
+        <a href="https://vexdyn-labv10.vercel.app/" target="_blank" rel="noopener noreferrer">Lab</a>
+        <a href="https://vexdyn-forgev1.vercel.app/" target="_blank" rel="noopener noreferrer">Forge</a>
+        <a href="https://nyven-v1.vercel.app/" target="_blank" rel="noopener noreferrer">NYVEN</a>
+      </div>
+      <div class="footer-col">
+        <h4>Build</h4>
+        <a href="build.html">Build For Me</a>
+        <a href="https://vexdyn-forgev1.vercel.app/" target="_blank" rel="noopener noreferrer">Build It Yourself</a>
+        <a href="websites.html">Websites</a>
+        <a href="plus.html">VEXDYN+</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="mailto:hellovexdyn@gmail.com">hellovexdyn@gmail.com</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 VEXDYN. All rights reserved.</span>
+      <span>Create Beyond Limits.</span>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js" defer></script>
+  <script src="vexdyn-3d.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script src="auth.js"></script>
+</body>
+</html>

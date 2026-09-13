@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Request a professional website from VEXDYN." />
+  <title>Websites — VEXDYN</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="auth.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo-link" aria-label="VEXDYN Home">
+        <img src="vexdyn-logo-wordmark-alpha.png" alt="VEXDYN" class="logo-swap" height="36" />
+      </a>
+      <nav class="nav-desktop" aria-label="Main">
+        <a href="index.html">Home</a>
+        <a href="websites.html" class="active">Websites</a>
+        <a href="learn.html">Learn</a>
+        <a href="plus.html">VEXDYN+</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <div class="auth-nav" id="authNav" aria-live="polite"><span class="auth-nav-skeleton"></span></div>
+        <div class="theme-wrap">
+          <button class="theme-btn" id="themeBtn" aria-label="Change theme">🌙</button>
+          <div class="theme-panel" id="themePanel">
+            <button class="theme-option active">🌙 Obsidian</button>
+            <button class="theme-option" data-theme="aurora">☀️ Aurora</button>
+            <button class="theme-option" data-theme="ice">❄️ Ice</button>
+          </div>
+        </div>
+        <button class="menu-toggle" id="menuToggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+  <nav class="nav-mobile" id="navMobile">
+    <a href="index.html">Home</a>
+    <a href="websites.html" class="active">Websites</a>
+    <a href="learn.html">Learn</a>
+    <a href="plus.html">VEXDYN+</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <div class="nav-mobile-auth" id="authNavMobile"></div>
+  </nav>
+
+  <main class="main">
+    <div class="page-hero reveal">
+      <span class="section-label">Website Creation</span>
+      <h1>NEED A WEBSITE?</h1>
+      <p>Tell us what you're building. VEXDYN designs and develops professional websites.</p>
+    </div>
+
+    <section class="section" style="padding-top:0">
+      <div class="grid-2">
+        <article class="v-card reveal">
+          <div class="svc-icon">◇</div>
+          <h2 class="v-card-title">START A PROJECT</h2>
+          <p class="v-card-desc">You bring the vision. We handle design, development and delivery.</p>
+          <ul class="price-features" style="margin-top:16px">
+            <li>Business & services</li>
+            <li>Restaurants & hospitality</li>
+            <li>Fashion brands</li>
+            <li>Portfolios & personal brands</li>
+            <li>Agencies & landing pages</li>
+            <li>Custom projects</li>
+          </ul>
+        </article>
+        <article class="v-card reveal reveal-delay-1">
+          <div class="svc-icon">⬡</div>
+          <h2 class="v-card-title">BUILD IT YOURSELF</h2>
+          <p class="v-card-desc">The future VEXDYN Builder will let you create, customize and launch with precision tools.</p>
+          <p class="placeholder-notice">Not available in VEXDYN 1.0 — Coming later</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="v-card reveal" style="max-width:600px;margin:0 auto">
+        <h2 class="v-card-title" style="margin-bottom:18px">Request a Website</h2>
+        <form onsubmit="event.preventDefault();document.getElementById('formMsg').style.display='block'">
+          <div class="form-group">
+            <label for="name">Your name</label>
+            <input type="text" id="name" required placeholder="Full name" />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" required placeholder="you@example.com" />
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" placeholder="Optional" />
+          </div>
+          <div class="form-group">
+            <label for="type">Project type</label>
+            <select id="type">
+              <option value="">Select…</option>
+              <option>Business website</option>
+              <option>Restaurant / hospitality</option>
+              <option>Fashion brand</option>
+              <option>Portfolio</option>
+              <option>Agency</option>
+              <option>Landing page</option>
+              <option>Custom project</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="details">Project details</label>
+            <textarea id="details" placeholder="Describe what you need…"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg">REQUEST A WEBSITE →</button>
+          <p class="form-note">Frontend placeholder. Submissions are not yet delivered.</p>
+          <p id="formMsg" class="placeholder-notice" style="display:none;margin-top:12px">Request recorded locally. Backend coming soon.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="vexdyn-logo-wordmark-alpha.png" alt="VEXDYN" class="logo-swap" height="32" />
+        <p>Technology, tools and knowledge for turning digital ideas into reality.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Platform</h4>
+        <a href="websites.html">Websites</a>
+        <a href="build.html">Build</a>
+        <a href="learn.html">Learn</a>
+        <a href="plus.html">VEXDYN+</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Founder</h4>
+        <div class="founder-card">
+          <span class="founder-name">David Augustine</span>
+          <span class="founder-title">Creator & Owner</span>
+          <span class="founder-contact">07025664141</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 VEXDYN. All rights reserved.</span>
+      <span>Build What's Next.</span>
+    </div>
+  </footer>
+<script src="script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="auth.js"></script>
+</body>
+</html>
