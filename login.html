@@ -61,12 +61,18 @@
 
           <form class="auth-form" id="loginForm" novalidate>
             <div class="form-group">
-              <label for="loginEmail">Email</label>
-              <input type="email" id="loginEmail" name="email" autocomplete="email" required placeholder="you@example.com" />
+              <label for="loginEmail">Email or username</label>
+              <input type="text" id="loginEmail" name="email" autocomplete="username" required placeholder="you@example.com or username" />
             </div>
             <div class="form-group">
               <label for="loginPassword">Password</label>
-              <input type="password" id="loginPassword" name="password" autocomplete="current-password" required placeholder="Your password" />
+              <div class="pw-field">
+                <input type="password" id="loginPassword" name="password" autocomplete="current-password" required placeholder="Your password" />
+                <button type="button" class="pw-toggle" data-pw-toggle-for="loginPassword" aria-pressed="false" aria-label="Show password">
+                  <svg class="eye-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                  <svg class="eye-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.94 10.94 0 0 1 12 19c-7 0-11-7-11-7a21.6 21.6 0 0 1 5.06-6.06M9.9 4.24A10.4 10.4 0 0 1 12 5c7 0 11 7 11 7a21.6 21.6 0 0 1-2.61 3.68M14.12 14.12a3 3 0 1 1-4.24-4.24"/><path d="M1 1l22 22"/></svg>
+                </button>
+              </div>
             </div>
 
             <button type="submit" class="btn btn-primary btn-block" id="loginSubmit">SIGN IN →</button>
@@ -123,8 +129,8 @@
   var client = window.vexdynAuth && window.vexdynAuth.client;
   if (!client) { console.error("VEXDYN Auth unavailable on login page."); return; }
 
-  client.auth.getSession().then(function (r) {
-    if (r && r.data && r.data.session) window.location.href = "account.html";
+  window.vexdynAuth.ready.then(function (session) {
+    if (session) window.location.href = "account.html";
   });
 
   var form = document.getElementById("loginForm");
@@ -144,13 +150,26 @@
     e.preventDefault();
     clearError();
 
-    var email = document.getElementById("loginEmail").value.trim();
+    var identifier = document.getElementById("loginEmail").value.trim();
     var password = document.getElementById("loginPassword").value;
 
-    if (!email || !password) {
-      showError("Enter your email and password.");
+    if (!identifier || !password) {
+      showError("Enter your email or username, and your password.");
       return;
     }
+
+    var isEmail = identifier.indexOf("@") !== -1;
+
+    // Username → email resolution needs a secure backend lookup that
+    // doesn't exist in this codebase yet (see the developer notes on
+    // this pass). Rather than guess at an insecure client-side query,
+    // this is the one place we stop and ask for email instead.
+    if (!isEmail) {
+      showError("Username sign-in is coming soon — please sign in with your email for now.");
+      return;
+    }
+
+    var email = identifier;
 
     submitBtn.disabled = true;
     submitBtn.textContent = "SIGNING IN…";
@@ -159,7 +178,7 @@
       if (result.error) {
         var msg = result.error.message || "";
         if (/confirm/i.test(msg)) {
-          showError("Please verify your email before signing in. Check your inbox for the confirmation link.");
+          showError("Please verify your email before signing in. Check your inbox for the 6-digit code, or sign up again to request a new one.");
         } else {
           showError("Incorrect email or password.");
         }
@@ -177,4 +196,4 @@
 })();
 </script>
 </body>
-</html>
+        </html>
