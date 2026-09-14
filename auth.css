@@ -11,6 +11,7 @@
   align-items: center;
   gap: 8px;
 }
+
 .auth-nav .auth-link {
   font-size: 0.85rem;
   font-weight: 500;
@@ -20,14 +21,17 @@
   transition: color var(--transition), background var(--transition);
   white-space: nowrap;
 }
+
 .auth-nav .auth-link:hover {
   color: var(--text-primary);
   background: var(--accent-soft);
 }
+
 .auth-nav .btn {
   padding: 9px 18px;
   font-size: 0.8rem;
 }
+
 .auth-nav-skeleton {
   width: 84px;
   height: 34px;
@@ -46,6 +50,7 @@
   padding-top: 16px;
   border-top: 1px solid var(--border);
 }
+
 .nav-mobile-auth a,
 .mobile-nav-auth a {
   padding: 14px 16px;
@@ -55,12 +60,14 @@
   border-radius: var(--radius-md);
   border: 1px solid transparent;
 }
+
 .nav-mobile-auth a:hover,
 .mobile-nav-auth a:hover {
   color: var(--text-primary);
   background: var(--accent-soft);
   border-color: var(--border);
 }
+
 .nav-mobile-auth button,
 .mobile-nav-auth button {
   text-align: left;
@@ -72,6 +79,7 @@
   border: 1px solid transparent;
   width: 100%;
 }
+
 .nav-mobile-auth button:hover,
 .mobile-nav-auth button:hover {
   color: var(--text-primary);
@@ -85,6 +93,7 @@
   margin: 0 auto;
   padding: 0 20px 100px;
 }
+
 .auth-card {
   background: var(--bg-card);
   border: 1px solid var(--border-metal);
@@ -96,15 +105,22 @@
   position: relative;
   overflow: hidden;
 }
+
 .auth-card::before {
   content: "";
   position: absolute;
   inset: 0;
   border-radius: inherit;
   pointer-events: none;
-  background: linear-gradient(135deg, rgba(227, 231, 236, 0.05) 0%, transparent 48%, rgba(200, 202, 208, 0.04) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(227, 231, 236, 0.05) 0%,
+    transparent 48%,
+    rgba(200, 202, 208, 0.04) 100%
+  );
   opacity: 0.85;
 }
+
 .auth-card-title {
   font-size: 1.4rem;
   font-weight: 700;
@@ -112,6 +128,7 @@
   margin-bottom: 6px;
   position: relative;
 }
+
 .auth-card-sub {
   font-size: 0.9rem;
   color: var(--text-secondary);
@@ -119,13 +136,20 @@
   position: relative;
   line-height: 1.5;
 }
-.auth-form { position: relative; }
+
+.auth-form {
+  position: relative;
+}
+
 .auth-row-2 {
   display: grid;
   gap: 14px;
 }
+
 @media (min-width: 480px) {
-  .auth-row-2 { grid-template-columns: 1fr 1fr; }
+  .auth-row-2 {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 /* ---- Feedback states ---- */
@@ -139,7 +163,11 @@
   padding: 10px 12px;
   margin-bottom: 16px;
 }
-.auth-error.visible { display: block; }
+
+.auth-error.visible {
+  display: block;
+}
+
 .auth-success {
   display: none;
   font-size: 0.82rem;
@@ -150,7 +178,10 @@
   padding: 10px 12px;
   margin-bottom: 16px;
 }
-.auth-success.visible { display: block; }
+
+.auth-success.visible {
+  display: block;
+}
 
 .auth-links {
   margin-top: 20px;
@@ -162,8 +193,15 @@
   gap: 10px;
   flex-wrap: wrap;
 }
-.auth-links a { color: var(--accent); font-weight: 550; }
-.auth-links a:hover { color: var(--text-primary); }
+
+.auth-links a {
+  color: var(--accent);
+  font-weight: 550;
+}
+
+.auth-links a:hover {
+  color: var(--text-primary);
+}
 
 /* ---- Verification / state panel ---- */
 .auth-state-panel {
@@ -171,7 +209,11 @@
   text-align: center;
   position: relative;
 }
-.auth-state-panel.visible { display: block; }
+
+.auth-state-panel.visible {
+  display: block;
+}
+
 .auth-state-icon {
   width: 56px;
   height: 56px;
@@ -184,13 +226,17 @@
   justify-content: center;
   font-size: 1.5rem;
 }
+
 .auth-state-panel p {
   color: var(--text-secondary);
   font-size: 0.92rem;
   line-height: 1.6;
   margin-bottom: 18px;
 }
-.auth-state-panel strong { color: var(--text-primary); }
+
+.auth-state-panel strong {
+  color: var(--text-primary);
+}
 
 /* ---- OTP verification ---- */
 .otp-boxes {
@@ -199,6 +245,7 @@
   justify-content: center;
   margin-bottom: 18px;
 }
+
 .otp-box {
   width: 44px;
   height: 54px;
@@ -214,18 +261,29 @@
   -webkit-appearance: none;
   appearance: none;
 }
+
 .otp-box:focus {
   outline: none;
   border-color: var(--accent);
   box-shadow: 0 0 0 3px var(--accent-soft);
 }
+
 .otp-box.otp-error {
   border-color: rgba(200, 60, 60, 0.5);
 }
+
 @media (max-width: 380px) {
-  .otp-box { width: 38px; height: 48px; font-size: 1.2rem; }
-  .otp-boxes { gap: 6px; }
+  .otp-box {
+    width: 38px;
+    height: 48px;
+    font-size: 1.2rem;
+  }
+
+  .otp-boxes {
+    gap: 6px;
+  }
 }
+
 .otp-meta {
   text-align: center;
   font-size: 0.85rem;
@@ -233,13 +291,18 @@
   margin-bottom: 22px;
   line-height: 1.5;
 }
-.otp-meta strong { color: var(--text-primary); }
+
+.otp-meta strong {
+  color: var(--text-primary);
+}
+
 .otp-resend-row {
   text-align: center;
   font-size: 0.82rem;
   color: var(--text-muted);
   margin-top: 16px;
 }
+
 .otp-resend-row button {
   background: none;
   border: none;
@@ -249,14 +312,17 @@
   cursor: pointer;
   padding: 4px;
 }
+
 .otp-resend-row button:disabled {
   color: var(--text-muted);
   cursor: default;
 }
+
 .otp-change-email {
   text-align: center;
   margin-top: 10px;
 }
+
 .otp-change-email button {
   background: none;
   border: none;
@@ -271,41 +337,70 @@
 .pw-field {
   position: relative;
 }
+
 .pw-field input {
   padding-right: 46px;
 }
+
 .pw-toggle {
   position: absolute;
   top: 50%;
   right: 6px;
   transform: translateY(-50%);
-  width: 36px;
-  height: 36px;
+
+  /* Reliable mobile touch target */
+  width: 44px;
+  height: 44px;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   background: transparent;
   border: none;
   border-radius: var(--radius-sm);
+
   color: var(--text-muted);
   cursor: pointer;
   padding: 0;
+
+  /* Keep the button above the password input */
+  z-index: 2;
+
+  /* Explicitly make the button touchable */
+  pointer-events: auto;
+
+  /* Better Android/mobile interaction */
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
 }
+
 .pw-toggle:hover,
 .pw-toggle:focus-visible {
   color: var(--text-primary);
   background: var(--accent-soft);
 }
+
 .pw-toggle svg {
   width: 20px;
   height: 20px;
   display: block;
+
+  /* Let the BUTTON receive the touch/click */
+  pointer-events: none;
 }
-.pw-toggle .eye-off { display: none; }
-.pw-toggle[aria-pressed="true"] .eye-on { display: none; }
-.pw-toggle[aria-pressed="true"] .eye-off { display: block; }
+
+.pw-toggle .eye-off {
+  display: none;
+}
+
+.pw-toggle[aria-pressed="true"] .eye-on {
+  display: none;
+}
+
+.pw-toggle[aria-pressed="true"] .eye-off {
+  display: block;
+}
 
 /* ---- Password strength meter ---- */
 .pw-meter {
@@ -316,12 +411,14 @@
   margin-top: -10px;
   margin-bottom: 18px;
 }
+
 .pw-meter-fill {
   height: 100%;
   width: 0%;
   background: var(--accent);
   transition: width 0.25s ease, background 0.25s ease;
 }
+
 .pw-hint {
   font-size: 0.74rem;
   color: var(--text-muted);
@@ -335,12 +432,14 @@
   margin: 0 auto;
   padding: 0 20px 100px;
 }
+
 .account-header-card {
   display: flex;
   align-items: center;
   gap: 20px;
   flex-wrap: wrap;
 }
+
 .account-avatar {
   width: 72px;
   height: 72px;
@@ -356,16 +455,24 @@
   flex-shrink: 0;
   overflow: hidden;
 }
-.account-avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+.account-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .account-identity h2 {
   font-size: 1.25rem;
   font-weight: 700;
   margin-bottom: 2px;
 }
+
 .account-identity p {
   font-size: 0.88rem;
   color: var(--text-secondary);
 }
+
 .account-badge {
   display: inline-flex;
   align-items: center;
@@ -377,30 +484,38 @@
   border-radius: 999px;
   margin-top: 8px;
 }
+
 .account-badge.verified {
   background: rgba(70, 180, 100, 0.12);
   color: #a9d3b5;
   border: 1px solid rgba(70, 180, 100, 0.25);
 }
+
 .account-badge.unverified {
   background: rgba(200, 160, 40, 0.12);
   color: #d9be6e;
   border: 1px solid rgba(200, 160, 40, 0.25);
 }
+
 .account-grid {
   display: grid;
   gap: 18px;
   margin-top: 24px;
 }
+
 @media (min-width: 700px) {
-  .account-grid { grid-template-columns: 1fr 1fr; }
+  .account-grid {
+    grid-template-columns: 1fr 1fr;
+  }
 }
+
 .account-loading {
   text-align: center;
   padding: 60px 20px;
   color: var(--text-muted);
   font-size: 0.9rem;
 }
+
 .account-field-static {
   padding: 11px 14px;
   border-radius: var(--radius-md);
@@ -409,12 +524,17 @@
   color: var(--text-secondary);
   font-size: 0.92rem;
 }
-[hidden] { display: none !important; }
+
+[hidden] {
+  display: none !important;
+}
 
 /* Learn journey-stats originally ships 3 cards (style.css); the 4th
    "Learner" identity card added here needs a 4-column row on desktop
    so it doesn't wrap onto its own line. Scoped override only — style.css
    itself is untouched. */
 @media (min-width: 700px) {
-  .journey-stats { grid-template-columns: repeat(4, 1fr); }
+  .journey-stats {
+    grid-template-columns: repeat(4, 1fr);
+  }
    }
