@@ -33,6 +33,7 @@
       </div>
     </div>
   </header>
+
   <nav class="nav-mobile" id="navMobile" aria-label="Mobile">
     <a href="index.html">Home</a>
     <a href="websites.html">Websites</a>
@@ -67,33 +68,53 @@
                 <label for="fullName">Full name</label>
                 <input type="text" id="fullName" name="fullName" autocomplete="name" required placeholder="Jane Doe" />
               </div>
+
               <div class="form-group">
                 <label for="username">Username</label>
                 <input type="text" id="username" name="username" autocomplete="username" required placeholder="janedoe" pattern="[a-zA-Z0-9_\.]{3,24}" />
               </div>
+
               <div class="form-group">
                 <label for="signupEmail">Email</label>
                 <input type="email" id="signupEmail" name="email" autocomplete="email" required placeholder="you@example.com" />
               </div>
+
               <div class="form-group">
                 <label for="signupPassword">Password</label>
                 <div class="pw-field">
-                  <input type="password" id="signupPassword" name="password" autocomplete="new-password" required placeholder="At least 8 characters" minlength="8" />
+                  <input type="password" id="signupPassword" name="password" autocomplete="new-password" required placeholder="At least 6 characters" minlength="6" />
                   <button type="button" class="pw-toggle" data-pw-toggle-for="signupPassword" aria-pressed="false" aria-label="Show password">
-                    <svg class="eye-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z"/><circle cx="12" cy="12" r="3"/></svg>
-                    <svg class="eye-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.94 10.94 0 0 1 12 19c-7 0-11-7-11-7a21.6 21.6 0 0 1 5.06-6.06M9.9 4.24A10.4 10.4 0 0 1 12 5c7 0 11 7 11 7a21.6 21.6 0 0 1-2.61 3.68M14.12 14.12a3 3 0 1 1-4.24-4.24"/><path d="M1 1l22 22"/></svg>
+                    <svg class="eye-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z"/>
+                      <circle cx="12" cy="12" r="3"/>
+                    </svg>
+                    <svg class="eye-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M17.94 17.94A10.94 10.94 0 0 1 12 19c-7 0-11-7-11-7a21.6 21.6 0 0 1 5.06-6.06M9.9 4.24A10.4 10.4 0 0 1 12 5c7 0 11 7 11 7a21.6 21.6 0 0 1-2.61 3.68M14.12 14.12a3 3 0 1 1-4.24-4.24"/>
+                      <path d="M1 1l22 22"/>
+                    </svg>
                   </button>
                 </div>
               </div>
-              <div class="pw-meter"><div class="pw-meter-fill" id="pwMeterFill"></div></div>
-              <div class="pw-hint" id="pwHint">Use 8+ characters with a mix of letters and numbers.</div>
+
+              <div class="pw-meter">
+                <div class="pw-meter-fill" id="pwMeterFill"></div>
+              </div>
+
+              <div class="pw-hint" id="pwHint">Use 6+ characters with a mix of letters and numbers.</div>
+
               <div class="form-group">
                 <label for="confirmPassword">Confirm password</label>
                 <div class="pw-field">
-                  <input type="password" id="confirmPassword" name="confirmPassword" autocomplete="new-password" required placeholder="Re-enter your password" minlength="8" />
+                  <input type="password" id="confirmPassword" name="confirmPassword" autocomplete="new-password" required placeholder="Re-enter your password" minlength="6" />
                   <button type="button" class="pw-toggle" data-pw-toggle-for="confirmPassword" aria-pressed="false" aria-label="Show password">
-                    <svg class="eye-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z"/><circle cx="12" cy="12" r="3"/></svg>
-                    <svg class="eye-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.94 10.94 0 0 1 12 19c-7 0-11-7-11-7a21.6 21.6 0 0 1 5.06-6.06M9.9 4.24A10.4 10.4 0 0 1 12 5c7 0 11 7 11 7a21.6 21.6 0 0 1-2.61 3.68M14.12 14.12a3 3 0 1 1-4.24-4.24"/><path d="M1 1l22 22"/></svg>
+                    <svg class="eye-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z"/>
+                      <circle cx="12" cy="12" r="3"/>
+                    </svg>
+                    <svg class="eye-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M17.94 17.94A10.94 10.94 0 0 1 12 19c-7 0-11-7-11-7a21.6 21.6 0 0 1 5.06-6.06M9.9 4.24A10.4 10.4 0 0 1 12 5c7 0 11 7 11 7a21.6 21.6 0 0 1-2.61 3.68M14.12 14.12a3 3 0 1 1-4.24-4.24"/>
+                      <path d="M1 1l22 22"/>
+                    </svg>
                   </button>
                 </div>
               </div>
@@ -124,6 +145,7 @@
                 <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="otp-box" data-otp-index="4" aria-label="Digit 5 of 6" />
                 <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="otp-box" data-otp-index="5" aria-label="Digit 6 of 6" />
               </div>
+
               <button type="submit" class="btn btn-primary btn-block" id="otpVerifyBtn">VERIFY →</button>
             </form>
 
@@ -131,6 +153,7 @@
               <span id="otpResendIdle">Didn't get a code? <button type="button" id="otpResendBtn">Resend code</button></span>
               <span id="otpResendCooldown" hidden>Resend available in <span id="otpCooldownSeconds">60</span>s</span>
             </div>
+
             <div class="otp-change-email">
               <button type="button" id="otpChangeEmailBtn">Use a different email</button>
             </div>
@@ -154,6 +177,7 @@
         <img src="vexdyn-logo-wordmark-alpha.png" alt="VEXDYN" class="logo-swap" height="32" />
         <p>Technology, tools and knowledge for turning digital ideas into reality.</p>
       </div>
+
       <div class="footer-col">
         <h4>Platform</h4>
         <a href="websites.html">Websites</a>
@@ -161,11 +185,13 @@
         <a href="learn.html">Learn</a>
         <a href="plus.html">VEXDYN+</a>
       </div>
+
       <div class="footer-col">
         <h4>Company</h4>
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
       </div>
+
       <div class="footer-col">
         <h4>Founder</h4>
         <div class="founder-card">
@@ -175,390 +201,486 @@
         </div>
       </div>
     </div>
+
     <div class="footer-bottom">
       <span>© 2026 VEXDYN. All rights reserved.</span>
       <span>Build What's Next.</span>
     </div>
   </footer>
 
-<script src="script.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
-<script src="auth.js"></script>
-<script>
-(function () {
-  "use strict";
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="auth.js"></script>
 
-  var PENDING_KEY = "vexdyn_pending_verification_email";
-  var RESEND_COOLDOWN_SECONDS = 60;
+  <script>
+  (function () {
+    "use strict";
 
-  function afterAuthReady(fn) {
-    if (window.vexdynAuth && window.vexdynAuth.client) { fn(); return; }
-    document.addEventListener("vexdyn:auth-nav-rendered", fn, { once: true });
-  }
-
-  afterAuthReady(function () {
-    var client = window.vexdynAuth.client;
-    if (!client) return;
-
-    var formPanel = document.getElementById("signupFormPanel");
-    var otpPanel = document.getElementById("verifyPanel");
-    var verifiedPanel = document.getElementById("verifiedPanel");
-
-    var form = document.getElementById("signupForm");
-    var errorBox = document.getElementById("signupError");
-    var submitBtn = document.getElementById("signupSubmit");
-    var pwInput = document.getElementById("signupPassword");
-    var pwMeterFill = document.getElementById("pwMeterFill");
-
-    var otpForm = document.getElementById("otpForm");
-    var otpBoxesEl = document.getElementById("otpBoxes");
-    var otpBoxes = Array.prototype.slice.call(otpBoxesEl.querySelectorAll(".otp-box"));
-    var otpVerifyBtn = document.getElementById("otpVerifyBtn");
-    var otpError = document.getElementById("otpError");
-    var otpSuccess = document.getElementById("otpSuccess");
-    var verifyEmailTarget = document.getElementById("verifyEmailTarget");
-    var resendBtn = document.getElementById("otpResendBtn");
-    var resendIdle = document.getElementById("otpResendIdle");
-    var resendCooldownEl = document.getElementById("otpResendCooldown");
-    var cooldownSecondsEl = document.getElementById("otpCooldownSeconds");
-    var changeEmailBtn = document.getElementById("otpChangeEmailBtn");
-
-    var pendingEmail = null;
-    var cooldownTimer = null;
-
-    // ---------- panel switching ----------
-    function showForm() {
-      formPanel.style.display = "";
-      otpPanel.classList.remove("visible");
-      verifiedPanel.classList.remove("visible");
-    }
-    function showOtp(email) {
-      pendingEmail = email;
-      verifyEmailTarget.textContent = email;
-      formPanel.style.display = "none";
-      otpPanel.classList.add("visible");
-      verifiedPanel.classList.remove("visible");
-      clearOtpBoxes();
-      otpBoxes[0].focus();
-    }
-    function showVerified() {
-      otpPanel.classList.remove("visible");
-      verifiedPanel.classList.add("visible");
-    }
-
-    // ---------- pending-email persistence (refresh survival) ----------
-    // Only the email is stored — never the OTP itself, per the security
-    // requirement. sessionStorage clears itself when the tab closes.
-    function savePendingEmail(email) {
-      try { sessionStorage.setItem(PENDING_KEY, email); } catch (e) {}
-    }
-    function loadPendingEmail() {
-      try { return sessionStorage.getItem(PENDING_KEY); } catch (e) { return null; }
-    }
-    function clearPendingEmail() {
-      try { sessionStorage.removeItem(PENDING_KEY); } catch (e) {}
-    }
-
-    // ---------- signup form ----------
-    function showError(msg) {
-      errorBox.textContent = msg;
-      errorBox.classList.add("visible");
-    }
-    function clearError() {
-      errorBox.textContent = "";
-      errorBox.classList.remove("visible");
-    }
-
-    function pwScore(pw) {
-      var score = 0;
-      if (pw.length >= 8) score++;
-      if (pw.length >= 12) score++;
-      if (/[A-Z]/.test(pw) && /[a-z]/.test(pw)) score++;
-      if (/[0-9]/.test(pw)) score++;
-      if (/[^A-Za-z0-9]/.test(pw)) score++;
-      return Math.min(score, 4);
-    }
-    pwInput.addEventListener("input", function () {
-      var score = pwScore(pwInput.value);
-      var pct = (score / 4) * 100;
-      pwMeterFill.style.width = pct + "%";
-      var colors = ["#c8515a", "#d99a3f", "#d9c93f", "#7fbf6a"];
-      pwMeterFill.style.background = pwInput.value ? colors[Math.max(score - 1, 0)] : "var(--border)";
-    });
-
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-      clearError();
-
-      var fullName = document.getElementById("fullName").value.trim();
-      var username = document.getElementById("username").value.trim();
-      var email = document.getElementById("signupEmail").value.trim();
-      var password = pwInput.value;
-      var confirmPassword = document.getElementById("confirmPassword").value;
-
-      if (!fullName || !username || !email || !password || !confirmPassword) {
-        showError("Please fill in every field.");
-        return;
-      }
-      if (!/^[a-zA-Z0-9_.]{3,24}$/.test(username)) {
-        showError("Username must be 3–24 characters: letters, numbers, dots or underscores.");
-        return;
-      }
-      if (password.length < 8) {
-        showError("Password must be at least 8 characters.");
-        return;
-      }
-      if (password !== confirmPassword) {
-        showError("Passwords do not match.");
-        return;
-      }
-
-      submitBtn.disabled = true;
-      submitBtn.textContent = "CREATING ACCOUNT…";
-
-      client.auth.signUp({
-        email: email,
-        password: password,
-        options: {
-          data: {
-            full_name: fullName,
-            username: username
-          },
-          emailRedirectTo: window.location.origin + "/account.html"
-        }
-      }).then(function (result) {
-        submitBtn.disabled = false;
-        submitBtn.textContent = "CREATE ACCOUNT →";
-
-        if (result.error) {
-          showError(result.error.message || "Could not create your account. Please try again.");
-          return;
-        }
-
-        var data = result.data || {};
-        var user = data.user || null;
-
-        // identities.length === 0 means an account with this email already
-        // exists and is already confirmed.
-        if (user && user.identities && user.identities.length === 0) {
-          showError("An account with this email already exists. Try signing in instead.");
-          return;
-        }
-
-        // If email confirmation is OFF in the Supabase project, signUp()
-        // returns a real session immediately — nothing to verify, go
-        // straight to the account. Adapted here rather than assumed, per
-        // the current OTP-flow configuration.
-        if (data.session) {
-          clearPendingEmail();
-          window.location.href = "account.html";
-          return;
-        }
-
-        savePendingEmail(email);
-        startCooldown(RESEND_COOLDOWN_SECONDS);
-        showOtp(email);
-      }).catch(function () {
-        submitBtn.disabled = false;
-        submitBtn.textContent = "CREATE ACCOUNT →";
-        showError("Something went wrong. Please check your connection and try again.");
-      });
-    });
-
-    // ---------- OTP boxes: input, backspace, paste ----------
-    function clearOtpBoxes() {
-      otpBoxes.forEach(function (box) {
-        box.value = "";
-        box.classList.remove("otp-error");
-      });
-    }
-    function otpCode() {
-      return otpBoxes.map(function (b) { return b.value; }).join("");
-    }
-    function markOtpError() {
-      otpBoxes.forEach(function (b) { b.classList.add("otp-error"); });
-    }
-    function clearOtpErrorStyle() {
-      otpBoxes.forEach(function (b) { b.classList.remove("otp-error"); });
-    }
-
-    otpBoxes.forEach(function (box, i) {
-      box.addEventListener("input", function () {
-        box.value = box.value.replace(/[^0-9]/g, "").slice(0, 1);
-        clearOtpErrorStyle();
-        otpError.classList.remove("visible");
-        if (box.value && i < otpBoxes.length - 1) {
-          otpBoxes[i + 1].focus();
-        }
-        if (otpCode().length === 6) {
-          otpForm.requestSubmit ? otpForm.requestSubmit() : otpVerifyBtn.click();
-        }
-      });
-      box.addEventListener("keydown", function (e) {
-        if (e.key === "Backspace" && !box.value && i > 0) {
-          otpBoxes[i - 1].focus();
-        }
-      });
-      box.addEventListener("paste", function (e) {
-        var text = (e.clipboardData || window.clipboardData).getData("text") || "";
-        var digits = text.replace(/[^0-9]/g, "").slice(0, 6);
-        if (!digits) return;
-        e.preventDefault();
-        for (var d = 0; d < otpBoxes.length; d++) {
-          otpBoxes[d].value = digits[d] || "";
-        }
-        clearOtpErrorStyle();
-        var lastIndex = Math.min(digits.length, otpBoxes.length) - 1;
-        if (lastIndex >= 0) otpBoxes[lastIndex].focus();
-        if (digits.length === 6) {
-          otpForm.requestSubmit ? otpForm.requestSubmit() : otpVerifyBtn.click();
-        }
-      });
-    });
-
-    // ---------- verify ----------
-    otpForm.addEventListener("submit", function (e) {
-      e.preventDefault();
-      otpError.classList.remove("visible");
-      otpSuccess.classList.remove("visible");
-
-      var code = otpCode();
-      if (code.length !== 6) {
-        otpError.textContent = "Enter all 6 digits.";
-        otpError.classList.add("visible");
-        return;
-      }
-      if (!pendingEmail) {
-        otpError.textContent = "Your session expired — please sign up again.";
-        otpError.classList.add("visible");
-        return;
-      }
-
-      otpVerifyBtn.disabled = true;
-      otpVerifyBtn.textContent = "VERIFYING…";
-
-      client.auth.verifyOtp({
-        email: pendingEmail,
-        token: code,
-        type: "email"
-      }).then(function (result) {
-        otpVerifyBtn.disabled = false;
-        otpVerifyBtn.textContent = "VERIFY →";
-
-        if (result.error) {
-          var msg = result.error.message || "";
-          if (/expired/i.test(msg)) {
-            otpError.textContent = "That code has expired. Request a new one below.";
-          } else {
-            otpError.textContent = "Incorrect code. Please check and try again.";
-          }
-          otpError.classList.add("visible");
-          markOtpError();
-          return;
-        }
-
-        // verifyOtp() establishes the session directly — auth.js's own
-        // onAuthStateChange listener (SIGNED_IN) will pick this up and
-        // update the nav automatically; we just handle this page's UI
-        // and the redirect.
-        clearPendingEmail();
-        if (cooldownTimer) clearInterval(cooldownTimer);
-        otpSuccess.textContent = "Verified.";
-        otpSuccess.classList.add("visible");
-        showVerified();
-        setTimeout(function () {
-          window.location.href = "account.html";
-        }, 900);
-      }).catch(function () {
-        otpVerifyBtn.disabled = false;
-        otpVerifyBtn.textContent = "VERIFY →";
-        otpError.textContent = "Something went wrong. Please check your connection and try again.";
-        otpError.classList.add("visible");
-      });
-    });
-
-    // ---------- resend ----------
-    function startCooldown(seconds) {
-      var remaining = seconds;
-      resendIdle.hidden = true;
-      resendCooldownEl.hidden = false;
-      cooldownSecondsEl.textContent = remaining;
-      if (cooldownTimer) clearInterval(cooldownTimer);
-      cooldownTimer = setInterval(function () {
-        remaining -= 1;
-        if (remaining <= 0) {
-          clearInterval(cooldownTimer);
-          cooldownTimer = null;
-          resendCooldownEl.hidden = true;
-          resendIdle.hidden = false;
-          return;
-        }
-        cooldownSecondsEl.textContent = remaining;
-      }, 1000);
-    }
-
-    resendBtn.addEventListener("click", function () {
-      if (!pendingEmail) return;
-      resendBtn.disabled = true;
-      otpError.classList.remove("visible");
-
-      client.auth.resend({
-        type: "signup",
-        email: pendingEmail,
-        options: {
-          emailRedirectTo: window.location.origin + "/account.html"
-        }
-      }).then(function (result) {
-        resendBtn.disabled = false;
-        if (result.error) {
-          // Respect Supabase's own rate limit rather than retrying —
-          // just surface its message and keep/extend the cooldown.
-          otpError.textContent = result.error.message || "Please wait before requesting another code.";
-          otpError.classList.add("visible");
-          startCooldown(RESEND_COOLDOWN_SECONDS);
-          return;
-        }
-        otpSuccess.textContent = "A new code is on its way.";
-        otpSuccess.classList.add("visible");
-        clearOtpBoxes();
-        otpBoxes[0].focus();
-        startCooldown(RESEND_COOLDOWN_SECONDS);
-      }).catch(function () {
-        resendBtn.disabled = false;
-        otpError.textContent = "Something went wrong. Please check your connection and try again.";
-        otpError.classList.add("visible");
-      });
-    });
-
-    // ---------- change email ----------
-    changeEmailBtn.addEventListener("click", function () {
-      clearPendingEmail();
-      if (cooldownTimer) clearInterval(cooldownTimer);
-      pendingEmail = null;
-      otpError.classList.remove("visible");
-      otpSuccess.classList.remove("visible");
-      form.reset();
-      pwMeterFill.style.width = "0%";
-      showForm();
-    });
-
-    // ---------- initial state ----------
-    // If already signed in, no need to sign up again.
     window.vexdynAuth.ready.then(function (session) {
       if (session) {
         window.location.href = "account.html";
         return;
       }
-      // Restore an in-progress verification after an accidental refresh.
-      // Only the email is restored — the OTP itself was never stored.
-      var restoredEmail = loadPendingEmail();
-      if (restoredEmail) {
-        startCooldown(RESEND_COOLDOWN_SECONDS);
-        showOtp(restoredEmail);
-      }
+
+      initSignup();
     });
-  });
-})();
-</script>
+
+    function initSignup() {
+      var client = window.vexdynAuth.client;
+
+      var form = document.getElementById("signupForm");
+      var submitBtn = document.getElementById("signupSubmit");
+      var signupError = document.getElementById("signupError");
+      var pwInput = document.getElementById("signupPassword");
+      var pwMeterFill = document.getElementById("pwMeterFill");
+      var pwHint = document.getElementById("pwHint");
+
+      var verifyPanel = document.getElementById("verifyPanel");
+      var verifiedPanel = document.getElementById("verifiedPanel");
+      var signupFormPanel = document.getElementById("signupFormPanel");
+
+      var verifyEmailTarget = document.getElementById("verifyEmailTarget");
+      var otpForm = document.getElementById("otpForm");
+      var otpBoxes = Array.prototype.slice.call(document.querySelectorAll(".otp-box"));
+      var otpVerifyBtn = document.getElementById("otpVerifyBtn");
+      var otpError = document.getElementById("otpError");
+      var otpSuccess = document.getElementById("otpSuccess");
+
+      var resendBtn = document.getElementById("otpResendBtn");
+      var resendIdle = document.getElementById("otpResendIdle");
+      var resendCooldownEl = document.getElementById("otpResendCooldown");
+      var cooldownSecondsEl = document.getElementById("otpCooldownSeconds");
+      var changeEmailBtn = document.getElementById("otpChangeEmailBtn");
+
+      var cooldownTimer = null;
+      var pendingEmail = null;
+
+      var RESEND_COOLDOWN_SECONDS = 60;
+      var PENDING_EMAIL_KEY = "vexdyn_pending_signup_email";
+
+      function showError(message) {
+        signupError.textContent = message;
+        signupError.classList.add("visible");
+      }
+
+      function clearError() {
+        signupError.textContent = "";
+        signupError.classList.remove("visible");
+      }
+
+      function savePendingEmail(email) {
+        try {
+          localStorage.setItem(PENDING_EMAIL_KEY, email);
+        } catch (e) {}
+      }
+
+      function loadPendingEmail() {
+        try {
+          return localStorage.getItem(PENDING_EMAIL_KEY) || "";
+        } catch (e) {
+          return "";
+        }
+      }
+
+      function clearPendingEmail() {
+        try {
+          localStorage.removeItem(PENDING_EMAIL_KEY);
+        } catch (e) {}
+      }
+
+      function showOtp(email) {
+        pendingEmail = email;
+        verifyEmailTarget.textContent = email;
+        signupFormPanel.hidden = true;
+        verifyPanel.classList.add("visible");
+        verifiedPanel.classList.remove("visible");
+        clearOtpBoxes();
+        otpError.classList.remove("visible");
+        otpSuccess.classList.remove("visible");
+        setTimeout(function () {
+          if (otpBoxes[0]) otpBoxes[0].focus();
+        }, 50);
+      }
+
+      function showForm() {
+        signupFormPanel.hidden = false;
+        verifyPanel.classList.remove("visible");
+        verifiedPanel.classList.remove("visible");
+      }
+
+      function showVerified() {
+        signupFormPanel.hidden = true;
+        verifyPanel.classList.remove("visible");
+        verifiedPanel.classList.add("visible");
+      }
+
+      function pwScore(pw) {
+        var score = 0;
+        if (pw.length >= 6) score++;
+        if (pw.length >= 12) score++;
+        if (/[A-Z]/.test(pw)) score++;
+        if (/[0-9]/.test(pw)) score++;
+        if (/[^A-Za-z0-9]/.test(pw)) score++;
+        return Math.min(score, 4);
+      }
+
+      pwInput.addEventListener("input", function () {
+        var score = pwScore(pwInput.value);
+        var pct = (score / 4) * 100;
+
+        pwMeterFill.style.width = pct + "%";
+
+        var colors = ["#c8515a", "#d99a3f", "#d9c93f", "#7fbf6a"];
+
+        pwMeterFill.style.background =
+          pwInput.value
+            ? colors[Math.max(score - 1, 0)]
+            : "var(--border)";
+      });
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        clearError();
+
+        var fullName = document.getElementById("fullName").value.trim();
+        var username = document.getElementById("username").value.trim();
+        var email = document.getElementById("signupEmail").value.trim();
+        var password = pwInput.value;
+        var confirmPassword = document.getElementById("confirmPassword").value;
+
+        if (!fullName || !username || !email || !password || !confirmPassword) {
+          showError("Please fill in every field.");
+          return;
+        }
+
+        if (!/^[a-zA-Z0-9_.]{3,24}$/.test(username)) {
+          showError("Username must be 3–24 characters: letters, numbers, dots or underscores.");
+          return;
+        }
+
+        if (password.length < 6) {
+          showError("Password must be at least 6 characters.");
+          return;
+        }
+
+        if (password !== confirmPassword) {
+          showError("Passwords do not match.");
+          return;
+        }
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = "CREATING ACCOUNT…";
+
+        client.auth.signUp({
+          email: email,
+          password: password,
+          options: {
+            data: {
+              full_name: fullName,
+              username: username
+            },
+            emailRedirectTo: window.location.origin + "/account.html"
+          }
+        }).then(function (result) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = "CREATE ACCOUNT →";
+
+          if (result.error) {
+            showError(result.error.message || "Could not create your account. Please try again.");
+            return;
+          }
+
+          var data = result.data || {};
+          var user = data.user || null;
+
+          // identities.length === 0 means an account with this email already
+          // exists and is already confirmed.
+          if (user && user.identities && user.identities.length === 0) {
+            showError("An account with this email already exists. Try signing in instead.");
+            return;
+          }
+
+          // If email confirmation is OFF in the Supabase project, signUp()
+          // returns a real session immediately — nothing to verify, go
+          // straight to the account. Adapted here rather than assumed, per
+          // the current OTP-flow configuration.
+          if (data.session) {
+            clearPendingEmail();
+            window.location.href = "account.html";
+            return;
+          }
+
+          savePendingEmail(email);
+          startCooldown(RESEND_COOLDOWN_SECONDS);
+          showOtp(email);
+        }).catch(function () {
+          submitBtn.disabled = false;
+          submitBtn.textContent = "CREATE ACCOUNT →";
+          showError("Something went wrong. Please check your connection and try again.");
+        });
+      });
+
+      // ---------- OTP boxes: input, backspace, paste ----------
+      function clearOtpBoxes() {
+        otpBoxes.forEach(function (box) {
+          box.value = "";
+          box.classList.remove("otp-error");
+        });
+      }
+
+      function otpCode() {
+        return otpBoxes.map(function (b) {
+          return b.value;
+        }).join("");
+      }
+
+      function markOtpError() {
+        otpBoxes.forEach(function (b) {
+          b.classList.add("otp-error");
+        });
+      }
+
+      function clearOtpErrorStyle() {
+        otpBoxes.forEach(function (b) {
+          b.classList.remove("otp-error");
+        });
+      }
+
+      otpBoxes.forEach(function (box, i) {
+        box.addEventListener("input", function () {
+          box.value = box.value.replace(/[^0-9]/g, "").slice(0, 1);
+          clearOtpErrorStyle();
+          otpError.classList.remove("visible");
+
+          if (box.value && i < otpBoxes.length - 1) {
+            otpBoxes[i + 1].focus();
+          }
+
+          if (otpCode().length === 6) {
+            otpForm.requestSubmit
+              ? otpForm.requestSubmit()
+              : otpVerifyBtn.click();
+          }
+        });
+
+        box.addEventListener("keydown", function (e) {
+          if (e.key === "Backspace" && !box.value && i > 0) {
+            otpBoxes[i - 1].focus();
+          }
+        });
+
+        box.addEventListener("paste", function (e) {
+          var text =
+            (e.clipboardData || window.clipboardData).getData("text") || "";
+
+          var digits = text.replace(/[^0-9]/g, "").slice(0, 6);
+
+          if (!digits) return;
+
+          e.preventDefault();
+
+          for (var d = 0; d < otpBoxes.length; d++) {
+            otpBoxes[d].value = digits[d] || "";
+          }
+
+          clearOtpErrorStyle();
+
+          var lastIndex =
+            Math.min(digits.length, otpBoxes.length) - 1;
+
+          if (lastIndex >= 0) {
+            otpBoxes[lastIndex].focus();
+          }
+
+          if (digits.length === 6) {
+            otpForm.requestSubmit
+              ? otpForm.requestSubmit()
+              : otpVerifyBtn.click();
+          }
+        });
+      });
+
+      // ---------- verify ----------
+      otpForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        otpError.classList.remove("visible");
+        otpSuccess.classList.remove("visible");
+
+        var code = otpCode();
+
+        if (code.length !== 6) {
+          otpError.textContent = "Enter all 6 digits.";
+          otpError.classList.add("visible");
+          return;
+        }
+
+        if (!pendingEmail) {
+          otpError.textContent = "Your session expired — please sign up again.";
+          otpError.classList.add("visible");
+          return;
+        }
+
+        otpVerifyBtn.disabled = true;
+        otpVerifyBtn.textContent = "VERIFYING…";
+
+        client.auth.verifyOtp({
+          email: pendingEmail,
+          token: code,
+          type: "email"
+        }).then(function (result) {
+          otpVerifyBtn.disabled = false;
+          otpVerifyBtn.textContent = "VERIFY →";
+
+          if (result.error) {
+            var msg = result.error.message || "";
+
+            if (/expired/i.test(msg)) {
+              otpError.textContent =
+                "That code has expired. Request a new one below.";
+            } else {
+              otpError.textContent =
+                "Incorrect code. Please check and try again.";
+            }
+
+            otpError.classList.add("visible");
+            markOtpError();
+            return;
+          }
+
+          // verifyOtp() establishes the session directly — auth.js's own
+          // onAuthStateChange listener (SIGNED_IN) will pick this up and
+          // update the nav automatically; we just handle this page's UI
+          // and the redirect.
+          clearPendingEmail();
+
+          if (cooldownTimer) {
+            clearInterval(cooldownTimer);
+          }
+
+          otpSuccess.textContent = "Verified.";
+          otpSuccess.classList.add("visible");
+
+          showVerified();
+
+          setTimeout(function () {
+            window.location.href = "account.html";
+          }, 900);
+        }).catch(function () {
+          otpVerifyBtn.disabled = false;
+          otpVerifyBtn.textContent = "VERIFY →";
+          otpError.textContent =
+            "Something went wrong. Please check your connection and try again.";
+          otpError.classList.add("visible");
+        });
+      });
+
+      // ---------- resend ----------
+      function startCooldown(seconds) {
+        var remaining = seconds;
+
+        resendIdle.hidden = true;
+        resendCooldownEl.hidden = false;
+        cooldownSecondsEl.textContent = remaining;
+
+        if (cooldownTimer) {
+          clearInterval(cooldownTimer);
+        }
+
+        cooldownTimer = setInterval(function () {
+          remaining -= 1;
+
+          if (remaining <= 0) {
+            clearInterval(cooldownTimer);
+            cooldownTimer = null;
+            resendCooldownEl.hidden = true;
+            resendIdle.hidden = false;
+            return;
+          }
+
+          cooldownSecondsEl.textContent = remaining;
+        }, 1000);
+      }
+
+      resendBtn.addEventListener("click", function () {
+        if (!pendingEmail) return;
+
+        resendBtn.disabled = true;
+        otpError.classList.remove("visible");
+
+        client.auth.resend({
+          type: "signup",
+          email: pendingEmail,
+          options: {
+            emailRedirectTo: window.location.origin + "/account.html"
+          }
+        }).then(function (result) {
+          resendBtn.disabled = false;
+
+          if (result.error) {
+            // Respect Supabase's own rate limit rather than retrying —
+            // just surface its message and keep/extend the cooldown.
+            otpError.textContent =
+              result.error.message ||
+              "Please wait before requesting another code.";
+
+            otpError.classList.add("visible");
+            startCooldown(RESEND_COOLDOWN_SECONDS);
+            return;
+          }
+
+          otpSuccess.textContent = "A new code is on its way.";
+          otpSuccess.classList.add("visible");
+
+          clearOtpBoxes();
+          otpBoxes[0].focus();
+
+          startCooldown(RESEND_COOLDOWN_SECONDS);
+        }).catch(function () {
+          resendBtn.disabled = false;
+          otpError.textContent =
+            "Something went wrong. Please check your connection and try again.";
+          otpError.classList.add("visible");
+        });
+      });
+
+      // ---------- change email ----------
+      changeEmailBtn.addEventListener("click", function () {
+        clearPendingEmail();
+
+        if (cooldownTimer) {
+          clearInterval(cooldownTimer);
+        }
+
+        pendingEmail = null;
+        otpError.classList.remove("visible");
+        otpSuccess.classList.remove("visible");
+
+        form.reset();
+        pwMeterFill.style.width = "0%";
+
+        showForm();
+      });
+
+      // ---------- initial state ----------
+      // If already signed in, no need to sign up again.
+      window.vexdynAuth.ready.then(function (session) {
+        if (session) {
+          window.location.href = "account.html";
+          return;
+        }
+
+        // Restore an in-progress verification after an accidental refresh.
+        // Only the email is restored — the OTP itself was never stored.
+        var restoredEmail = loadPendingEmail();
+
+        if (restoredEmail) {
+          startCooldown(RESEND_COOLDOWN_SECONDS);
+          showOtp(restoredEmail);
+        }
+      });
+    }
+  })();
+  </script>
+
 </body>
 </html>
