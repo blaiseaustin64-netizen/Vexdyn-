@@ -8,8 +8,8 @@
    created. Every other script (login.html,
    signup.html, account.html, learn.html, etc.)
    reads it from window.vexdynAuth.client — never
-   re-create it, and never call getSession() as the
-   first thing on page load — await
+   re-create it, and never call getSession() as
+   the first thing on page load — await
    window.vexdynAuth.ready instead (see below).
    This is what prevents the "sometimes logged
    out on revisit" race: every page now waits on
@@ -41,6 +41,10 @@
     }
   });
 
+  /* currentSession is kept in sync by onAuthStateChange and is the single
+     source of truth every page/script should read from after `ready`
+     resolves — never call client.auth.getSession() again on a page that
+     already has auth.js loaded. */
   var currentSession = null;
   var resolveReady;
   var readyPromise = new Promise(function (resolve) { resolveReady = resolve; });
@@ -54,7 +58,7 @@
     }
   }
 
-  /* ---------- Nav rendering ---------- */
+  /* ---------- Nav rendering (logged in vs logged out) ---------- */
 
   function loggedOutDesktopHTML() {
     return (
@@ -121,7 +125,12 @@
     });
   }
 
-  /* ---------- Central auth-state handling ---------- */
+  /* ---------- Central auth-state handling ----------
+     Registered BEFORE anything else touches the client, so no event is
+     ever missed. supabase-js fires this once immediately on subscribe
+     with the restored (or null) session — that first call is what
+     resolves `ready`. Every subsequent event keeps currentSession and
+     the nav in sync for the lifetime of the page. */
 
   client.auth.onAuthStateChange(function (event, session) {
     switch (event) {
@@ -158,24 +167,33 @@
     }
   });
 
-  client.auth.getSession().then(function (result) {
-    var session = result && result.data
-      ? result.data.session
-      : null;
-
-    settleReady(session);
-  });
+  /* Do not race INITIAL_SESSION with a separate getSession() call here.
+     `INITIAL_SESSION` is the authoritative first auth-state event after
+     Supabase has restored persisted storage and processed any recovery URL.
+     Resolving `ready` from a concurrent getSession() can return null before
+     that restore finishes, which can make a valid recovery session look
+     logged out on the next page. */
 
   window.vexdynAuth = {
     client: client,
+
+    /* Resolves once with the session that was valid at page load
+       (or null). Await this before deciding logged-in/out UI —
+       never call client.auth.getSession() again yourself. */
     ready: readyPromise,
+
+    /* Synchronous snapshot for use AFTER `ready` has resolved
+       (e.g. inside a later click handler). Returns null before
+       `ready` resolves. */
     getSession: function () {
       return currentSession;
     }
   };
 
-  /* ---------- Password visibility ---------- */
-
+  /* Delegated so it works for any current or future [data-pw-toggle-for]
+     button without each page needing its own script. Toggles only the
+     input's type attribute — never reads, stores, or transmits the
+     value itself. */
   function wirePasswordToggles() {
     document.addEventListener("click", function (e) {
       var btn = e.target.closest
@@ -184,10 +202,6 @@
 
       if (!btn) return;
 
-      /*
-       * Prevent the eye button from ever submitting its
-       * surrounding login/signup form.
-       */
       e.preventDefault();
 
       var input = document.getElementById(
