@@ -8,8 +8,8 @@
    created. Every other script (login.html,
    signup.html, account.html, learn.html, etc.)
    reads it from window.vexdynAuth.client — never
-   re-create it, and never call getSession() as
-   the first thing on page load — await
+   re-create it, and never call getSession() as the
+   first thing on page load — await
    window.vexdynAuth.ready instead (see below).
    This is what prevents the "sometimes logged
    out on revisit" race: every page now waits on
@@ -110,10 +110,7 @@
 
   function wireLogout() {
     document.addEventListener("click", function (e) {
-      var btn = e.target.closest
-        ? e.target.closest("[data-auth-logout]")
-        : null;
-
+      var btn = e.target.closest ? e.target.closest("[data-auth-logout]") : null;
       if (!btn) return;
 
       e.preventDefault();
@@ -125,13 +122,28 @@
     });
   }
 
+  /* ---------- Password recovery safety net ---------- */
+
+  function handlePasswordRecoveryRedirect(session) {
+    if (!session) return;
+
+    var path = window.location.pathname || "";
+    var fileName = path.substring(path.lastIndexOf("/") + 1).toLowerCase();
+
+    // reset-password.html owns the recovery UI and listener.
+    // Never redirect while already there, otherwise PASSWORD_RECOVERY
+    // could cause a redirect loop.
+    if (fileName === "reset-password.html") return;
+
+    window.location.replace("/reset-password.html");
+  }
+
   /* ---------- Central auth-state handling ----------
      Registered BEFORE anything else touches the client, so no event is
      ever missed. supabase-js fires this once immediately on subscribe
      with the restored (or null) session — that first call is what
      resolves `ready`. Every subsequent event keeps currentSession and
      the nav in sync for the lifetime of the page. */
-
   client.auth.onAuthStateChange(function (event, session) {
     switch (event) {
       case "INITIAL_SESSION":
@@ -159,6 +171,7 @@
 
       case "PASSWORD_RECOVERY":
         currentSession = session;
+        handlePasswordRecoveryRedirect(session);
         break;
 
       default:
@@ -196,10 +209,7 @@
      value itself. */
   function wirePasswordToggles() {
     document.addEventListener("click", function (e) {
-      var btn = e.target.closest
-        ? e.target.closest("[data-pw-toggle-for]")
-        : null;
-
+      var btn = e.target.closest ? e.target.closest("[data-pw-toggle-for]") : null;
       if (!btn) return;
 
       e.preventDefault();
@@ -214,11 +224,7 @@
 
       input.type = showing ? "password" : "text";
 
-      btn.setAttribute(
-        "aria-pressed",
-        showing ? "false" : "true"
-      );
-
+      btn.setAttribute("aria-pressed", showing ? "false" : "true");
       btn.setAttribute(
         "aria-label",
         showing ? "Show password" : "Hide password"
