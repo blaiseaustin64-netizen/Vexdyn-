@@ -81,6 +81,91 @@
           <div class="journey-stat-value" id="journeyStatus">NOT STARTED</div>
           <div class="journey-stat-label">Current Status</div>
         </div>
+        <div class="journey-stat">
+          <div class="journey-stat-value" id="journeyLearner" style="font-size:1rem">Guest</div>
+          <div class="journey-stat-label" id="journeyLearnerLabel">Sign in to save progress</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LEARN PROFILE -->
+    <section class="section learn-profile-section" id="learnProfile" aria-labelledby="learnProfileTitle">
+      <div class="reveal">
+        <span class="section-label">Learn Profile</span>
+        <h2 class="section-title" id="learnProfileTitle">YOUR LEARNING PROFILE</h2>
+        <p class="section-sub">Your VEXDYN identity and learning progress, rebuilt from your account.</p>
+      </div>
+
+      <div id="learnProfileLoading" class="learn-profile-state" role="status">Loading your Learn Profile…</div>
+
+      <div id="learnProfileGuest" class="v-card learn-profile-state" hidden>
+        <div class="learn-profile-state-title">SIGN IN TO VIEW YOUR LEARN PROFILE</div>
+        <p>Sign in to connect this profile to your VEXDYN account and view cloud-saved Learn progress.</p>
+        <a href="login.html" class="btn btn-primary">SIGN IN →</a>
+      </div>
+
+      <div id="learnProfileError" class="v-card learn-profile-state learn-profile-error" role="alert" hidden>
+        <div class="learn-profile-state-title">PROFILE DATA UNAVAILABLE</div>
+        <p id="learnProfileErrorText">We couldn't load your cloud Learn progress. No progress has been estimated or replaced.</p>
+      </div>
+
+      <div id="learnProfileContent" hidden>
+        <div class="learn-profile-identity v-card reveal">
+          <div class="learn-profile-avatar" id="learnProfileAvatar" aria-hidden="true">?</div>
+          <div class="learn-profile-identity-copy">
+            <span class="learn-profile-kicker">VEXDYN LEARN PROFILE</span>
+            <h3 id="learnProfileName">VEXDYN Member</h3>
+            <p id="learnProfileUsername"></p>
+            <p id="learnProfileEmail"></p>
+          </div>
+        </div>
+
+        <div class="learn-profile-overview v-card reveal reveal-delay-1">
+          <div class="learn-profile-section-head">
+            <div>
+              <span class="learn-profile-kicker">LEARNING OVERVIEW</span>
+              <h3>Overall Learn Progress</h3>
+            </div>
+            <strong id="learnProfileOverallPct">0%</strong>
+          </div>
+          <div class="learn-profile-overall-bar"><div id="learnProfileOverallBar"></div></div>
+          <div class="learn-profile-overall-meta">
+            <span>Completed <strong id="learnProfileCompletedCount">0</strong> / <strong id="learnProfileTotalCount">112</strong></span>
+            <span id="learnProfileOverallState">NOT STARTED</span>
+          </div>
+        </div>
+
+        <div class="learn-profile-courses" id="learnProfileCourses"></div>
+
+        <div class="learn-profile-panel v-card reveal">
+          <div class="learn-profile-panel-head">
+            <div>
+              <span class="learn-profile-kicker">CONTINUE LEARNING</span>
+              <h3>Pick up where you left off</h3>
+            </div>
+          </div>
+          <div class="learn-profile-continue-grid" id="learnProfileContinue"></div>
+        </div>
+
+        <div class="learn-profile-panel v-card reveal">
+          <div class="learn-profile-panel-head">
+            <div>
+              <span class="learn-profile-kicker">COMPLETED COURSES</span>
+              <h3>Your completed paths</h3>
+            </div>
+          </div>
+          <div id="learnProfileCompletedCourses" class="learn-profile-completed"></div>
+        </div>
+
+        <div class="learn-profile-panel v-card reveal">
+          <div class="learn-profile-panel-head">
+            <div>
+              <span class="learn-profile-kicker">ACHIEVEMENTS</span>
+              <h3>Achievements</h3>
+            </div>
+          </div>
+          <p class="learn-profile-placeholder">Achievement records are not currently exposed by the existing Learn backend, so achievement integration is intentionally deferred. No records have been invented.</p>
+        </div>
       </div>
     </section>
 
@@ -120,19 +205,20 @@
         <button type="button" class="btn btn-secondary course-back" data-back-catalog>← All Courses</button>
         <div class="course-view-brand">
           <div class="course-view-logo-row">
-            <span class="course-view-logo" aria-hidden="true"><svg viewBox="0 0 32 32" width="40" height="40"><path fill="#E34F26" d="M4 2l2.2 24.8L16 30l9.8-3.2L28 2H4zm17.5 8.2H12l.3 3.2h8.9l-.9 10.2L16 25.2l-4.3-1.2-.3-3.3h3.1l.1 1.5 1.4.4 1.4-.4.2-2.1H11.5l-.6-7.3h12.1l-.5 2.6z"/></svg></span>
-            <span class="course-view-tech" style="color:#e34f26">HTML</span>
+            <span class="course-view-logo course-logo-html" aria-hidden="true">‹/›</span>
+            <span class="course-view-tech" style="color:#E34F26">HTML</span>
           </div>
-          <h1 class="course-view-title">HTML Foundation</h1>
-          <p class="course-view-sub">20 lessons · Structure the web with semantic markup</p>
+          <h1 class="course-view-title">HTML — Build the Structure</h1>
+          <p class="course-view-sub">20 lessons · From first tags to real page structure</p>
         </div>
         <div class="course-view-progress">
           <div class="course-view-pct" id="htmlCoursePct">0%</div>
-          <div class="course-progress-bar course-view-bar"><div class="course-progress-fill" id="htmlCourseBar" style="width:0%;background:#e34f26"></div></div>
+          <div class="course-progress-bar course-view-bar"><div class="course-progress-fill" id="htmlCourseBar" style="width:0%;background:#E34F26"></div></div>
           <div class="course-view-status" id="htmlCourseStatus">NOT STARTED</div>
         </div>
-        <div id="htmlCompleteBanner" class="course-complete-banner" hidden>
+        <div id="htmlCompleteBanner" class="course-complete-banner" style="background:rgba(227,79,38,0.12);border-color:rgba(227,79,38,0.4);color:#E34F26" hidden>
           HTML FOUNDATION COMPLETE · 100%
+          <span style="display:block;font-weight:500;margin-top:4px;font-size:0.85rem;opacity:0.9">You built the structure. Now you're ready to style it.</span>
         </div>
       </section>
       <section class="section" style="padding-top:0">
@@ -144,53 +230,67 @@
     <!-- HTML LESSON VIEW -->
     <div id="htmlLessonView" class="lesson-view" hidden>
       <section class="section lesson-view-inner">
-        <button type="button" class="btn btn-secondary course-back" data-back-course>← Lesson List</button>
+        <button type="button" class="btn btn-secondary course-back" data-html-back-course>← Lesson List</button>
         <div class="lesson-header">
-          <span class="lesson-num" id="lessonNum">LESSON 01</span>
-          <h1 class="lesson-title" id="lessonTitle"></h1>
-          <p class="lesson-mission" id="lessonMission"></p>
+          <span class="lesson-num" id="htmlLessonNum" style="color:#E34F26">LESSON 01</span>
+          <h1 class="lesson-title" id="htmlLessonTitle"></h1>
+          <p class="lesson-mission" id="htmlLessonMission"></p>
         </div>
         <div class="lesson-block">
           <h3 class="lesson-block-title">Definitions</h3>
-          <div id="lessonDefs"></div>
+          <div id="htmlLessonDefs"></div>
         </div>
         <div class="lesson-block">
-          <h3 class="lesson-block-title">Example</h3>
-          <pre class="lesson-code"><code id="lessonExample"></code></pre>
+          <h3 class="lesson-block-title">How It Works</h3>
+          <p class="lesson-challenge" id="htmlLessonExplanation" style="background:var(--bg-elevated);border-color:var(--border)"></p>
+        </div>
+        <div class="lesson-block">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px">
+            <h3 class="lesson-block-title" style="margin:0">HTML / Example</h3>
+            <button type="button" class="btn btn-secondary" id="htmlCopyBtn" style="padding:6px 12px;font-size:0.72rem;letter-spacing:0.06em">COPY</button>
+          </div>
+          <pre class="lesson-code html-code"><code id="htmlLessonExample"></code></pre>
+        </div>
+        <div class="lesson-block">
+          <h3 class="lesson-block-title">Breakdown</h3>
+          <p class="lesson-challenge" id="htmlLessonBreakdown" style="background:var(--bg-elevated);border-color:var(--border);white-space:pre-line"></p>
+        </div>
+        <div class="lesson-block">
+          <h3 class="lesson-block-title">VEXDYN Application</h3>
+          <p class="lesson-challenge" id="htmlLessonApplication" style="background:rgba(227,79,38,0.08);border-color:rgba(227,79,38,0.25)"></p>
         </div>
         <div class="lesson-block">
           <h3 class="lesson-block-title">Challenge</h3>
-          <p class="lesson-challenge" id="lessonChallenge"></p>
+          <p class="lesson-challenge" id="htmlLessonChallenge"></p>
         </div>
         <div class="lesson-actions">
-          <button type="button" class="btn btn-secondary" id="lessonPrevBtn" data-goto="0">← Previous</button>
-          <button type="button" class="btn btn-primary" id="lessonCompleteBtn">MARK COMPLETE →</button>
-          <button type="button" class="btn btn-secondary" id="lessonNextBtn" data-goto="0">Next →</button>
+          <button type="button" class="btn btn-secondary" id="htmlLessonPrevBtn" data-html-goto="0">← Previous</button>
+          <button type="button" class="btn btn-primary" id="htmlLessonCompleteBtn">MARK LESSON COMPLETE</button>
+          <button type="button" class="btn btn-secondary" id="htmlLessonNextBtn" data-html-goto="0">Next →</button>
         </div>
       </section>
     </div>
 
-  
     <!-- CSS COURSE VIEW -->
     <div id="cssCourseView" class="course-view" hidden>
       <section class="section course-view-header">
         <button type="button" class="btn btn-secondary course-back" data-css-back-catalog>← All Courses</button>
         <div class="course-view-brand">
           <div class="course-view-logo-row">
-            <span class="course-view-logo" aria-hidden="true"><svg viewBox="0 0 32 32" width="40" height="40"><path fill="#1572B6" d="M4 2l2.2 24.8L16 30l9.8-3.2L28 2H4zm17.4 8.1l-.4 4.2H12.1l.2 2.5h8.7l-.5 5.4L16 24.1l-4.5-1.2-.3-3.2h-3.2l.5 6.1L16 28l7.5-2.1 1-11.8H12.6l-.2-2.3h11.5l.5-1.7z"/></svg></span>
-            <span class="course-view-tech" style="color:#1572b6">CSS</span>
+            <span class="course-view-logo course-logo-css" aria-hidden="true">#</span>
+            <span class="course-view-tech" style="color:#1572B6">CSS</span>
           </div>
-          <h1 class="course-view-title">CSS Design System</h1>
-          <p class="course-view-sub">24 lessons · Transform structure into visual experience</p>
+          <h1 class="course-view-title">CSS — Design the Interface</h1>
+          <p class="course-view-sub">24 lessons · From styling basics to responsive interfaces</p>
         </div>
         <div class="course-view-progress">
           <div class="course-view-pct" id="cssCoursePct">0%</div>
-          <div class="course-progress-bar course-view-bar"><div class="course-progress-fill" id="cssCourseBar" style="width:0%;background:#1572b6"></div></div>
+          <div class="course-progress-bar course-view-bar"><div class="course-progress-fill" id="cssCourseBar" style="width:0%;background:#1572B6"></div></div>
           <div class="course-view-status" id="cssCourseStatus">NOT STARTED</div>
         </div>
-        <div id="cssCompleteBanner" class="course-complete-banner" style="background:rgba(21,114,182,0.12);border-color:rgba(21,114,182,0.35);color:#1572b6" hidden>
-          CSS SYSTEM INITIALIZED · 100%
-          <span style="display:block;font-weight:500;margin-top:4px;font-size:0.85rem;opacity:0.9">You can now transform structure into visual experiences. Next system: JAVASCRIPT</span>
+        <div id="cssCompleteBanner" class="course-complete-banner" style="background:rgba(21,114,182,0.12);border-color:rgba(21,114,182,0.4);color:#1572B6" hidden>
+          CSS INTERFACE COMPLETE · 100%
+          <span style="display:block;font-weight:500;margin-top:4px;font-size:0.85rem;opacity:0.9">You gave your structure a visual system. Now make it behave.</span>
         </div>
       </section>
       <section class="section" style="padding-top:0">
@@ -204,7 +304,7 @@
       <section class="section lesson-view-inner">
         <button type="button" class="btn btn-secondary course-back" data-css-back-course>← Lesson List</button>
         <div class="lesson-header">
-          <span class="lesson-num" id="cssLessonNum" style="color:#1572b6">LESSON 01</span>
+          <span class="lesson-num" id="cssLessonNum" style="color:#1572B6">LESSON 01</span>
           <h1 class="lesson-title" id="cssLessonTitle"></h1>
           <p class="lesson-mission" id="cssLessonMission"></p>
         </div>
@@ -218,10 +318,10 @@
         </div>
         <div class="lesson-block">
           <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px">
-            <h3 class="lesson-block-title" style="margin:0" id="cssExampleTitle">Example</h3>
+            <h3 class="lesson-block-title" style="margin:0">CSS / Example</h3>
             <button type="button" class="btn btn-secondary" id="cssCopyBtn" style="padding:6px 12px;font-size:0.72rem;letter-spacing:0.06em">COPY</button>
           </div>
-          <pre class="lesson-code"><code id="cssLessonExample"></code></pre>
+          <pre class="lesson-code css-code"><code id="cssLessonExample"></code></pre>
         </div>
         <div class="lesson-block">
           <h3 class="lesson-block-title">Breakdown</h3>
@@ -229,7 +329,7 @@
         </div>
         <div class="lesson-block">
           <h3 class="lesson-block-title">VEXDYN Application</h3>
-          <p class="lesson-challenge" id="cssLessonApplication" style="background:rgba(21,114,182,0.08);border-color:rgba(21,114,182,0.22)"></p>
+          <p class="lesson-challenge" id="cssLessonApplication" style="background:rgba(21,114,182,0.08);border-color:rgba(21,114,182,0.25)"></p>
         </div>
         <div class="lesson-block">
           <h3 class="lesson-block-title">Challenge</h3>
@@ -243,27 +343,26 @@
       </section>
     </div>
 
-
     <!-- JAVASCRIPT COURSE VIEW -->
     <div id="jsCourseView" class="course-view" hidden>
       <section class="section course-view-header">
         <button type="button" class="btn btn-secondary course-back" data-js-back-catalog>← All Courses</button>
         <div class="course-view-brand">
           <div class="course-view-logo-row">
-            <span class="course-view-logo course-logo-js" aria-hidden="true"><svg viewBox="0 0 32 32" width="40" height="40"><rect width="32" height="32" rx="3" fill="#F7DF1E"/><path fill="#323330" d="M18.2 23.6c.4.7.8 1.3 1.8 1.3 1 0 1.6-.5 1.6-1.2 0-.8-.6-1.1-1.6-1.6l-.6-.2c-1.6-.7-2.7-1.6-2.7-3.4 0-1.7 1.3-3 3.3-3 1.4 0 2.5.5 3.2 1.8l-1.8 1.1c-.4-.7-.8-1-1.5-1-.7 0-1.1.4-1.1 1 0 .7.4 1 1.4 1.4l.6.3c1.9.8 3 1.8 3 3.8 0 2.1-1.7 3.3-3.9 3.3-2.2 0-3.6-1-4.3-2.4l1.9-1.1zm-7.4.2c.3.5.6.9 1.2.9.6 0 1-.2 1-.8V15h2.3v8.9c0 2.4-1.4 3.5-3.4 3.5-1.8 0-2.9-.9-3.4-2.1l1.9-1.1z"/></svg></span>
-            <span class="course-view-tech" style="color:#f7df1e">JAVASCRIPT</span>
+            <span class="course-view-logo course-logo-js" aria-hidden="true">JS</span>
+            <span class="course-view-tech" style="color:#F7DF1E">JAVASCRIPT</span>
           </div>
-          <h1 class="course-view-title">JavaScript — Power the Experience</h1>
-          <p class="course-view-sub">32 lessons · Turn interfaces into interactive systems</p>
+          <h1 class="course-view-title">JavaScript — Add Intelligence</h1>
+          <p class="course-view-sub">32 lessons · From logic to interactive web applications</p>
         </div>
         <div class="course-view-progress">
           <div class="course-view-pct" id="jsCoursePct">0%</div>
-          <div class="course-progress-bar course-view-bar"><div class="course-progress-fill" id="jsCourseBar" style="width:0%;background:#f7df1e"></div></div>
+          <div class="course-progress-bar course-view-bar"><div class="course-progress-fill" id="jsCourseBar" style="width:0%;background:#F7DF1E"></div></div>
           <div class="course-view-status" id="jsCourseStatus">NOT STARTED</div>
         </div>
-        <div id="jsCompleteBanner" class="course-complete-banner" style="background:rgba(247,223,30,0.12);border-color:rgba(247,223,30,0.4);color:#c4a000" hidden>
-          JAVASCRIPT SYSTEM INITIALIZED · 100%
-          <span style="display:block;font-weight:500;margin-top:4px;font-size:0.85rem;opacity:0.9">You have learned how to turn interfaces into interactive systems. Next system: REACT</span>
+        <div id="jsCompleteBanner" class="course-complete-banner" style="background:rgba(247,223,30,0.12);border-color:rgba(247,223,30,0.4);color:#8b7d00" hidden>
+          JAVASCRIPT ENGINE ONLINE · 100%
+          <span style="display:block;font-weight:500;margin-top:4px;font-size:0.85rem;opacity:0.9">Your interfaces can now think, react and respond.</span>
         </div>
       </section>
       <section class="section" style="padding-top:0">
@@ -274,71 +373,99 @@
 
     <!-- JAVASCRIPT LESSON VIEW -->
     <div id="jsLessonView" class="lesson-view" hidden>
-      <section class="section lesson-view-inner">
+            <section class="section lesson-view-inner">
         <button type="button" class="btn btn-secondary course-back" data-js-back-course>← Lesson List</button>
+
         <div class="lesson-header">
-          <span class="lesson-num" id="jsLessonNum" style="color:#f7df1e">LESSON 01</span>
+          <span class="lesson-num" id="jsLessonNum" style="color:#F7DF1E">LESSON 01</span>
           <h1 class="lesson-title" id="jsLessonTitle"></h1>
           <p class="lesson-mission" id="jsLessonMission"></p>
         </div>
+
         <div class="lesson-block">
           <h3 class="lesson-block-title">Definitions</h3>
           <div id="jsLessonDefs"></div>
         </div>
+
         <div class="lesson-block">
           <h3 class="lesson-block-title">How It Works</h3>
           <p class="lesson-challenge" id="jsLessonExplanation" style="background:var(--bg-elevated);border-color:var(--border)"></p>
         </div>
+
         <div class="lesson-block">
           <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px">
             <h3 class="lesson-block-title" style="margin:0">JS / Example</h3>
             <button type="button" class="btn btn-secondary" id="jsCopyBtn" style="padding:6px 12px;font-size:0.72rem;letter-spacing:0.06em">COPY</button>
           </div>
+
           <pre class="lesson-code js-code"><code id="jsLessonExample"></code></pre>
         </div>
+
         <div class="lesson-block">
           <h3 class="lesson-block-title">Breakdown</h3>
           <p class="lesson-challenge" id="jsLessonBreakdown" style="background:var(--bg-elevated);border-color:var(--border);white-space:pre-line"></p>
         </div>
+
         <div class="lesson-block">
           <h3 class="lesson-block-title">VEXDYN Application</h3>
           <p class="lesson-challenge" id="jsLessonApplication" style="background:rgba(247,223,30,0.08);border-color:rgba(247,223,30,0.25)"></p>
         </div>
+
         <div class="lesson-block">
           <h3 class="lesson-block-title">Challenge</h3>
           <p class="lesson-challenge" id="jsLessonChallenge"></p>
         </div>
+
         <div class="lesson-actions">
           <button type="button" class="btn btn-secondary" id="jsLessonPrevBtn" data-js-goto="0">← Previous</button>
           <button type="button" class="btn btn-primary" id="jsLessonCompleteBtn">MARK LESSON COMPLETE</button>
           <button type="button" class="btn btn-secondary" id="jsLessonNextBtn" data-js-goto="0">Next →</button>
         </div>
+
       </section>
     </div>
-
 
     <!-- REACT COURSE VIEW -->
     <div id="reactCourseView" class="course-view" hidden>
       <section class="section course-view-header">
         <button type="button" class="btn btn-secondary course-back" data-react-back-catalog>← All Courses</button>
+
         <div class="course-view-brand">
           <div class="course-view-logo-row">
-            <span class="course-view-logo course-logo-react" aria-hidden="true"><svg viewBox="0 0 32 32" width="40" height="40"><circle cx="16" cy="16" r="2.4" fill="#61DAFB"/><g fill="none" stroke="#61DAFB" stroke-width="1.6"><ellipse cx="16" cy="16" rx="11" ry="4.2"/><ellipse cx="16" cy="16" rx="11" ry="4.2" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="11" ry="4.2" transform="rotate(120 16 16)"/></g></svg></span>
+            <span class="course-view-logo course-logo-react" aria-hidden="true">
+              <svg viewBox="0 0 32 32" width="40" height="40">
+                <circle cx="16" cy="16" r="2.4" fill="#61DAFB"/>
+                <g fill="none" stroke="#61DAFB" stroke-width="1.6">
+                  <ellipse cx="16" cy="16" rx="11" ry="4.2"/>
+                  <ellipse cx="16" cy="16" rx="11" ry="4.2" transform="rotate(60 16 16)"/>
+                  <ellipse cx="16" cy="16" rx="11" ry="4.2" transform="rotate(120 16 16)"/>
+                </g>
+              </svg>
+            </span>
+
             <span class="course-view-tech" style="color:#61DAFB">REACT</span>
           </div>
+
           <h1 class="course-view-title">React — Build Systems</h1>
           <p class="course-view-sub">36 lessons · From components to production architecture</p>
         </div>
+
         <div class="course-view-progress">
           <div class="course-view-pct" id="reactCoursePct">0%</div>
-          <div class="course-progress-bar course-view-bar"><div class="course-progress-fill" id="reactCourseBar" style="width:0%;background:#61DAFB"></div></div>
+          <div class="course-progress-bar course-view-bar">
+            <div class="course-progress-fill" id="reactCourseBar" style="width:0%;background:#61DAFB"></div>
+          </div>
           <div class="course-view-status" id="reactCourseStatus">NOT STARTED</div>
         </div>
+
         <div id="reactCompleteBanner" class="course-complete-banner" style="background:rgba(97,218,251,0.12);border-color:rgba(97,218,251,0.4);color:#149ECA" hidden>
           REACT SYSTEM INITIALIZED · 100%
-          <span style="display:block;font-weight:500;margin-top:4px;font-size:0.85rem;opacity:0.9">You didn't just learn to code. You learned to build systems. VEXDYN LEARN COMPLETE.</span>
+          <span style="display:block;font-weight:500;margin-top:4px;font-size:0.85rem;opacity:0.9">
+            You didn't just learn to code. You learned to build systems. VEXDYN LEARN COMPLETE.
+          </span>
         </div>
       </section>
+
       <section class="section" style="padding-top:0">
         <h2 class="section-title" style="font-size:1.25rem;margin-bottom:18px">Lessons</h2>
         <div class="lesson-list" id="reactLessonList"></div>
@@ -349,54 +476,65 @@
     <div id="reactLessonView" class="lesson-view" hidden>
       <section class="section lesson-view-inner">
         <button type="button" class="btn btn-secondary course-back" data-react-back-course>← Lesson List</button>
+
         <div class="lesson-header">
           <span class="lesson-num" id="reactLessonNum" style="color:#61DAFB">LESSON 01</span>
           <h1 class="lesson-title" id="reactLessonTitle"></h1>
           <p class="lesson-mission" id="reactLessonMission"></p>
         </div>
+
         <div class="lesson-block">
           <h3 class="lesson-block-title">Definitions</h3>
           <div id="reactLessonDefs"></div>
         </div>
+
         <div class="lesson-block">
           <h3 class="lesson-block-title">How It Works</h3>
           <p class="lesson-challenge" id="reactLessonExplanation" style="background:var(--bg-elevated);border-color:var(--border)"></p>
         </div>
+
         <div class="lesson-block">
           <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px">
             <h3 class="lesson-block-title" style="margin:0">REACT / Example</h3>
             <button type="button" class="btn btn-secondary" id="reactCopyBtn" style="padding:6px 12px;font-size:0.72rem;letter-spacing:0.06em">COPY</button>
           </div>
+
           <pre class="lesson-code react-code"><code id="reactLessonExample"></code></pre>
         </div>
+
         <div class="lesson-block">
           <h3 class="lesson-block-title">Breakdown</h3>
           <p class="lesson-challenge" id="reactLessonBreakdown" style="background:var(--bg-elevated);border-color:var(--border);white-space:pre-line"></p>
         </div>
+
         <div class="lesson-block">
           <h3 class="lesson-block-title">VEXDYN Application</h3>
           <p class="lesson-challenge" id="reactLessonApplication" style="background:rgba(97,218,251,0.08);border-color:rgba(97,218,251,0.25)"></p>
         </div>
+
         <div class="lesson-block">
           <h3 class="lesson-block-title">Challenge</h3>
           <p class="lesson-challenge" id="reactLessonChallenge"></p>
         </div>
+
         <div class="lesson-actions">
           <button type="button" class="btn btn-secondary" id="reactLessonPrevBtn" data-react-goto="0">← Previous</button>
           <button type="button" class="btn btn-primary" id="reactLessonCompleteBtn">MARK LESSON COMPLETE</button>
           <button type="button" class="btn btn-secondary" id="reactLessonNextBtn" data-react-goto="0">Next →</button>
         </div>
+
       </section>
     </div>
 
 </main>
 
-  <footer class="site-footer">
+<footer class="site-footer">
     <div class="footer-inner">
       <div class="footer-brand">
         <img src="vexdyn-logo-wordmark-alpha.png" alt="VEXDYN" class="logo-swap" height="32" />
         <p>Technology, tools and knowledge for turning digital ideas into reality.</p>
       </div>
+
       <div class="footer-col">
         <h4>Platform</h4>
         <a href="websites.html">Websites</a>
@@ -404,11 +542,13 @@
         <a href="learn.html">Learn</a>
         <a href="plus.html">VEXDYN+</a>
       </div>
+
       <div class="footer-col">
         <h4>Company</h4>
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
       </div>
+
       <div class="footer-col">
         <h4>Founder</h4>
         <div class="founder-card">
@@ -418,11 +558,13 @@
         </div>
       </div>
     </div>
+
     <div class="footer-bottom">
       <span>© 2026 VEXDYN. All rights reserved.</span>
       <span>Build What's Next.</span>
     </div>
-  </footer>
+</footer>
+
 <script>
 (function () {
   function run() {
@@ -430,22 +572,32 @@
       window.VEXDYN_LEARN.animateCatalogProgress();
     }
   }
+
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", function () { setTimeout(run, 250); });
+    document.addEventListener("DOMContentLoaded", function () {
+      setTimeout(run, 250);
+    });
   } else {
     setTimeout(run, 250);
   }
 })();
 </script>
+
 <script>
 (function(){
   var t = document.documentElement.getAttribute("data-theme");
+
   if (t === "aurora") {
     document.documentElement.setAttribute("data-theme", "obsidian");
-    try { localStorage.setItem("vexdyn-theme", "obsidian"); } catch(e) {}
+
+    try {
+      localStorage.setItem("vexdyn-theme", "obsidian");
+    } catch(e) {}
   }
+
   document.addEventListener("click", function(e){
     var opt = e.target.closest("[data-theme=\"aurora\"]");
+
     if (opt && opt.classList.contains("theme-option")) {
       e.preventDefault();
       e.stopPropagation();
@@ -453,13 +605,70 @@
   }, true);
 })();
 </script>
+
 <script src="script.js"></script>
-  <script src="learn.js"></script>
-  <script src="html-course.js"></script>
-  <script src="css-course.js"></script>
-  <script src="js-course.js"></script>
-  <script src="react-course.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
-  <script src="auth.js"></script>
+<script src="learn.js"></script>
+<script src="html-course.js"></script>
+<script src="css-course.js"></script>
+<script src="js-course.js"></script>
+<script src="react-course.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="auth.js"></script>
+
+<script>
+/* VEXDYN Learn — identity integration only.
+   Does NOT touch course data, lesson content, or the localStorage
+   progress read in learn.js — purely reflects who's signed in. */
+
+(function () {
+  "use strict";
+
+  if (!window.vexdynAuth) return;
+
+  function renderLearner(session, profile) {
+    var valueEl = document.getElementById("journeyLearner");
+    var labelEl = document.getElementById("journeyLearnerLabel");
+
+    if (!valueEl || !labelEl) return;
+
+    if (!session) {
+      valueEl.textContent = "Guest";
+      labelEl.textContent = "Sign in to save progress";
+      return;
+    }
+
+    var fullName =
+      (profile && profile.full_name) ||
+      (session.user.user_metadata && session.user.user_metadata.full_name) ||
+      "";
+
+    var username =
+      (profile && profile.username) ||
+      (session.user.user_metadata && session.user.user_metadata.username) ||
+      "";
+
+    valueEl.textContent = fullName || "VEXDYN Member";
+    labelEl.textContent = username ? "@" + username : "Signed in";
+  }
+
+  window.vexdynAuth.ready.then(function (session) {
+    if (!session) {
+      renderLearner(null, null);
+      return;
+    }
+
+    var client = window.vexdynAuth.client;
+
+    client.from("profiles")
+      .select("full_name,username")
+      .eq("id", session.user.id)
+      .single()
+      .then(function (result) {
+        renderLearner(session, result.data || null);
+      });
+  });
+})();
+</script>
+
 </body>
 </html>
