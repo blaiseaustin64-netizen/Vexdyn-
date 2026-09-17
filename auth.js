@@ -130,10 +130,13 @@
     var path = window.location.pathname || "";
     var fileName = path.substring(path.lastIndexOf("/") + 1).toLowerCase();
 
-    // reset-password.html owns the recovery UI and listener.
-    // Never redirect while already there, otherwise PASSWORD_RECOVERY
-    // could cause a redirect loop.
+    // reset-password.html (legacy link-based flow) and forgot-password.html
+    // (new inline OTP flow, Step 2) both listen for PASSWORD_RECOVERY
+    // themselves and handle it in place. Only redirect away from every
+    // OTHER page, so an out-of-band recovery session never strands someone
+    // on an unrelated page with no way to actually change their password.
     if (fileName === "reset-password.html") return;
+    if (fileName === "forgot-password.html") return;
 
     window.location.replace("/reset-password.html");
   }
