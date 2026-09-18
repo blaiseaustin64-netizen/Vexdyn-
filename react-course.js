@@ -204,8 +204,8 @@
     "breakdown": "\u2022 Identify components, props, and state\\n\u2022 Trace data from parent to child\\n\u2022 Note what is stored vs derived\\n\u2022 Rebuild the example with your own names\\n\u2022 Connect the pattern to a VEXDYN-style screen",
     "application": "VEXDYN Learn itself is built with HTML, CSS, and vanilla JavaScript, but this course teaches React so you can build component systems, dashboards, and product UIs in the wider ecosystem \u2014 including future React-powered tools.",
     "challenge": "Render VEXDYN courses from structured arrays with stable keys. Implement it in a separate React sandbox, then explain your component boundaries out loud."
-  },
-  {
+  },  
+     {
     "id": 13,
     "title": "FORMS & CONTROLLED INPUTS",
     "description": "Build a VEXDYN settings form with validation.",
@@ -493,7 +493,7 @@
     "application": "VEXDYN Learn itself is built with HTML, CSS, and vanilla JavaScript, but this course teaches React so you can build component systems, dashboards, and product UIs in the wider ecosystem \u2014 including future React-powered tools.",
     "challenge": "Create useLocalStorage and useCourseProgress hooks. Implement it in a separate React sandbox, then explain your component boundaries out loud."
   },
-  {
+     {
     "id": 31,
     "title": "PERFORMANCE & RENDERING",
     "description": "Apply React.memo, useMemo, and useCallback with judgment.",
@@ -592,6 +592,13 @@
 ];
 
   function loadProgress() {
+    // Step 2: authenticated Supabase progress is the display source of truth.
+    // Guest/local behavior remains unchanged.
+    const cloud = window.VEXDYN_LEARN_PROGRESS;
+    if (cloud && cloud.status === "ready" && cloud.completedByCourse && Array.isArray(cloud.completedByCourse["react"])) {
+      return { completed: cloud.completedByCourse["react"].slice() };
+    }
+
     try {
       const raw = localStorage.getItem(STORAGE_KEY);
       if (!raw) return { completed: [] };
@@ -764,7 +771,20 @@
     showView("lesson");
   }
 
-  function markComplete(id) {
+  async function markComplete(id) {
+    if (window.VEXDYN_LEARN && typeof window.VEXDYN_LEARN.saveAuthenticatedLessonCompletion === "function") {
+      const result = await window.VEXDYN_LEARN.saveAuthenticatedLessonCompletion("react", id);
+      if (result && result.authenticated) {
+        if (result.error) {
+          alert("We couldn't save this lesson to your account. Please try again.");
+          return;
+        }
+        openLesson(id);
+        syncCatalogProgress();
+        return;
+      }
+    }
+
     const data = loadProgress();
     if (!isComplete(id, data.completed)) {
       data.completed.push(id);
