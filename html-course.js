@@ -189,44 +189,44 @@
       title: "BUILD FOR EVERYONE",
       mission: "Understand HTML accessibility.",
       definitions: [
-        "Web accessibility means designing websites so people with different abilities can use and understand them.",
-        "Accessible HTML uses meaningful structure, labels, descriptions, and controls so content can be understood by a wider range of users and technologies."
+        "Web accessibility means designing webpages so people with different abilities can perceive, understand, navigate, and interact with them.",
+        "Accessible HTML uses meaningful structure, labels, alternative text, keyboard-friendly controls, and other practices that help assistive technologies."
       ],
-      example: `<a href="learn.html">\n    Explore VEXDYN Learn\n</a>\n\n<img\n    src="course.jpg"\n    alt="VEXDYN HTML course"\n>\n\n<label for="email">\n    Email Address\n</label>\n\n<input\n    id="email"\n    type="email"\n>`,
-      challenge: "Take an existing page and improve image descriptions, labels, headings, links, and semantic structure."
+      example: `<img src="robot.jpg" alt="A futuristic VEXDYN robot">\n\n<label for="name">Your name</label>\n<input id="name" type="text">`,
+      challenge: "Improve an existing page by adding meaningful alt text, labels, semantic structure, and keyboard-friendly controls."
     },
     {
       id: 18,
-      title: "MAKE YOUR WEBPAGE DISCOVERABLE",
-      mission: "Understand metadata and basic SEO.",
+      title: "MAKE THE BROWSER UNDERSTAND",
+      mission: "Learn metadata and SEO basics.",
       definitions: [
-        "Metadata is information about a webpage that is not normally displayed as the main page content.",
-        "SEO involves improving webpages so search engines can better understand and potentially surface their content."
+        "Metadata is information about a webpage that is placed in the document head and is not normally displayed as page content.",
+        "Search engine optimization (SEO) includes practices that help search engines understand and present webpage content."
       ],
-      example: `<head>\n    <title>\n        VEXDYN Learn — HTML\n    </title>\n\n    <meta\n        name="description"\n        content="Learn HTML with VEXDYN."\n    >\n\n    <meta\n        name="viewport"\n        content="width=device-width, initial-scale=1.0"\n    >\n</head>`,
-      challenge: "Create metadata for your own fictional technology website."
+      example: `<head>\n    <meta charset="UTF-8">\n    <meta name="viewport" content="width=device-width, initial-scale=1.0">\n    <meta name="description" content="Learn technology with VEXDYN.">\n    <title>VEXDYN Learn</title>\n</head>`,
+      challenge: "Create metadata for a personal portfolio page, including a useful title and description."
     },
     {
       id: 19,
-      title: "BUILD THE SYSTEM",
-      mission: "Combine everything learned so far in a complete HTML landing-page structure.",
+      title: "CONNECT THE COMPLETE SYSTEM",
+      mission: "Combine the HTML concepts you have learned.",
       definitions: [
-        "A project is a practical build that combines multiple concepts into one working result.",
-        "A complete HTML structure focuses on content and meaning first; visual styling can be added later with CSS."
+        "A webpage combines structure, content, navigation, media, forms, semantics, and metadata into one document.",
+        "Good HTML creates a meaningful foundation that CSS and JavaScript can build upon."
       ],
-      example: `<header>\n    <nav>\n        Logo + Navigation\n    </nav>\n</header>\n\n<main>\n    <section>\n        <h1>Future Technology</h1>\n        <p>Build what comes next.</p>\n    </section>\n\n    <section>\n        <h2>Technologies</h2>\n        <ul>\n            <li>HTML</li>\n            <li>CSS</li>\n            <li>JavaScript</li>\n        </ul>\n    </section>\n\n    <section>\n        <h2>Contact</h2>\n        <form>\n            <input type="email" placeholder="Email">\n            <button>Connect</button>\n        </form>\n    </section>\n</main>\n\n<footer>\n    © 2026\n</footer>`,
-      challenge: "Build a VEXDYN-style technology landing page with header, navigation, hero, about, technology list, media, contact form, semantic structure, accessibility, and metadata. Complete this project before Lesson 20."
+      example: `<!DOCTYPE html>\n<html lang="en">\n<head>\n    <meta charset="UTF-8">\n    <meta name="viewport" content="width=device-width, initial-scale=1.0">\n    <meta name="description" content="A VEXDYN project page.">\n    <title>My VEXDYN Project</title>\n</head>\n<body>\n    <header>\n        <nav>Navigation</nav>\n    </header>\n\n    <main>\n        <section>\n            <h1>My Project</h1>\n            <p>Something real begins here.</p>\n        </section>\n    </main>\n\n    <footer>VEXDYN</footer>\n</body>\n</html>`,
+      challenge: "Build a complete semantic HTML project page using as many concepts from Lessons 1–18 as appropriate."
     },
     {
       id: 20,
-      title: "HTML FINAL MISSION: BUILD THE FUTURE",
-      mission: "Complete the HTML Foundation by building your own fictional technology website.",
+      title: "HTML FOUNDATION COMPLETE",
+      mission: "Complete your first VEXDYN technology foundation.",
       definitions: [
-        "A final project is a larger practical build used to demonstrate that the learner can apply the course skills independently.",
-        "Course completion means demonstrating the ability to create a structured, semantic, accessible HTML website from a blank file."
+        "HTML provides the structural foundation of the web.",
+        "Strong HTML knowledge makes it easier to create accessible, maintainable, and meaningful digital experiences."
       ],
-      example: `<!-- Your fictional technology company website -->\n<!-- Include: document structure, nav, hero, about,\n     technology content, images, lists, table,\n     multimedia, contact form, semantic HTML,\n     accessibility, metadata, internal links -->`,
-      challenge: "Create your own fictional technology company website including proper HTML structure, navigation, hero, about, technology content, images, lists, table/data, multimedia, contact form, semantic HTML, accessibility, metadata, and internal page links. After successful completion: HTML FOUNDATION COMPLETE."
+      example: `<main>\n    <h1>CREATE BEYOND LIMITS</h1>\n    <p>HTML foundation complete.</p>\n    <a href="#">Continue building.</a>\n</main>`,
+      challenge: "Create your own complete webpage from scratch. Use semantic structure, navigation, content, media, forms, and accessibility practices where appropriate."
     }
   ];
 
@@ -234,19 +234,32 @@
     try {
       const raw = localStorage.getItem(STORAGE_KEY);
       if (!raw) return { completed: [] };
-      const data = JSON.parse(raw);
-      return {
-        completed: Array.isArray(data.completed) ? data.completed.map(Number) : []
-      };
-    } catch {
+      const parsed = JSON.parse(raw);
+      const completed = Array.isArray(parsed.completed)
+        ? parsed.completed
+            .map(Number)
+            .filter((id) => Number.isInteger(id) && id >= 1 && id <= LESSONS.length)
+        : [];
+      return { completed: [...new Set(completed)].sort((a, b) => a - b) };
+    } catch (error) {
+      console.warn("VEXDYN Learn HTML progress could not be loaded.", error);
       return { completed: [] };
     }
   }
 
   function saveProgress(completed) {
     try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify({ completed: completed }));
-    } catch {}
+      localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify({
+          completed: [...new Set(completed)].sort((a, b) => a - b)
+        })
+      );
+      return true;
+    } catch (error) {
+      console.warn("VEXDYN Learn HTML progress could not be saved.", error);
+      return false;
+    }
   }
 
   function getPercent(completed) {
@@ -254,11 +267,11 @@
   }
 
   function isComplete(id, completed) {
-    return completed.indexOf(id) !== -1;
+    return completed.includes(id);
   }
 
-  function escapeHtml(str) {
-    return String(str)
+  function escapeHtml(value) {
+    return String(value)
       .replace(/&/g, "&amp;")
       .replace(/</g, "&lt;")
       .replace(/>/g, "&gt;")
@@ -271,15 +284,23 @@
       el.textContent = Math.round(to) + "%";
       return;
     }
+
     const delta = Math.abs(to - from);
     const duration = delta <= 10 ? 900 : delta <= 50 ? 1200 : 1500;
     const start = performance.now();
+
     function tick(now) {
       const t = Math.min(1, (now - start) / duration);
       const eased = 1 - Math.pow(1 - t, 3);
-      el.textContent = Math.round(from + (to - from) * eased) + "%";
-      if (t < 1) requestAnimationFrame(tick);
+
+      el.textContent =
+        Math.round(from + (to - from) * eased) + "%";
+
+      if (t < 1) {
+        requestAnimationFrame(tick);
+      }
     }
+
     requestAnimationFrame(tick);
   }
 
@@ -289,20 +310,30 @@
     const lessonView = document.getElementById("htmlLessonView");
     const cssCourse = document.getElementById("cssCourseView");
     const cssLesson = document.getElementById("cssLessonView");
+
     if (catalog) catalog.hidden = name !== "catalog";
     if (courseView) courseView.hidden = name !== "course";
     if (lessonView) lessonView.hidden = name !== "lesson";
+
     if (cssCourse) cssCourse.hidden = true;
     if (cssLesson) cssLesson.hidden = true;
+
     const jsCourse = document.getElementById("jsCourseView");
     const jsLesson = document.getElementById("jsLessonView");
+
     if (jsCourse) jsCourse.hidden = true;
     if (jsLesson) jsLesson.hidden = true;
+
     const reactCourse = document.getElementById("reactCourseView");
     const reactLesson = document.getElementById("reactLessonView");
+
     if (reactCourse) reactCourse.hidden = true;
     if (reactLesson) reactLesson.hidden = true;
-    window.scrollTo({ top: 0, behavior: "smooth" });
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
   }
 
   function renderCourseList() {
@@ -311,6 +342,7 @@
     const barEl = document.getElementById("htmlCourseBar");
     const statusEl = document.getElementById("htmlCourseStatus");
     const completeBanner = document.getElementById("htmlCompleteBanner");
+
     if (!list) return;
 
     const { completed } = loadProgress();
@@ -320,20 +352,38 @@
       const prev = parseInt(pctEl.textContent, 10) || 0;
       animatePercent(pctEl, prev, pct);
     }
-    if (barEl) barEl.style.width = pct + "%";
+
+    if (barEl) {
+      barEl.style.width = pct + "%";
+    }
+
     if (statusEl) {
       statusEl.textContent =
-        pct === 0 ? "NOT STARTED" : pct >= 100 ? "HTML FOUNDATION COMPLETE" : "IN PROGRESS";
+        pct === 0
+          ? "NOT STARTED"
+          : pct >= 100
+            ? "HTML FOUNDATION COMPLETE"
+            : "IN PROGRESS";
     }
-    if (completeBanner) completeBanner.hidden = pct < 100;
+
+    if (completeBanner) {
+      completeBanner.hidden = pct < 100;
+    }
 
     list.innerHTML = LESSONS.map((lesson) => {
       const done = isComplete(lesson.id, completed);
+
       const badge = done
         ? '<span class="lesson-badge lesson-badge-done"><span class="lesson-badge-icon" aria-hidden="true">✓</span> COMPLETE</span>'
         : '<span class="lesson-badge lesson-badge-open">OPEN</span>';
+
       return `
-        <button type="button" class="lesson-item ${done ? "is-complete" : ""}" data-open-lesson="${lesson.id}" aria-label="Lesson ${lesson.id}: ${escapeHtml(lesson.title)}">
+        <button
+          type="button"
+          class="lesson-item ${done ? "is-complete" : ""}"
+          data-open-lesson="${lesson.id}"
+          aria-label="Lesson ${lesson.id}: ${escapeHtml(lesson.title)}"
+        >
           <span class="lesson-item-top">
             <span class="lesson-item-num">${String(lesson.id).padStart(2, "0")}</span>
             ${badge}
@@ -342,9 +392,7 @@
           <span class="lesson-item-mission">${escapeHtml(lesson.mission)}</span>
         </button>`;
     }).join("");
-  }
-
-  function openLesson(id) {
+         }  function openLesson(id) {
     const lesson = LESSONS.find((l) => l.id === id);
     if (!lesson) return;
     const { completed } = loadProgress();
@@ -394,7 +442,20 @@
     showView("lesson");
   }
 
-  function markComplete(id) {
+  async function markComplete(id) {
+    if (window.VEXDYN_LEARN && typeof window.VEXDYN_LEARN.saveAuthenticatedLessonCompletion === "function") {
+      const result = await window.VEXDYN_LEARN.saveAuthenticatedLessonCompletion("html", id);
+      if (result && result.authenticated) {
+        if (result.error) {
+          alert("We couldn't save this lesson to your account. Please try again.");
+          return;
+        }
+        openLesson(id);
+        syncCatalogProgress();
+        return;
+      }
+    }
+
     const data = loadProgress();
     if (!isComplete(id, data.completed)) {
       data.completed.push(id);
@@ -443,9 +504,8 @@
       if (st) st.textContent = status === "not-started" ? "NOT STARTED" : status === "completed" ? "COMPLETED" : "IN PROGRESS";
       if (cta) cta.textContent = (status === "not-started" ? "START LEARNING" : status === "completed" ? "REVIEW" : "CONTINUE") + " →";
     }
-  }
-
-  function initHtmlCourse() {
+                                                                                                                         }
+     function initHtmlCourse() {
     const courseView = document.getElementById("htmlCourseView");
     if (!courseView) return;
 
