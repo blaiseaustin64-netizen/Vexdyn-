@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VEXDYN System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="auth.css" />
+</head>
+<body class="system-page">
+
+  <!-- Brief system entry -->
+  <div class="system-entry" id="systemEntry" aria-live="polite">
+    <div class="system-entry-inner">
+      <div class="system-entry-title">VEXDYN SYSTEM</div>
+      <div class="system-entry-status">
+        <span class="status-light" aria-hidden="true"></span>
+        <span class="system-entry-status-text">SYSTEM ONLINE</span>
+      </div>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo-link" aria-label="VEXDYN Home">
+        <img src="vexdyn-logo-wordmark-alpha.png" alt="VEXDYN" class="logo-swap" height="36" />
+      </a>
+      <nav class="nav-desktop" aria-label="Main">
+        <a href="index.html">Home</a>
+        <a href="websites.html">Websites</a>
+        <a href="build.html">Build</a>
+        <a href="learn.html">Learn</a>
+        <a href="system.html" class="active">System</a>
+        <a href="plus.html">VEXDYN+</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <div class="auth-nav" id="authNav" aria-live="polite"><span class="auth-nav-skeleton"></span></div>
+        <button class="menu-toggle" id="menuToggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu" hidden>
+    <nav class="mobile-nav" aria-label="Mobile">
+      <a href="index.html">Home</a>
+      <a href="websites.html">Websites</a>
+      <a href="build.html">Build</a>
+      <a href="learn.html">Learn</a>
+      <a href="system.html">System</a>
+      <a href="plus.html">VEXDYN+</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <div class="mobile-nav-auth" id="authNavMobile"></div>
+    </nav>
+  </div>
+
+  <main class="main system-main" id="systemMain" hidden>
+    <div class="system-geo" aria-hidden="true"></div>
+    <section class="section system-page-section">
+      <div class="system-interface-header">
+        <h1 class="section-title system-online-title">
+          VEXDYN SYSTEM —
+          <span class="system-online-badge">
+            <span class="status-light" aria-hidden="true"></span>
+            ONLINE
+          </span>
+        </h1>
+        <p class="section-sub mx-auto" style="margin-top:12px">A connected space for everything you can build with VEXDYN.</p>
+      </div>
+
+      <div class="system-card-grid">
+        <article class="system-card">
+          <div class="system-card-top">
+            <h2 class="system-card-title">VEXDYN LEARN</h2>
+            <div class="sys-status"><span class="status-light" aria-hidden="true"></span> AVAILABLE</div>
+          </div>
+          <p class="system-card-desc">Structured technical education for people who want to understand and build with technology.</p>
+          <a href="learn.html" class="system-card-cta">EXPLORE <span class="arrow">→</span></a>
+        </article>
+
+        <article class="system-card">
+          <div class="system-card-top">
+            <h2 class="system-card-title">VEXDYN FORGE</h2>
+            <div class="sys-status"><span class="status-light" aria-hidden="true"></span> AVAILABLE</div>
+          </div>
+          <p class="system-card-desc">Create and build real digital experiences with VEXDYN.</p>
+          <a href="https://vexdyn-forge.pages.dev/" class="system-card-cta" target="_blank" rel="noopener noreferrer">EXPLORE <span class="arrow">→</span></a>
+        </article>
+
+        <article class="system-card">
+          <div class="system-card-top">
+            <h2 class="system-card-title">VEXDYN LAB</h2>
+            <div class="sys-status"><span class="status-light" aria-hidden="true"></span> ONLINE</div>
+          </div>
+          <p class="system-card-desc">A space to experiment, practice, develop and turn ideas into working digital experiences.</p>
+          <a href="https://vexdynlab.pages.dev/" class="system-card-cta" target="_blank" rel="noopener noreferrer">ENTER LAB <span class="arrow">→</span></a>
+        </article>
+
+        <article class="system-card">
+          <div class="system-card-top">
+            <h2 class="system-card-title">NYVEN</h2>
+            <div class="sys-status"><span class="status-light" aria-hidden="true"></span> LIVE</div>
+          </div>
+          <p class="system-card-desc">Intelligent systems built for what comes next.</p>
+          <a href="https://nyven-bac.pages.dev/" class="system-card-cta" target="_blank" rel="noopener noreferrer">EXPLORE <span class="arrow">→</span></a>
+        </article>
+      </div>
+
+      <div class="text-center" style="margin-top:48px">
+        <a href="index.html" class="btn btn-secondary">← Back to VEXDYN</a>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script src="auth.js"></script>
+  <script>
+    (function () {
+      var entry = document.getElementById("systemEntry");
+      var main = document.getElementById("systemMain");
+      if (!entry || !main) return;
+      var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      var delay = reduced ? 400 : 1600;
+      setTimeout(function () {
+        entry.hidden = true;
+        entry.setAttribute("aria-hidden", "true");
+        entry.style.display = "none";
+        main.hidden = false;
+      }, delay);
+    })();
+  </script>
+</body>
+</html>
