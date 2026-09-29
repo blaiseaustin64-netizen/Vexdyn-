@@ -5126,6 +5126,7 @@ html { color-scheme: dark; }
 /* ============================================
    VEXDYN SYSTEM — Premium ecosystem cards
    Cursor-reactive lighting + subtle 3D tilt
+   (scoped to beat legacy .eco-* collisions)
    ============================================ */
 .ecosystem-section {
   position: relative;
@@ -5133,26 +5134,27 @@ html { color-scheme: dark; }
   padding-bottom: 80px;
 }
 
-.system-status-row {
+.ecosystem-section .system-status-row {
   display: inline-flex;
   align-items: center;
   gap: 10px;
   margin-top: 22px;
   padding: 8px 16px 8px 12px;
   border-radius: 999px;
-  border: 1px solid var(--border-strong);
-  background: rgba(18, 19, 22, 0.65);
+  border: 1px solid rgba(200, 202, 208, 0.18);
+  background: rgba(18, 19, 22, 0.75);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }
 
-.status-indicator {
+.ecosystem-section .status-indicator {
   width: 8px;
   height: 8px;
   border-radius: 50%;
   background: #5fffa0;
   box-shadow: 0 0 0 0 rgba(95, 255, 160, 0.45);
   animation: statusPulse 2.4s ease-out infinite;
+  flex-shrink: 0;
 }
 
 @keyframes statusPulse {
@@ -5162,10 +5164,10 @@ html { color-scheme: dark; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .status-indicator { animation: none; }
+  .ecosystem-section .status-indicator { animation: none; }
 }
 
-.system-status-text {
+.ecosystem-section .system-status-text {
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.14em;
@@ -5173,18 +5175,20 @@ html { color-scheme: dark; }
   text-transform: uppercase;
 }
 
-.eco-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+/* Force 3-col desktop grid — override legacy .eco-grid media queries */
+.ecosystem-section .eco-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 18px;
   margin-top: 48px;
-  max-width: 1080px;
+  max-width: 1000px;
   margin-left: auto;
   margin-right: auto;
   perspective: 1200px;
+  width: 100%;
 }
 
-.eco-card {
+.ecosystem-section .eco-card {
   --accent: #8B7CFF;
   --mx: 50%;
   --my: 50%;
@@ -5193,16 +5197,17 @@ html { color-scheme: dark; }
   position: relative;
   display: flex;
   flex-direction: column;
-  min-height: 220px;
-  padding: 22px 22px 18px;
-  border-radius: 18px;
-  border: 1px solid rgba(200, 202, 208, 0.12);
-  background: linear-gradient(165deg, rgba(22, 23, 28, 0.92) 0%, rgba(12, 13, 16, 0.88) 100%);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
+  min-height: 240px;
+  padding: 22px 20px 18px;
+  border-radius: 16px;
+  border: 1px solid rgba(200, 202, 208, 0.16) !important;
+  background: #0f1116 !important;
+  background-image: linear-gradient(160deg, #14161c 0%, #0b0c10 100%) !important;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   box-shadow:
-    0 4px 24px rgba(0, 0, 0, 0.35),
-    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    0 4px 28px rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06) !important;
   color: var(--text-primary);
   text-decoration: none;
   overflow: hidden;
@@ -5215,187 +5220,216 @@ html { color-scheme: dark; }
   will-change: transform;
 }
 
-.eco-card:hover,
-.eco-card.is-active {
-  border-color: color-mix(in srgb, var(--accent) 35%, rgba(200, 202, 208, 0.12));
+.ecosystem-section .eco-card:hover,
+.ecosystem-section .eco-card.is-active {
+  border-color: color-mix(in srgb, var(--accent) 40%, rgba(200, 202, 208, 0.14));
   box-shadow:
-    0 12px 40px rgba(0, 0, 0, 0.45),
-    0 0 0 1px color-mix(in srgb, var(--accent) 18%, transparent),
-    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    0 16px 48px rgba(0, 0, 0, 0.55),
+    0 0 0 1px color-mix(in srgb, var(--accent) 22%, transparent),
+    inset 0 1px 0 rgba(255, 255, 255, 0.07);
 }
 
-.eco-card-glow {
+.ecosystem-section .eco-card-glow {
   pointer-events: none;
   position: absolute;
   inset: 0;
   border-radius: inherit;
   opacity: 0;
   background: radial-gradient(
-    420px circle at var(--mx) var(--my),
-    color-mix(in srgb, var(--accent) 22%, transparent) 0%,
-    color-mix(in srgb, var(--accent) 8%, transparent) 35%,
-    transparent 65%
+    380px circle at var(--mx) var(--my),
+    color-mix(in srgb, var(--accent) 26%, transparent) 0%,
+    color-mix(in srgb, var(--accent) 10%, transparent) 38%,
+    transparent 68%
   );
   transition: opacity 0.4s ease;
   z-index: 0;
 }
 
-.eco-card:hover .eco-card-glow,
-.eco-card.is-active .eco-card-glow {
+.ecosystem-section .eco-card:hover .eco-card-glow,
+.ecosystem-section .eco-card.is-active .eco-card-glow {
   opacity: 1;
 }
 
-.eco-card-top,
-.eco-title,
-.eco-desc,
-.eco-footer {
+.ecosystem-section .eco-card-top,
+.ecosystem-section .eco-title,
+.ecosystem-section .eco-desc,
+.ecosystem-section .eco-footer {
   position: relative;
   z-index: 1;
 }
 
-.eco-card-top {
+.ecosystem-section .eco-card-top {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  margin-bottom: 18px;
+  margin-bottom: 20px;
 }
 
-.eco-icon {
-  width: 42px;
-  height: 42px;
-  border-radius: 12px;
-  display: flex;
+/* Icon box — beat legacy .eco-icon centering */
+.ecosystem-section .eco-icon {
+  width: 40px !important;
+  height: 40px !important;
+  min-width: 40px;
+  margin: 0 !important;
+  border-radius: 11px;
+  display: flex !important;
   align-items: center;
   justify-content: center;
-  background: color-mix(in srgb, var(--accent) 14%, transparent);
-  border: 1px solid color-mix(in srgb, var(--accent) 32%, transparent);
-  color: var(--accent);
+  background: rgba(139, 124, 255, 0.16) !important;
+  border: 1px solid rgba(139, 124, 255, 0.4) !important;
+  color: #8B7CFF !important;
+  font-size: inherit !important;
   transition: background 0.35s ease, border-color 0.35s ease, color 0.35s ease, box-shadow 0.35s ease;
 }
+.ecosystem-section .eco-card[data-accent="#5B8DC7"] .eco-icon {
+  background: rgba(91, 141, 199, 0.16) !important;
+  border-color: rgba(91, 141, 199, 0.42) !important;
+  color: #5B8DC7 !important;
+}
+.ecosystem-section .eco-card[data-accent="#7DD3E8"] .eco-icon {
+  background: rgba(125, 211, 232, 0.16) !important;
+  border-color: rgba(125, 211, 232, 0.42) !important;
+  color: #7DD3E8 !important;
+}
 
-.eco-icon svg {
-  width: 20px;
-  height: 20px;
+.ecosystem-section .eco-icon svg {
+  width: 18px !important;
+  height: 18px !important;
   stroke: currentColor;
+  fill: none;
+  display: block;
 }
 
-.eco-card:hover .eco-icon,
-.eco-card.is-active .eco-icon {
-  background: color-mix(in srgb, var(--accent) 22%, rgba(255, 255, 255, 0.06));
-  border-color: color-mix(in srgb, var(--accent) 50%, rgba(255, 255, 255, 0.2));
-  color: #f2f2f0;
-  box-shadow: 0 0 20px color-mix(in srgb, var(--accent) 28%, transparent);
+.ecosystem-section .eco-card:hover .eco-icon,
+.ecosystem-section .eco-card.is-active .eco-icon {
+  background: color-mix(in srgb, var(--accent) 28%, rgba(255, 255, 255, 0.08)) !important;
+  border-color: color-mix(in srgb, var(--accent) 55%, rgba(255, 255, 255, 0.25)) !important;
+  color: #f2f2f0 !important;
+  box-shadow: 0 0 18px color-mix(in srgb, var(--accent) 32%, transparent);
 }
 
-.eco-tag {
+.ecosystem-section .eco-tag {
   font-size: 0.62rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   color: var(--text-muted);
-  border: 1px solid var(--border);
+  border: 1px solid rgba(200, 202, 208, 0.14);
   padding: 4px 9px;
   border-radius: 20px;
   transition: color 0.35s ease, border-color 0.35s ease;
+  line-height: 1.2;
 }
 
-.eco-card:hover .eco-tag {
-  color: rgba(242, 242, 240, 0.85);
-  border-color: rgba(255, 255, 255, 0.22);
+.ecosystem-section .eco-card:hover .eco-tag {
+  color: rgba(242, 242, 240, 0.9);
+  border-color: rgba(255, 255, 255, 0.25);
 }
 
-.eco-title {
-  font-size: 1.15rem;
+.ecosystem-section .eco-title {
+  font-size: 1.12rem;
   font-weight: 800;
   letter-spacing: -0.02em;
   margin: 0 0 8px;
-  color: var(--text-primary);
+  color: #f2f2f0;
+  text-align: left !important;
 }
 
-.eco-desc {
-  font-size: 0.84rem;
+.ecosystem-section .eco-desc {
+  font-size: 0.82rem !important;
   line-height: 1.5;
-  color: var(--text-muted);
-  margin: 0 0 auto;
+  color: #9a9da4 !important;
+  margin: 0 0 auto !important;
   flex: 1;
+  text-align: left !important;
   transition: color 0.35s ease;
 }
 
-.eco-card:hover .eco-desc {
-  color: var(--text-secondary);
+.ecosystem-section .eco-card:hover .eco-desc {
+  color: #c8cad0 !important;
 }
 
-.eco-footer {
+.ecosystem-section .eco-footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 20px;
+  margin-top: 18px;
   padding-top: 4px;
 }
 
-.eco-status {
+.ecosystem-section .eco-status {
   display: inline-flex;
   align-items: center;
   gap: 7px;
   font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.08em;
-  color: var(--text-muted);
+  color: #9a9da4;
   transition: color 0.35s ease;
 }
 
-.eco-card:hover .eco-status {
-  color: rgba(242, 242, 240, 0.9);
+.ecosystem-section .eco-card:hover .eco-status {
+  color: rgba(242, 242, 240, 0.92);
 }
 
-.eco-status-dot {
+.ecosystem-section .eco-status-dot {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 0 8px color-mix(in srgb, var(--accent) 70%, transparent);
+  background: #8B7CFF;
+  box-shadow: 0 0 8px rgba(139, 124, 255, 0.7);
+  flex-shrink: 0;
+}
+.ecosystem-section .eco-card[data-accent="#5B8DC7"] .eco-status-dot {
+  background: #5B8DC7;
+  box-shadow: 0 0 8px rgba(91, 141, 199, 0.7);
+}
+.ecosystem-section .eco-card[data-accent="#7DD3E8"] .eco-status-dot {
+  background: #7DD3E8;
+  box-shadow: 0 0 8px rgba(125, 211, 232, 0.7);
 }
 
-.eco-card:hover .eco-status-dot {
+.ecosystem-section .eco-card:hover .eco-status-dot {
   background: #fff;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.55);
 }
 
-.eco-arrow {
+.ecosystem-section .eco-arrow {
   width: 28px;
   height: 28px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(200, 202, 208, 0.12);
   transition: background 0.35s ease, border-color 0.35s ease, transform 0.3s ease;
+  flex-shrink: 0;
 }
 
-.eco-arrow svg {
+.ecosystem-section .eco-arrow svg {
   width: 12px;
   height: 12px;
-  stroke: var(--text-muted);
+  stroke: #9a9da4;
   transition: stroke 0.35s ease;
 }
 
-.eco-card:hover .eco-arrow {
-  background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(255, 255, 255, 0.28);
+.ecosystem-section .eco-card:hover .eco-arrow {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.3);
   transform: translate(2px, -2px);
 }
 
-.eco-card:hover .eco-arrow svg {
+.ecosystem-section .eco-card:hover .eco-arrow svg {
   stroke: #fff;
 }
 
 @media (max-width: 900px) {
-  .eco-grid {
-    grid-template-columns: 1fr;
-    max-width: 420px;
+  .ecosystem-section .eco-grid {
+    grid-template-columns: 1fr !important;
+    max-width: 400px;
     gap: 14px;
   }
-  .eco-card {
+  .ecosystem-section .eco-card {
     min-height: 0;
     transform: none !important;
   }
@@ -5406,20 +5440,21 @@ html { color-scheme: dark; }
     padding-top: 48px;
     padding-bottom: 56px;
   }
-  .eco-card {
+  .ecosystem-section .eco-card {
     padding: 18px 16px 16px;
   }
-  .eco-title {
+  .ecosystem-section .eco-title {
     font-size: 1.05rem;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .eco-card {
+  .ecosystem-section .eco-card {
     transform: none !important;
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
   }
-  .eco-card-glow {
+  .ecosystem-section .eco-card-glow {
     transition: opacity 0.2s ease;
   }
 }
+
