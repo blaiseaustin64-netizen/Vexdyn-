@@ -1,41 +1,52 @@
-# VEXDYN — Main Website
+# VEXDYN — React + Vite conversion (Part 1 in progress)
 
-Static frontend (HTML / CSS / vanilla JavaScript). Ready for **Vercel**.
+## Status
 
-## Deploy on Vercel (recommended)
+This is a **partial** conversion of the original static VEXDYN site to React + Vite + TypeScript.
 
-### Option A — Drag & drop
-1. Go to [vercel.com/new](https://vercel.com/new)
-2. Upload the **unzipped** project folder (or this ZIP)
-3. Framework Preset: **Other**
-4. Deploy
+### Done
+- Vite + React + TypeScript project scaffold
+- react-router-dom routes for all remaining pages (Learn removed)
+- AuthContext + Supabase client (same URL/key as original)
+- LiquidHero component (full port of liquid-hero.js with cleanup)
+- Original CSS (style.css → src/styles/global.css, auth.css)
+- All PNG assets in public/
+- Minimal Layout/Navbar/Footer with **no Learn links**
+- public/_redirects (`/* /index.html 200`) for Cloudflare Pages SPA
+- public/_headers (security headers + long cache for hashed assets)
 
-### Option B — Vercel CLI
+### Still needed (from original HTML/JS)
+- Full page content ports (current pages are stubs)
+- Vexdyn3D component (port of vexdyn-3d.js)
+- Port remaining script.js behaviors (loader, reveal, code-transform, etc.)
+- Hero geo-lines SVG tidy-up
+- Exact visual parity on every page
+
+### Learn removal
+Learn pages and nav links are gone from this project. Original Learn files are **not** included here.
+
+## Quick start
+
 ```bash
-npm i -g vercel
-cd this-folder
-vercel
+cd vexdyn-site
+npm install
+npm run dev
 ```
 
-### Option C — GitHub
-1. Push this folder to a GitHub repo
-2. Import the repo in Vercel
-3. Framework: **Other** (static)
-4. Root directory: project root
-5. Deploy
-
-## Local preview
-Open `index.html` in a browser, or:
-
+Build for Cloudflare Pages:
 ```bash
-npx serve .
+npm run build
 ```
+- Framework preset: Vite / React (Vite)
+- Build command: `npm run build`
+- Output directory: `dist`
 
-## Notes
-- No build step required
-- No `npm install` required for the main site
-- Entry point: `index.html`
-- Product links point to existing Vercel apps:
-  - Forge: https://vexdyn-forge.pages.dev/
-  - Lab: https://vexdynlab.pages.dev/
-  - NYVEN: https://nyven-bac.pages.dev/
+## Original source
+
+The original static site is in the sibling folder `original-vexdyn/` inside this zip (for reference while finishing the port).
+
+## Supabase
+
+Same project as production:
+- URL: https://ymzapatkttkkbpxmqiia.supabase.co
+- Anon key is in `src/lib/supabase.ts`

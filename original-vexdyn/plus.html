@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="VEXDYN+ — premium access." />
+  <title>VEXDYN+ — VEXDYN</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="auth.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo-link" aria-label="VEXDYN Home">
+        <img src="vexdyn-logo-wordmark-alpha.png" alt="VEXDYN" class="logo-swap" height="36" />
+      </a>
+      <nav class="nav-desktop" aria-label="Main">
+        <a href="index.html">Home</a>
+        <a href="websites.html">Websites</a>
+        <a href="build.html">Build</a>
+        <a href="learn.html">Learn</a>
+        <a href="plus.html" class="active">VEXDYN+</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <div class="auth-nav" id="authNav" aria-live="polite"><span class="auth-nav-skeleton"></span></div>
+        <div class="theme-wrap">
+          <button class="theme-btn" id="themeBtn" aria-label="Change theme">🌙</button>
+          <div class="theme-panel" id="themePanel">
+            <button class="theme-option active">🌙 Obsidian</button>
+            <button class="theme-option" data-theme="aurora">☀️ Aurora</button>
+            <button class="theme-option" data-theme="ice">❄️ Ice</button>
+          </div>
+        </div>
+        <button class="menu-toggle" id="menuToggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+  <nav class="nav-mobile" id="navMobile">
+    <a href="index.html">Home</a>
+    <a href="websites.html">Websites</a>
+    <a href="build.html">Build</a>
+    <a href="learn.html">Learn</a>
+    <a href="plus.html" class="active">VEXDYN+</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <div class="nav-mobile-auth" id="authNavMobile"></div>
+  </nav>
+
+  <main class="main">
+    <div class="page-hero reveal text-center" style="max-width:var(--max-width);margin:0 auto">
+      <span class="section-label">VEXDYN+</span>
+      <h1>More power. More depth.</h1>
+      <p class="mx-auto">Premium access for advanced learning, priority requests and early tools.</p>
+    </div>
+
+    <section class="section" style="padding-top:0">
+      <div class="pricing-toggle-wrap">
+        <div class="pricing-toggle" id="pricingToggle" role="group">
+          <div class="toggle-indicator"></div>
+          <button class="toggle-btn active" id="toggleMonthly">Monthly</button>
+          <button class="toggle-btn" id="toggleYearly">Yearly</button>
+        </div>
+      </div>
+      <div class="price-cards">
+        <article class="v-card price-card reveal">
+          <div class="plan-name">Free</div>
+          <div class="plan-concept">Explore VEXDYN</div>
+          <div class="price-amount">₦0</div>
+          <div class="price-period">forever</div>
+          <ul class="price-features">
+            <li>Core learning paths</li>
+            <li>Website request form</li>
+            <li>Full theme system</li>
+            <li>Platform updates</li>
+          </ul>
+          <button class="btn btn-secondary btn-block" disabled>Current Plan</button>
+        </article>
+        <article class="v-card price-card featured reveal reveal-delay-1">
+          <div class="plan-name">VEXDYN+</div>
+          <div class="plan-concept">Unlock the full VEXDYN experience</div>
+          <div class="price-amount" id="plusAmount">₦4,999</div>
+          <div class="price-period" id="plusPeriod">/ month</div>
+          <div class="price-save" id="plusSave" style="visibility:hidden"></div>
+          <ul class="price-features">
+            <li>Everything in Free</li>
+            <li>Advanced learning tracks</li>
+            <li>Priority website requests</li>
+            <li>Early Builder access</li>
+            <li>Direct founder support</li>
+          </ul>
+          <button class="btn btn-primary btn-block" onclick="alert('Payment system is a frontend placeholder. Coming soon.')">GET VEXDYN+ →</button>
+          <p class="placeholder-notice">Payment system coming soon</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="vexdyn-logo-wordmark-alpha.png" alt="VEXDYN" class="logo-swap" height="32" />
+        <p>Technology, tools and knowledge for turning digital ideas into reality.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Platform</h4>
+        <a href="websites.html">Websites</a>
+        <a href="build.html">Build</a>
+        <a href="learn.html">Learn</a>
+        <a href="plus.html">VEXDYN+</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Founder</h4>
+        <div class="founder-card">
+          <span class="founder-name">David Augustine</span>
+          <span class="founder-title">Creator & Owner</span>
+          <span class="founder-contact">07025664141</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 VEXDYN. All rights reserved.</span>
+      <span>Build What's Next.</span>
+    </div>
+  </footer>
+<script src="script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="auth.js"></script>
+</body>
+</html>
