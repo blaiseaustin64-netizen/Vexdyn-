@@ -9,7 +9,7 @@
   const SEARCH_ITEMS = [
     { title: "Home", desc: "VEXDYN homepage", href: "index.html", keywords: "home start main" },
     { title: "Websites", desc: "Request a professional website", href: "websites.html", keywords: "website websites build service business commerce" },
-    { title: "Learn", desc: "Technology learning paths", href: "learn.html", keywords: "learn learning html css javascript python react course" },
+    { title: "System", desc: "VEXDYN product ecosystem", href: "system.html", keywords: "system ecosystem products" },
     { title: "Lab", desc: "Practice coding challenges", href: "https://vexdynlab.pages.dev/", keywords: "lab practice challenge" },
     { title: "Forge", desc: "Build websites yourself", href: "https://vexdyn-forge.pages.dev/", keywords: "forge create builder" },
     { title: "NYVEN", desc: "Intelligence platform", href: "https://nyven-bac.pages.dev/", keywords: "nyven intelligence ai" },
@@ -756,3 +756,75 @@
     window.addEventListener("resize", onScroll);
     update();
   })();
+
+/* ============================================
+   Ecosystem cards — pointer lighting + subtle tilt
+   ============================================ */
+(function () {
+  "use strict";
+  var cards = document.querySelectorAll(".eco-card");
+  if (!cards.length) return;
+
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var isTouch = window.matchMedia("(hover: none), (pointer: coarse)").matches;
+
+  cards.forEach(function (card) {
+    var accent = card.getAttribute("data-accent") || "#8B7CFF";
+    card.style.setProperty("--accent", accent);
+
+    if (isTouch || reduced) {
+      card.addEventListener("touchstart", function () {
+        card.classList.add("is-active");
+      }, { passive: true });
+      card.addEventListener("touchend", function () {
+        setTimeout(function () { card.classList.remove("is-active"); }, 180);
+      }, { passive: true });
+      return;
+    }
+
+    var raf = null;
+    var pending = null;
+
+    function apply(e) {
+      var rect = card.getBoundingClientRect();
+      var x = e.clientX - rect.left;
+      var y = e.clientY - rect.top;
+      var px = (x / rect.width) * 100;
+      var py = (y / rect.height) * 100;
+      card.style.setProperty("--mx", px + "%");
+      card.style.setProperty("--my", py + "%");
+      // very subtle tilt
+      var ry = ((x / rect.width) - 0.5) * 6;
+      var rx = ((0.5 - (y / rect.height)) * 5);
+      card.style.setProperty("--rx", rx.toFixed(2) + "deg");
+      card.style.setProperty("--ry", ry.toFixed(2) + "deg");
+    }
+
+    function onMove(e) {
+      pending = e;
+      if (raf) return;
+      raf = requestAnimationFrame(function () {
+        if (pending) apply(pending);
+        pending = null;
+        raf = null;
+      });
+    }
+
+    function onEnter(e) {
+      card.classList.add("is-active");
+      apply(e);
+    }
+
+    function onLeave() {
+      card.classList.remove("is-active");
+      card.style.setProperty("--rx", "0deg");
+      card.style.setProperty("--ry", "0deg");
+      card.style.setProperty("--mx", "50%");
+      card.style.setProperty("--my", "50%");
+    }
+
+    card.addEventListener("pointerenter", onEnter);
+    card.addEventListener("pointermove", onMove);
+    card.addEventListener("pointerleave", onLeave);
+  });
+})();
