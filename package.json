@@ -1,0 +1,14 @@
+{
+  "name": "vexdyn-website",
+  "private": true,
+  "version": "1.0.0",
+  "description": "VEXDYN main marketing website — static site for Cloudflare Pages",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "preview": "npx --yes serve dist -p 4173",
+    "dev": "npx --yes serve . -p 5173"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
