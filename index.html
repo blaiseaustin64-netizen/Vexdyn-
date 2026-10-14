@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" type="image/png" href="/assets/brand/vexdyn-symbol.png">
 <title>VEXDYN — Build what's next</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -308,6 +309,37 @@ nav .wrap{height:auto;min-height:60px;flex-wrap:wrap;padding-bottom:6px}
 @media(max-width:900px){.fg,.ab{grid-template-columns:1fr}.fnd{position:static}.grid.g2{grid-template-columns:1fr}.vpw{min-height:0;padding:12px}}
 @media(prefers-reduced-motion:reduce){.blk{opacity:1;transform:none;transition:none}}
 @media(prefers-reduced-motion:reduce){.orb,.orb::after,.sweep,.cur::after{animation:none}}
+
+/* Brand logo in nav */
+.logo{display:inline-flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.18em;font-size:15px}
+.logo img{display:block;object-fit:contain}
+.logo-symbol{height:26px;width:auto}
+.logo-word{height:14px;width:auto;opacity:.95}
+@media(max-width:480px){.logo-word{display:none}}
+.footer-brand{display:flex;align-items:center;gap:10px;margin-bottom:18px}
+.footer-brand img{height:28px;width:auto;object-fit:contain}
+/* Tools ticker */
+.tools{padding:48px 0 72px;border-top:1px solid var(--line);overflow:hidden}
+.tools .wrap{margin-bottom:28px}
+.tools h2{max-width:22ch}
+.tools .sub{margin-bottom:12px}
+.tools .cap-note{font-size:12px;color:#5a5a68;margin:0 0 28px;letter-spacing:.04em;text-transform:uppercase}
+.ticker{position:relative;width:100%;overflow:hidden;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.ticker-track{display:flex;width:max-content;gap:48px;align-items:center;animation:marquee 42s linear infinite}
+.ticker:hover .ticker-track{animation-play-state:paused}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.ticker-item{display:flex;align-items:center;justify-content:center;height:40px;flex:0 0 auto;opacity:.72;filter:grayscale(0.15);transition:opacity .25s}
+.ticker-item:hover{opacity:1}
+.ticker-item img{height:28px;width:auto;max-width:120px;object-fit:contain;display:block}
+.ticker-item img.tall{height:26px}
+@media(prefers-reduced-motion:reduce){
+  .ticker-track{animation:none;flex-wrap:wrap;width:100%;justify-content:center;gap:28px 36px}
+  .ticker-track [aria-hidden="true"]{display:none}
+  .ticker{-webkit-mask-image:none;mask-image:none}
+}
+
 </style>
 </head>
 <body><svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
@@ -324,7 +356,7 @@ nav .wrap{height:auto;min-height:60px;flex-wrap:wrap;padding-bottom:6px}
 <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8.5" r="3.2"/><path d="M3 19.5c.6-3.3 3-5 6-5s5.4 1.7 6 5M16 5.6a3.2 3.2 0 0 1 0 6M18 14.8c1.6.6 2.7 2 3 4.7"/></symbol>
 </defs></svg>
 <div id="pb"></div>
-<nav><div class="wrap"><a class="logo" href="#/">VEXDYN</a>
+<nav><div class="wrap"><a class="logo" href="#/" aria-label="VEXDYN home"><img class="logo-symbol" src="/assets/brand/vexdyn-symbol.png" alt="" width="42" height="26" decoding="async"><img class="logo-word" src="/assets/brand/vexdyn-wordmark.png" alt="VEXDYN" width="120" height="14" decoding="async"></a>
 <div class="links"><a href="#products">Products</a><a href="#forge">Forge</a><a href="#showcase">Nyven</a><a href="#showcase">Agents</a><a href="#/pricing" data-r="pricing">Pricing</a><a href="#/about" data-r="about">About</a></div>
 <a class="btn pri" href="#">Get started</a></div></nav>
 
@@ -405,6 +437,33 @@ nav .wrap{height:auto;min-height:60px;flex-wrap:wrap;padding-bottom:6px}
 <div class="fq"><button aria-expanded="false">Can I use the products separately?</button><div class="fa"><div><p>Yes. Each product works on its own, and they work better together under one account.</p></div></div></div>
 <div class="fq"><button aria-expanded="false">How do Agents work?</button><div class="fa"><div><p>You install an agent on your website. It answers visitors and can make edits for you.</p></div></div></div>
 </div></div></section>
+
+<section class="tools" id="tools" aria-labelledby="tools-heading">
+<div class="wrap">
+<p class="cap-note">Tools behind the build</p>
+<h2 id="tools-heading">Built with the tools moving us forward.</h2>
+<p class="sub">From AI to deployment, we're grateful for the tools and platforms that help us build what's next.</p>
+</div>
+<div class="ticker" aria-label="Technology platforms">
+<div class="ticker-track">
+<span class="ticker-item"><img src="/assets/tech/cloudflare.svg" alt="Cloudflare" height="28" decoding="async"></span>
+<span class="ticker-item"><img src="/assets/tech/vercel.svg" alt="Vercel" height="28" decoding="async"></span>
+<span class="ticker-item"><img src="/assets/tech/anthropic.svg" alt="Anthropic" height="28" decoding="async"></span>
+<span class="ticker-item"><img class="tall" src="/assets/tech/openai.svg" alt="OpenAI" height="26" decoding="async"></span>
+<span class="ticker-item"><img src="/assets/tech/xai.png" alt="xAI" height="28" decoding="async"></span>
+<span class="ticker-item"><img src="/assets/tech/github.svg" alt="GitHub" height="28" decoding="async"></span>
+<span class="ticker-item"><img src="/assets/tech/openrouter.png" alt="OpenRouter" height="28" decoding="async"></span>
+<span class="ticker-item" aria-hidden="true"><img src="/assets/tech/cloudflare.svg" alt="" height="28" decoding="async"></span>
+<span class="ticker-item" aria-hidden="true"><img src="/assets/tech/vercel.svg" alt="" height="28" decoding="async"></span>
+<span class="ticker-item" aria-hidden="true"><img src="/assets/tech/anthropic.svg" alt="" height="28" decoding="async"></span>
+<span class="ticker-item" aria-hidden="true"><img class="tall" src="/assets/tech/openai.svg" alt="" height="26" decoding="async"></span>
+<span class="ticker-item" aria-hidden="true"><img src="/assets/tech/xai.png" alt="" height="28" decoding="async"></span>
+<span class="ticker-item" aria-hidden="true"><img src="/assets/tech/github.svg" alt="" height="28" decoding="async"></span>
+<span class="ticker-item" aria-hidden="true"><img src="/assets/tech/openrouter.png" alt="" height="28" decoding="async"></span>
+</div>
+</div>
+</section>
+
 <section class="final"><div class="wrap"><h2>Start with one. Grow into all.</h2><div class="cta" style="justify-content:center"><a class="btn pri" href="#forge">Try Forge</a><a class="btn sec" href="#/pricing">See pricing</a></div></div></section>
 </div>
 <div class="page" data-p="pricing"><section class="sec ph"><div class="wrap"><h2>Simple pricing. Start free.</h2><p class="sub">Placeholder plans for this mock. Final prices are yours to set.</p>
@@ -435,6 +494,7 @@ nav .wrap{height:auto;min-height:60px;flex-wrap:wrap;padding-bottom:6px}
 </main>
 
 <footer><div class="wrap">
+<div class="footer-brand"><img src="/assets/brand/vexdyn-symbol.png" alt="" width="36" height="22" decoding="async"><img src="/assets/brand/vexdyn-wordmark.png" alt="VEXDYN" width="110" height="13" decoding="async"></div>
 <div class="fcols">
 <div><b>Products</b><a href="#">Forge</a><a href="#">X-Ray</a><a href="#">Brand-in-a-Box</a><a href="#">Lab</a></div>
 <div><b>AI</b><a href="#">Nyven</a><a href="#">Agents</a></div>
