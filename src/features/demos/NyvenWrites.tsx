@@ -223,7 +223,7 @@ export function NyvenWrites() {
           <div className="glass-card flex flex-col overflow-hidden min-h-[300px] sm:min-h-[340px]">
             <div className="flex items-center gap-2.5 border-b border-white/[0.06] px-5 py-3.5">
               <span
-                className="h-2 w-2 rounded-full bg-emerald-400/80 shadow-[0_0_8px_rgba(52,211,153,0.4)]"
+                className="h-2 w-2 rounded-full bg-white/70"
                 aria-hidden="true"
               />
               <span className="text-sm font-medium text-text-primary">NYVEN</span>

@@ -265,7 +265,7 @@ export function AgentsTerminal() {
                 className={`rounded-full px-2 py-0.5 font-mono text-[10px] uppercase tracking-wide ${
                   status === 'running'
                     ? 'bg-white/[0.06] text-text-secondary'
-                    : 'bg-emerald-500/10 text-emerald-400/90'
+                    : 'bg-white/[0.1] text-text-primary'
                 }`}
               >
                 {status === 'running' ? 'running' : 'done'}
@@ -302,9 +302,9 @@ export function AgentsTerminal() {
                     >
                       <td className="w-6 select-none pr-1 text-right text-text-muted/50">
                         {line.kind === 'add' ? (
-                          <span className="text-emerald-500/70">+</span>
+                          <span className="text-text-secondary">+</span>
                         ) : line.kind === 'del' ? (
-                          <span className="text-red-400/70">−</span>
+                          <span className="text-text-muted">−</span>
                         ) : null}
                       </td>
                       <td className="w-8 select-none pr-3 text-right text-text-muted/40 tabular-nums">

@@ -16,6 +16,16 @@ export function Reveal({ children, delay = 0, className = '' }: RevealProps) {
   useEffect(() => {
     const el = ref.current
     if (!el) return
+
+    const reduced =
+      typeof window !== 'undefined' &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+    if (reduced) {
+      setShown(true)
+      return
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry?.isIntersecting) {
@@ -23,7 +33,7 @@ export function Reveal({ children, delay = 0, className = '' }: RevealProps) {
           observer.disconnect()
         }
       },
-      { threshold: 0.12, rootMargin: '0px 0px -8% 0px' },
+      { threshold: 0.08, rootMargin: '0px 0px -5% 0px' },
     )
     observer.observe(el)
     return () => observer.disconnect()
@@ -32,9 +42,12 @@ export function Reveal({ children, delay = 0, className = '' }: RevealProps) {
   return (
     <div
       ref={ref}
-      data-shown={shown}
-      className={`reveal ${className}`}
-      style={{ '--d': `${delay}ms` } as CSSProperties}
+      className={`reveal ${shown ? 'is-visible' : ''} ${className}`}
+      style={
+        {
+          transitionDelay: shown ? `${delay}ms` : '0ms',
+        } as CSSProperties
+      }
     >
       {children}
     </div>

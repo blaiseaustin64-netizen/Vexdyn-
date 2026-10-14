@@ -38,7 +38,7 @@ export const products: Product[] = [
       'An AI assistant for everyday digital work. Ask questions, plan, write and organize without switching tools.',
     href: 'https://nyven-v1.pages.dev/',
     icon: IconSparkles,
-    accentRgb: '167, 139, 250',
+    accentRgb: '167, 167, 176',
     external: true,
     featured: true,
   },
@@ -48,7 +48,7 @@ export const products: Product[] = [
     description: 'A development workspace for writing and shipping code, built for modern builders.',
     href: 'https://vexdyn-forge.pages.dev/',
     icon: IconCode2,
-    accentRgb: '122, 162, 255',
+    accentRgb: '167, 167, 176',
     external: true,
   },
   {
@@ -57,7 +57,7 @@ export const products: Product[] = [
     description: 'Scan a website and get its analysis and diagnostics in one place.',
     href: 'https://vexdyn-xray.pages.dev/',
     icon: IconScanSearch,
-    accentRgb: '245, 184, 107',
+    accentRgb: '167, 167, 176',
     external: true,
   },
   {
@@ -66,7 +66,7 @@ export const products: Product[] = [
     description: 'Build a cohesive brand identity with AI doing the heavy lifting.',
     href: 'https://brand-in-a-box.pages.dev/',
     icon: IconPalette,
-    accentRgb: '244, 143, 177',
+    accentRgb: '167, 167, 176',
     external: true,
   },
   {
@@ -75,7 +75,7 @@ export const products: Product[] = [
     description: 'A space to prototype new ideas and test what works before it becomes a product.',
     href: null,
     icon: IconFlask,
-    accentRgb: '94, 210, 196',
+    accentRgb: '167, 167, 176',
     external: true,
   },
   {
@@ -84,7 +84,7 @@ export const products: Product[] = [
     description: 'AI agents that carry out multi-step work on their own, so you can delegate instead of doing it by hand.',
     href: null,
     icon: IconBot,
-    accentRgb: '150, 160, 255',
+    accentRgb: '167, 167, 176',
     external: true,
   },
 ]
