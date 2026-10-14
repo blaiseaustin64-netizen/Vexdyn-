@@ -1,0 +1,77 @@
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@keyframes scanline-sweep {
+  0% { transform: translateY(-100%); opacity: 0; }
+  10% { opacity: 0.35; }
+  90% { opacity: 0.2; }
+  100% { transform: translateY(100%); opacity: 0; }
+}
+
+.footer-scanline {
+  animation: scanline-sweep 1.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s 1 both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .footer-scanline { animation: none; opacity: 0; }
+}
+
+/* Typing cursor */
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.demo-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  margin-left: 1px;
+  vertical-align: text-bottom;
+  background: rgba(245, 245, 247, 0.7);
+  animation: cursor-blink 1s step-end infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .demo-cursor { animation: none; opacity: 0; }
+}
+
+/* Syntax highlight tokens for Agents terminal */
+.syn-kw { color: #c586c0; }
+.syn-fn { color: #dcdcaa; }
+.syn-str { color: #ce9178; }
+.syn-var { color: #9cdcfe; }
+.syn-type { color: #4ec9b0; }
+.syn-cm { color: #6a9955; }
+.syn-num { color: #b5cea8; }
+.syn-op { color: #d4d4d4; }
+
+.line-add {
+  background: rgba(70, 120, 70, 0.12);
+}
+.line-del {
+  background: rgba(140, 60, 60, 0.14);
+}
+
+/* Mobile demo snap carousel */
+.demo-carousel {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding-bottom: 0.5rem;
+}
+.demo-carousel::-webkit-scrollbar {
+  display: none;
+}
+.demo-carousel > * {
+  scroll-snap-align: start;
+  flex: 0 0 min(100%, 340px);
+}
