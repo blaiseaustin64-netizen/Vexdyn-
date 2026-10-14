@@ -1,3 +1,5 @@
+import { Reveal } from './Reveal'
+
 interface SectionHeadingProps {
   title: string
   subtitle?: string
@@ -11,21 +13,25 @@ export function SectionHeading({
   align = 'center',
   id,
 }: SectionHeadingProps) {
-  const alignClass = align === 'center' ? 'text-center mx-auto' : 'text-left'
+  const alignClass = align === 'center' ? 'mx-auto text-center' : 'text-left'
 
   return (
-    <div className={`max-w-2xl ${alignClass} mb-10 sm:mb-12 md:mb-16`}>
+    <Reveal className={`mb-10 max-w-2xl sm:mb-12 md:mb-16 ${alignClass}`}>
       <h2
         id={id}
-        className="text-[1.375rem] sm:text-3xl md:text-4xl font-semibold tracking-tight text-text-primary leading-[1.2] sm:leading-[1.15] text-balance"
+        className="font-display text-balance text-[clamp(1.85rem,4.6vw,3.25rem)] font-semibold leading-[1.04] tracking-[-0.03em] text-metal"
       >
         {title}
       </h2>
       {subtitle ? (
-        <p className="mt-3 sm:mt-4 text-[15px] sm:text-base md:text-lg text-text-secondary leading-relaxed max-w-xl mx-auto text-pretty">
+        <p
+          className={`mt-4 max-w-xl text-[15px] leading-relaxed text-text-secondary text-pretty sm:mt-5 sm:text-base md:text-lg ${
+            align === 'center' ? 'mx-auto' : ''
+          }`}
+        >
           {subtitle}
         </p>
       ) : null}
-    </div>
+    </Reveal>
   )
 }

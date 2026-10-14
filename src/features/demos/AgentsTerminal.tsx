@@ -241,15 +241,16 @@ export function AgentsTerminal() {
       className="relative scroll-mt-20 py-16 sm:py-20 md:py-28"
       aria-labelledby="agents-demo-heading"
     >
+      <div className="section-glow" aria-hidden="true" />
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
           id="agents-demo-heading"
-          title="From intent to implementation."
-          subtitle="Agents is VEXDYN's AI agent ecosystem—shown here as a simulated coding session, not live execution."
+          title="Describe the change. Watch it get made."
+          subtitle="Agents turns a plain-language request into working code. This is a simulated session, not live execution."
         />
 
         <div className="mx-auto max-w-3xl">
-          <div className="overflow-hidden rounded-xl sm:rounded-2xl border border-white/[0.1] bg-[#0B0B0F] shadow-[0_24px_80px_rgba(0,0,0,0.45)]">
+          <div className="glass-card glass-card--dark overflow-hidden">
             {/* Title bar */}
             <div className="flex items-center gap-3 border-b border-white/[0.06] px-4 py-3">
               <div className="flex gap-1.5" aria-hidden="true">
@@ -346,7 +347,7 @@ export function AgentsTerminal() {
                   rel="noopener noreferrer"
                   className="text-sm text-text-secondary transition-colors hover:text-text-primary"
                 >
-                  Explore →
+                  Open Agents
                 </a>
               ) : (
                 <span className="text-sm text-text-muted">Coming soon</span>

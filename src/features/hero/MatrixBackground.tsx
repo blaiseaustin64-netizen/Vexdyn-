@@ -3,31 +3,36 @@ import { useEffect, useRef } from 'react'
 const GLYPHS =
   '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン<>[]{}|/\\=+-_*#@'
 
+const FONT_SIZE = 14
+const FONT = `${FONT_SIZE}px ui-monospace, 'JetBrains Mono', monospace`
+
 interface MatrixBackgroundProps {
   className?: string
 }
 
+const randomGlyph = () => GLYPHS[Math.floor(Math.random() * GLYPHS.length)] ?? '0'
+
+/** Violet-tinted code rain on a transparent canvas, so the page glow shows through. */
 export function MatrixBackground({ className = '' }: MatrixBackgroundProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
-  const rafRef = useRef(0)
 
   useEffect(() => {
     const canvas = canvasRef.current
     if (!canvas) return
-
-    const prefersReduced =
-      typeof window !== 'undefined' &&
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches
-
     const ctx = canvas.getContext('2d', { alpha: true })
     if (!ctx) return
 
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
     let width = 0
     let height = 0
-    let columns: number[] = []
-    const fontSize = 13
+    let heads: number[] = []
+    let speeds: number[] = []
+    let lastRows: number[] = []
+    let running = false
+    let raf = 0
     let lastTime = 0
-    const frameInterval = 50
+    const interval = 45
 
     const resize = () => {
       const dpr = Math.min(window.devicePixelRatio || 1, 2)
@@ -39,64 +44,81 @@ export function MatrixBackground({ className = '' }: MatrixBackgroundProps) {
       canvas.style.width = `${width}px`
       canvas.style.height = `${height}px`
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
-      const colCount = Math.ceil(width / fontSize)
-      columns = Array.from({ length: colCount }, () =>
-        Math.floor(Math.random() * -40),
-      )
+      const cols = Math.ceil(width / FONT_SIZE)
+      heads = Array.from({ length: cols }, () => -Math.random() * 60)
+      speeds = Array.from({ length: cols }, () => 0.35 + Math.random() * 0.9)
+      lastRows = Array.from({ length: cols }, () => -1)
+      if (reduced) drawStatic()
     }
 
     const drawStatic = () => {
       ctx.clearRect(0, 0, width, height)
-      ctx.font = `${fontSize}px ui-monospace, monospace`
-      ctx.fillStyle = 'rgba(245, 245, 247, 0.035)'
-      for (let i = 0; i < columns.length; i++) {
-        const x = i * fontSize
-        for (let row = 0; row < Math.ceil(height / fontSize); row += 3) {
-          if (Math.random() > 0.7) continue
-          const ch = GLYPHS[Math.floor(Math.random() * GLYPHS.length)]!
-          ctx.fillText(ch, x, row * fontSize)
+      ctx.font = FONT
+      ctx.fillStyle = 'rgba(176, 156, 255, 0.07)'
+      const rows = Math.ceil(height / FONT_SIZE)
+      for (let i = 0; i < heads.length; i++) {
+        for (let row = 0; row < rows; row += 3) {
+          if (Math.random() > 0.6) continue
+          ctx.fillText(randomGlyph(), i * FONT_SIZE, row * FONT_SIZE)
         }
       }
     }
 
-    const draw = (time: number) => {
-      if (time - lastTime < frameInterval) {
-        rafRef.current = requestAnimationFrame(draw)
-        return
-      }
+    const frame = (time: number) => {
+      if (!running) return
+      raf = requestAnimationFrame(frame)
+      if (time - lastTime < interval) return
       lastTime = time
-      ctx.fillStyle = 'rgba(10, 10, 13, 0.12)'
+
+      // Fade old glyphs out while keeping the canvas transparent
+      ctx.globalCompositeOperation = 'destination-out'
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.12)'
       ctx.fillRect(0, 0, width, height)
-      ctx.font = `${fontSize}px ui-monospace, monospace`
-      ctx.fillStyle = 'rgba(245, 245, 247, 0.045)'
-      for (let i = 0; i < columns.length; i++) {
-        const x = i * fontSize
-        const y = columns[i]! * fontSize
-        const ch = GLYPHS[Math.floor(Math.random() * GLYPHS.length)]!
-        ctx.fillText(ch, x, y)
+      ctx.globalCompositeOperation = 'source-over'
+      ctx.font = FONT
+
+      for (let i = 0; i < heads.length; i++) {
+        const head = (heads[i] ?? 0) + (speeds[i] ?? 1)
+        heads[i] = head
+        const row = Math.floor(head)
+        if (row === lastRows[i]) continue
+        lastRows[i] = row
+        if (row < 0) continue
+        const y = row * FONT_SIZE
+        ctx.fillStyle =
+          Math.random() > 0.94 ? 'rgba(255, 255, 255, 0.75)' : 'rgba(176, 156, 255, 0.4)'
+        ctx.fillText(randomGlyph(), i * FONT_SIZE, y)
         if (y > height && Math.random() > 0.975) {
-          columns[i] = 0
-        } else {
-          columns[i]! += 1
+          heads[i] = 0
+          lastRows[i] = -1
         }
       }
-      rafRef.current = requestAnimationFrame(draw)
+    }
+
+    const begin = () => {
+      if (running || reduced) return
+      running = true
+      raf = requestAnimationFrame(frame)
+    }
+    const halt = () => {
+      running = false
+      cancelAnimationFrame(raf)
     }
 
     resize()
     window.addEventListener('resize', resize)
 
-    if (prefersReduced) {
-      drawStatic()
-    } else {
-      ctx.fillStyle = 'rgba(10, 10, 13, 1)'
-      ctx.fillRect(0, 0, width, height)
-      rafRef.current = requestAnimationFrame(draw)
-    }
+    // Only animate while the hero is on screen
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry?.isIntersecting) begin()
+      else halt()
+    })
+    observer.observe(canvas)
 
     return () => {
+      halt()
+      observer.disconnect()
       window.removeEventListener('resize', resize)
-      if (rafRef.current) cancelAnimationFrame(rafRef.current)
     }
   }, [])
 

@@ -8,9 +8,19 @@ const navItems = [
   { label: 'About', href: '#about' },
 ]
 
+/** Which nav item is highlighted while each section is on screen. */
+const sectionToNav: Record<string, string> = {
+  ecosystem: '#ecosystem',
+  'nyven-writes': '#nyven-writes',
+  'agents-demo': '#nyven-writes',
+  'nyven-chat': '#nyven-writes',
+  about: '#about',
+}
+
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [active, setActive] = useState('')
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24)
@@ -19,12 +29,35 @@ export function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) setActive(sectionToNav[entry.target.id] ?? '')
+        }
+      },
+      { rootMargin: '-40% 0px -55% 0px' },
+    )
+    Object.keys(sectionToNav).forEach((id) => {
+      const el = document.getElementById(id)
+      if (el) observer.observe(el)
+    })
+    const onTop = () => {
+      if (window.scrollY < 200) setActive('')
+    }
+    window.addEventListener('scroll', onTop, { passive: true })
+    return () => {
+      observer.disconnect()
+      window.removeEventListener('scroll', onTop)
+    }
+  }, [])
+
   return (
     <>
       <header
         className={`fixed inset-x-0 top-0 z-40 transition-[background-color,border-color,backdrop-filter] duration-300 ${
           scrolled
-            ? 'border-b border-white/[0.08] bg-obsidian/80 backdrop-blur-xl'
+            ? 'border-b border-white/[0.08] bg-obsidian/60 shadow-[0_10px_40px_-20px_rgba(139,108,255,0.35)] backdrop-blur-2xl backdrop-saturate-150'
             : 'border-b border-transparent bg-transparent'
         }`}
       >
@@ -57,7 +90,12 @@ export function Navbar() {
               <a
                 key={item.href}
                 href={item.href}
-                className="rounded-lg px-3.5 py-2 text-sm text-text-secondary transition-colors hover:text-text-primary focus-visible:text-text-primary"
+                aria-current={active === item.href ? 'true' : undefined}
+                className={`rounded-lg px-3.5 py-2 text-sm transition-colors hover:text-text-primary focus-visible:text-text-primary ${
+                  active === item.href
+                    ? 'bg-white/[0.07] text-text-primary'
+                    : 'text-text-secondary'
+                }`}
               >
                 {item.label}
               </a>
@@ -69,7 +107,7 @@ export function Navbar() {
               href="#ecosystem"
               className="btn-primary hidden sm:inline-flex items-center rounded-lg px-4 py-2 text-sm font-medium transition-colors focus-visible:ring-2 focus-visible:ring-white/40"
             >
-              Explore the Ecosystem
+              Explore the products
             </a>
             <button
               type="button"
@@ -89,7 +127,7 @@ export function Navbar() {
         open={menuOpen}
         onClose={() => setMenuOpen(false)}
         items={navItems}
-        ctaLabel="Explore the Ecosystem"
+        ctaLabel="Explore the products"
         ctaHref="#ecosystem"
       />
     </>

@@ -210,16 +210,17 @@ export function NyvenWrites() {
       className="relative scroll-mt-20 py-16 sm:py-20 md:py-28"
       aria-labelledby="nyven-writes-heading"
     >
+      <div className="section-glow" aria-hidden="true" />
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
           id="nyven-writes-heading"
-          title="Ideas in. Clarity out."
-          subtitle="NYVEN is an AI assistant for thoughtful answers and structured thinking—illustrated here with a simulated writing session."
+          title="Ask a question. Get a clear answer."
+          subtitle="A simulated NYVEN session. Watch it think, write and finish, with timing shown alongside."
         />
 
         <div className="grid grid-cols-1 gap-5 lg:grid-cols-2 lg:gap-6">
           {/* Conversation card */}
-          <div className="glass flex flex-col rounded-xl sm:rounded-2xl border border-white/[0.08] overflow-hidden min-h-[300px] sm:min-h-[340px]">
+          <div className="glass-card flex flex-col overflow-hidden min-h-[300px] sm:min-h-[340px]">
             <div className="flex items-center gap-2.5 border-b border-white/[0.06] px-5 py-3.5">
               <span
                 className="h-2 w-2 rounded-full bg-emerald-400/80 shadow-[0_0_8px_rgba(52,211,153,0.4)]"
@@ -278,7 +279,7 @@ export function NyvenWrites() {
           </div>
 
           {/* Timeline + log */}
-          <div className="glass flex flex-col rounded-xl sm:rounded-2xl border border-white/[0.08] overflow-hidden min-h-[300px] sm:min-h-[340px]">
+          <div className="glass-card flex flex-col overflow-hidden min-h-[300px] sm:min-h-[340px]">
             <div className="border-b border-white/[0.06] px-5 py-3.5">
               <span className="text-sm font-medium text-text-primary">Activity</span>
               <span className="ml-2 text-xs text-text-muted">Illustrative timing</span>
@@ -302,7 +303,7 @@ export function NyvenWrites() {
                       <span
                         className={`relative z-10 mt-1 h-3.5 w-3.5 shrink-0 rounded-full border transition-colors duration-300 ${
                           active
-                            ? 'border-white/50 bg-white/80'
+                            ? 'border-white/60 bg-white shadow-[0_0_14px_rgba(139,108,255,0.85)]'
                             : complete
                               ? 'border-white/30 bg-white/25'
                               : 'border-white/15 bg-transparent'

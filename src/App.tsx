@@ -1,8 +1,10 @@
 import { Navbar } from './components/layout/Navbar'
 import { Footer } from './components/layout/Footer'
+import { ScrollEffects } from './components/layout/ScrollEffects'
 import { Hero } from './features/hero/Hero'
 import { ProductGrid } from './features/ecosystem/ProductGrid'
 import { EcosystemCTA } from './features/company/EcosystemCTA'
+import { About } from './features/company/About'
 import { NyvenWrites } from './features/demos/NyvenWrites'
 import { AgentsTerminal } from './features/demos/AgentsTerminal'
 import { NyvenChat } from './features/demos/NyvenChat'
@@ -16,13 +18,15 @@ export default function App() {
       >
         Skip to content
       </a>
+      <ScrollEffects />
       <Navbar />
-      <main id="main-content">
+      <main id="main-content" className="relative z-10">
         <Hero />
         <ProductGrid />
         <NyvenWrites />
         <AgentsTerminal />
         <NyvenChat />
+        <About />
         <EcosystemCTA />
       </main>
       <Footer />

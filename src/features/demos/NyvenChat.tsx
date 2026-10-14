@@ -116,15 +116,16 @@ export function NyvenChat() {
       className="relative scroll-mt-20 py-16 sm:py-20 md:py-28"
       aria-labelledby="nyven-chat-heading"
     >
+      <div className="section-glow" aria-hidden="true" />
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
           id="nyven-chat-heading"
-          title="Make room for what matters."
-          subtitle="A simulated NYVEN session organizing a month-end checklist—no bank actions or live routines are performed."
+          title="Hand off the busywork."
+          subtitle="A simulated NYVEN session that turns a one-line request into a month-end checklist. Nothing is sent or changed."
         />
 
         <div className="mx-auto max-w-lg">
-          <div className="glass overflow-hidden rounded-xl sm:rounded-2xl border border-white/[0.08]">
+          <div className="glass-card overflow-hidden">
             <div className="flex items-center gap-2.5 border-b border-white/[0.06] px-5 py-3.5">
               <span
                 className="h-2 w-2 rounded-full bg-emerald-400/80 shadow-[0_0_8px_rgba(52,211,153,0.35)]"
@@ -174,7 +175,7 @@ export function NyvenChat() {
                 rel="noopener noreferrer"
                 className="text-sm text-text-secondary transition-colors hover:text-text-primary"
               >
-                Explore →
+                Open NYVEN
               </a>
             </div>
           </div>

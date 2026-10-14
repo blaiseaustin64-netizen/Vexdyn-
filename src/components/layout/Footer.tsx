@@ -28,8 +28,8 @@ export function Footer() {
   return (
     <footer
       ref={footerRef}
-      id="about"
-      className="relative mt-auto overflow-hidden border-t border-white/[0.06] bg-near-black"
+      id="footer"
+      className="relative z-10 mt-auto overflow-hidden border-t border-white/[0.06] bg-near-black"
     >
       {/* Content */}
       <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 pt-12 sm:pt-16 pb-10">
@@ -45,13 +45,13 @@ export function Footer() {
               />
             </a>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-text-secondary">
-              VEXDYN builds technology, AI products, and intelligent tools for
-              the next generation of digital experiences.
+              AI products and developer tools that work together. Build
+              what&apos;s next with Forge, NYVEN, X-Ray and more.
             </p>
           </div>
 
           <div>
-            <h3 className="text-xs font-medium uppercase tracking-wider text-text-muted">
+            <h3 className="text-sm font-medium text-text-primary">
               Products
             </h3>
             <ul className="mt-4 space-y-2.5">
@@ -71,7 +71,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="text-xs font-medium uppercase tracking-wider text-text-muted">
+            <h3 className="text-sm font-medium text-text-primary">
               Company
             </h3>
             <ul className="mt-4 space-y-2.5">
@@ -95,7 +95,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="text-xs font-medium uppercase tracking-wider text-text-muted">
+            <h3 className="text-sm font-medium text-text-primary">
               Navigate
             </h3>
             <ul className="mt-4 space-y-2.5">
@@ -112,7 +112,7 @@ export function Footer() {
                   href="#ecosystem"
                   className="text-sm text-text-secondary transition-colors hover:text-text-primary"
                 >
-                  Explore products
+                  Browse the products
                 </a>
               </li>
             </ul>
