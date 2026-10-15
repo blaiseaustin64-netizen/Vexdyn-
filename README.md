@@ -1,77 +1,57 @@
 # VEXDYN Website
 
-Static marketing website for VEXDYN. Preserves the original single-file design and interactions (demos, Forge builder mock, pricing toggle, hash routing, animations).
+Static marketing site for VEXDYN ("Build what's next"). One `index.html` (HTML + CSS + JS) plus brand and tech-logo assets. No backend, no API keys.
 
-## Requirements
+## What's inside
 
-- Node.js 18+ (only needed for local preview / build script)
-- No backend or API keys required for the public site
+- Mobile-first layout with a hamburger menu (smooth slide-down, staggered links)
+- Home, Pricing and About pages (hash routing: `#/`, `#/pricing`, `#/about`)
+- Animated AI, Agents and Nyven demo cards (stack vertically on phones)
+- Forge section: a VS Code-style editor demo (file tabs, syntax-colored code typing, animated cursor, live preview). Forge is a code editor for now, not an AI builder
+- Product grid, bento demos, stats, FAQ, pricing toggle, tools ticker
+- VEXDYN symbol + wordmark logos (cropped, retina-ready) and a large wordmark footer
+- Respects `prefers-reduced-motion`
 
 ## Local development
 
 ```bash
-# Serve the source root (index.html at /)
-npm run dev
-# → http://localhost:5173
+npm run dev       # serves the source at http://localhost:5173
+npm run build     # outputs dist/
+npm run preview   # serves dist at http://localhost:4173
 ```
 
-## Production build
+Node 18+ is only needed for these helper commands.
 
-```bash
-npm run build
-# Output: dist/  (index.html + public assets)
-```
+## Deploy to Cloudflare Pages (from GitHub)
 
-Preview the production output:
-
-```bash
-npm run preview
-# → http://localhost:4173
-```
-
-## Cloudflare Pages
+1. Push this folder to a GitHub repo (the repo root should contain `index.html` and `package.json`).
+2. Cloudflare dashboard → Workers & Pages → Create → Pages → Connect to Git.
+3. Settings:
 
 | Setting | Value |
-|--------|--------|
-| Framework preset | None / Static |
+|---|---|
+| Framework preset | None |
 | Build command | `npm run build` |
 | Build output directory | `dist` |
-| Root directory | `/` (repo root of this project) |
 | Node version | 18 or 20 |
 
-You can also deploy with **no build** by uploading `index.html` + `public/` and setting the output directory to `/`, but using `npm run build` → `dist` is recommended for a clean artifact.
+Or deploy without Git: Pages → Upload assets → drag the **contents of `dist/`**.
 
-## Project structure
+## Structure
 
 ```
-vexdyn-website/
-├── index.html              # Full site (HTML + CSS + JS)
-├── public/
-│   ├── assets/brand/       # Logo symbol + wordmark
-│   └── robots.txt
-├── scripts/build.mjs       # Copies source → dist/
-├── package.json
-├── README.md
-└── .gitignore
+index.html                 site source
+public/
+  assets/brand/            symbol, wordmark, large wordmark, favicons
+  assets/tech/             tools ticker logos
+  robots.txt
+  _headers                 cache + security headers (Cloudflare)
+scripts/build.mjs          copies source + public → dist/
+dist/                      prebuilt output (git-ignored; rebuilt by npm run build)
 ```
-
-## Features included
-
-- Sticky navigation + hash-based pages (`#/`, `#/pricing`, `#/about`)
-- Hero, product showcase demos (Nyven typing, Agents terminal)
-- Product grid with external links
-- Interactive Forge site-builder mock (client-side only, illustrative)
-- Stats counters, FAQ, pricing toggle (placeholder plans)
-- Scroll reveals, progress bar, back-to-top
-- Reduced-motion support
 
 ## Notes
 
-- **Google Fonts** (Sora, JetBrains Mono) load from fonts.googleapis.com — requires network for full typography.
-- **Demos are illustrative** — no real AI API or code execution.
-- **Lab / Agents** destinations and final pricing are placeholders where not specified in the source.
-- Official brand PNGs are in `public/assets/brand/`. The original HTML uses a text logo; you can swap to `<img>` paths if desired without changing other behaviour.
-
-## License / ownership
-
-VEXDYN brand assets and content belong to VEXDYN.
+- Fonts (Sora, JetBrains Mono) load from Google Fonts. System fonts are the fallback.
+- Pricing, stats, FAQ and About copy are placeholders to edit in `index.html`.
+- Buttons with `href="#"` are placeholders until real product URLs exist.
