@@ -1,0 +1,5 @@
+# Copy to .dev.vars for local testing with `npx wrangler pages dev dist`
+# (on Cloudflare, set these in Pages → Settings → Variables and Secrets)
+RESEND_API_KEY=re_xxxxxxxxxxxxxxxx
+CONTACT_TO=you@example.com
+CONTACT_FROM=VEXDYN <hello@yourdomain.com>

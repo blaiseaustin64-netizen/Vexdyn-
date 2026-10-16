@@ -7,6 +7,20 @@
 <link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png">
 <meta name="theme-color" content="#0a0a0d">
 <meta name="description" content="VEXDYN is a tech and AI company. Forge, X-Ray, Brand-in-a-Box, Lab, Nyven and Agents. Build what's next.">
+<link rel="canonical" href="%SITE_URL%/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="VEXDYN">
+<meta property="og:title" content="VEXDYN — Build what's next">
+<meta property="og:description" content="A tech and AI company. Forge, X-Ray, Brand-in-a-Box, Nyven and Agents: tools for building on the web.">
+<meta property="og:url" content="%SITE_URL%/">
+<meta property="og:image" content="%SITE_URL%/assets/brand/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="VEXDYN logo with the line Build what's next">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="VEXDYN — Build what's next">
+<meta name="twitter:description" content="A tech and AI company. Forge, X-Ray, Brand-in-a-Box, Nyven and Agents.">
+<meta name="twitter:image" content="%SITE_URL%/assets/brand/og-image.png">
 <title>VEXDYN — Build what's next</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -490,6 +504,20 @@ section.sec{padding:16px 0 60px}.final{padding:36px 0 64px}.stats{margin:-14px 0
 .pend{margin-top:90px;text-align:center;padding:50px 20px;border:1px solid var(--line);border-radius:22px;background:radial-gradient(60% 120% at 50% 0,rgba(124,108,255,.14),transparent),#0d0d12}
 .pend h2{margin:0 auto 22px;max-width:18ch}.pend .cta{justify-content:center}
 @media(max-width:600px){.tbl{font-size:12.5px}.tbl th,.tbl td{padding:12px 6px}.tbl thead th{font-size:13px}.ptbl{margin-top:60px}.pend{margin-top:60px;padding:38px 18px}.pend .cta{flex-direction:column}.pend .btn{justify-content:center}}
+/* ===== v9: links, contact form ===== */
+button.btn{font-family:inherit;cursor:pointer}button.btn:disabled{opacity:.6;cursor:wait}
+.soon{display:inline-block;font-size:12px;color:var(--mute);border:1px solid var(--line);border-radius:99px;padding:3px 11px}
+.soon-f{color:#5a5a68}
+.vcta{display:flex;justify-content:center;margin-top:22px}
+.hp{position:absolute!important;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none}
+.cmsg{margin:0;font-size:14px;min-height:1.4em}.cmsg.ok{color:var(--acc2)}.cmsg.err{color:#ff7a8a}
+/* ===== v10: legal pages ===== */
+.doc{max-width:720px;margin-top:10px}
+.doc h3{margin:40px 0 10px;font-size:20px;letter-spacing:-.01em}
+.doc p,.doc li{color:#b4b4c2;line-height:1.8;font-size:16px}
+.doc p{margin:0 0 14px}.doc ul{padding-left:20px;margin:0 0 14px}.doc li{margin-bottom:8px}
+.doc li b{color:var(--text)}.doc a{color:var(--acc);text-decoration:underline}
+.cnote{margin:0;font-size:12.5px;color:#6a6a78}.cnote a,.legal a{text-decoration:underline}.legal a:hover{color:var(--text)}
 </style>
 </head>
 <body><svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
@@ -506,8 +534,8 @@ section.sec{padding:16px 0 60px}.final{padding:36px 0 64px}.stats{margin:-14px 0
 <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8.5" r="3.2"/><path d="M3 19.5c.6-3.3 3-5 6-5s5.4 1.7 6 5M16 5.6a3.2 3.2 0 0 1 0 6M18 14.8c1.6.6 2.7 2 3 4.7"/></symbol>
 </defs></svg>
 <div id="pb"></div>
-<nav id="nav"><div class="wrap"><a class="logo" href="#/" aria-label="VEXDYN home"><img class="logo-symbol" src="/assets/brand/vexdyn-symbol.png" alt="" width="33" height="30" decoding="async"><img class="logo-word" src="/assets/brand/vexdyn-wordmark.png" alt="VEXDYN" width="98" height="13" decoding="async"></a>
-<div class="links" id="mnav"><a href="#products">Products</a><a href="#forge">Forge</a><a href="#showcase">Nyven</a><a href="#showcase">Agents</a><a href="#/pricing" data-r="pricing">Pricing</a><a href="#/about" data-r="about">About</a><a class="btn pri mcta" href="#forge">Get started</a></div>
+<nav id="nav"><div class="wrap"><a class="logo" href="/" aria-label="VEXDYN home"><img class="logo-symbol" src="/assets/brand/vexdyn-symbol.png" alt="" width="33" height="30" decoding="async"><img class="logo-word" src="/assets/brand/vexdyn-wordmark.png" alt="VEXDYN" width="98" height="13" decoding="async"></a>
+<div class="links" id="mnav"><a href="#products">Products</a><a href="#forge">Forge</a><a href="#showcase">Nyven</a><a href="#showcase">Agents</a><a href="/pricing" data-r="pricing">Pricing</a><a href="/about" data-r="about">About</a><a class="btn pri mcta" href="#forge">Get started</a></div>
 <a class="btn pri dcta" href="#forge">Get started</a>
 <button class="burger" id="bg" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mnav"><span></span><span></span></button></div></nav>
 
@@ -526,20 +554,20 @@ section.sec{padding:16px 0 60px}.final{padding:36px 0 64px}.stats{margin:-14px 0
 <div class="bub u" id="ai-q"></div>
 <div class="think" id="th"><div class="thh"><span class="orbit"></span><span class="shim" id="thl">Thinking</span></div><div class="thb" id="thb"></div></div>
 <div class="bub n" id="ai-a"></div>
-</div><div class="cap"><b class="cb"><svg class="ic sm" viewBox="0 0 24 24"><use href="#i-spark"/></svg>AI</b><a href="#">Explore →</a></div><p>Ask Nyven anything and watch the answer come together.</p></div>
+</div><div class="cap"><b class="cb"><svg class="ic sm" viewBox="0 0 24 24"><use href="#i-spark"/></svg>AI</b><a href="https://nyven-v1.pages.dev/" target="_blank" rel="noopener">Explore →</a></div><p>Ask Nyven anything and watch the answer come together.</p></div>
 
 <div class="card"><div class="screen term" id="ag">
 <div class="dots"><i></i><i></i><i></i><span class="stp" id="stp"></span><span class="chip" id="chip">[running]</span></div>
 <div class="thk" id="thk">&nbsp;</div>
 <div class="stage" id="stage"><div class="edit" id="edt"></div><div class="code" id="code"></div></div>
 <div class="prompt" id="prm"></div>
-</div><div class="cap"><b class="cb"><svg class="ic sm" viewBox="0 0 24 24"><use href="#i-agents"/></svg>Agents</b><a href="#">Explore →</a></div><p>Install an agent on your site. It reads, edits and ships for you.</p></div>
+</div><div class="cap"><b class="cb"><svg class="ic sm" viewBox="0 0 24 24"><use href="#i-agents"/></svg>Agents</b><a href="https://nyven-v1.pages.dev/" target="_blank" rel="noopener">Explore →</a></div><p>Install an agent on your site. It reads, edits and ships for you.</p></div>
 
 <div class="card"><div class="screen" id="ny">
 <div class="bub u pill" id="ny-q"></div><div class="bub n" id="ny-a"></div>
 <div class="chipr" id="ny-c"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Created routine · Month-end close</div>
 <div class="orb" aria-hidden="true"></div>
-</div><div class="cap"><b class="cb"><svg class="ic sm" viewBox="0 0 24 24"><use href="#i-nyven"/></svg>Nyven</b><a href="#">Explore →</a></div><p>Your assistant for building sites, and for everything else.</p></div>
+</div><div class="cap"><b class="cb"><svg class="ic sm" viewBox="0 0 24 24"><use href="#i-nyven"/></svg>Nyven</b><a href="https://nyven-v1.pages.dev/" target="_blank" rel="noopener">Explore →</a></div><p>Your assistant for building sites, and for everything else.</p></div>
 
 </div></div></section>
 
@@ -549,12 +577,12 @@ section.sec{padding:16px 0 60px}.final{padding:36px 0 64px}.stats{margin:-14px 0
 <h2>One company. Every tool you need to ship.</h2>
 <p class="sub">Each product works on its own and gets better when you use them together.</p>
 <div class="grid">
-<div class="cell"><svg class="ic" viewBox="0 0 24 24"><use href="#i-forge"/></svg><h3>Forge</h3><p>A code editor for the web. Write, preview and ship your site.</p><a href="#">Learn more</a></div>
-<div class="cell"><svg class="ic" viewBox="0 0 24 24"><use href="#i-xray"/></svg><h3>X-Ray</h3><p>Scan any website and see what is slowing it down.</p><a href="#">Learn more</a></div>
-<div class="cell"><svg class="ic" viewBox="0 0 24 24"><use href="#i-box"/></svg><h3>Brand-in-a-Box</h3><p>Logo, colors, type and guidelines in one kit.</p><a href="#">Learn more</a></div>
-<div class="cell"><svg class="ic" viewBox="0 0 24 24"><use href="#i-lab"/></svg><h3>Lab</h3><p>Practice HTML, CSS, JavaScript and React with real challenges.</p><a href="#">Learn more</a></div>
-<div class="cell"><svg class="ic" viewBox="0 0 24 24"><use href="#i-nyven"/></svg><h3>Nyven</h3><p>The AI assistant that builds your site and answers the rest.</p><a href="#">Learn more</a></div>
-<div class="cell"><svg class="ic" viewBox="0 0 24 24"><use href="#i-agents"/></svg><h3>Agents</h3><p>Chat agents you install on any website in minutes.</p><a href="#">Learn more</a></div>
+<div class="cell"><svg class="ic" viewBox="0 0 24 24"><use href="#i-forge"/></svg><h3>Forge</h3><p>A code editor for the web. Write, preview and ship your site.</p><a href="https://vexdyn-forge.pages.dev/" target="_blank" rel="noopener">Learn more</a></div>
+<div class="cell"><svg class="ic" viewBox="0 0 24 24"><use href="#i-xray"/></svg><h3>X-Ray</h3><p>Scan any website and see what is slowing it down.</p><a href="https://vexdyn-xray.pages.dev/" target="_blank" rel="noopener">Learn more</a></div>
+<div class="cell"><svg class="ic" viewBox="0 0 24 24"><use href="#i-box"/></svg><h3>Brand-in-a-Box</h3><p>Logo, colors, type and guidelines in one kit.</p><a href="https://brand-in-a-box.pages.dev/" target="_blank" rel="noopener">Learn more</a></div>
+<div class="cell"><svg class="ic" viewBox="0 0 24 24"><use href="#i-lab"/></svg><h3>Lab</h3><p>Practice HTML, CSS, JavaScript and React with real challenges.</p><span class="soon">Coming soon</span></div>
+<div class="cell"><svg class="ic" viewBox="0 0 24 24"><use href="#i-nyven"/></svg><h3>Nyven</h3><p>The AI assistant that builds your site and answers the rest.</p><a href="https://nyven-v1.pages.dev/" target="_blank" rel="noopener">Learn more</a></div>
+<div class="cell"><svg class="ic" viewBox="0 0 24 24"><use href="#i-agents"/></svg><h3>Agents</h3><p>Chat agents you install on any website in minutes.</p><a href="https://nyven-v1.pages.dev/" target="_blank" rel="noopener">Learn more</a></div>
 </div></div></section>
 
 <section class="sec" id="forge"><div class="wrap">
@@ -587,6 +615,7 @@ section.sec{padding:16px 0 60px}.final{padding:36px 0 64px}.stats{margin:-14px 0
 <div class="vcur" id="vcur" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 2.5l15 8.2-6.4 1.7-2.6 6.2z" fill="#fff" stroke="#0a0a0d" stroke-width="1.3" stroke-linejoin="round"/></svg></div>
 </div>
 <p class="vnote">The editor and preview above are a demo. Click the tabs or the Preview button to try it.</p>
+<div class="vcta"><a class="btn pri" href="https://vexdyn-forge.pages.dev/" target="_blank" rel="noopener">Open Forge ↗</a></div>
 </div></section>
 <section class="sec"><div class="wrap"><h2>Everything works together.</h2><p class="sub">A closer look at what is inside the VEXDYN ecosystem.</p>
 <div class="bento">
@@ -633,9 +662,9 @@ section.sec{padding:16px 0 60px}.final{padding:36px 0 64px}.stats{margin:-14px 0
 </div>
 </section>
 
-<section class="final"><div class="wrap"><h2>Start with one. Grow into all.</h2><div class="cta" style="justify-content:center"><a class="btn pri" href="#forge">Try Forge</a><a class="btn sec" href="#/pricing">See pricing</a></div></div></section>
+<section class="final"><div class="wrap"><h2>Start with one. Grow into all.</h2><div class="cta" style="justify-content:center"><a class="btn pri" href="#forge">Try Forge</a><a class="btn sec" href="/pricing">See pricing</a></div></div></section>
 </div>
-<div class="page" data-p="pricing"><section class="sec ph"><div class="wrap"><a class="pill" href="#/pricing" style="pointer-events:none"><b>Pricing</b> Plans for every stage</a>
+<div class="page" data-p="pricing"><section class="sec ph"><div class="wrap"><a class="pill" href="/pricing" style="pointer-events:none"><b>Pricing</b> Plans for every stage</a>
 <h2>Simple pricing. Start free.</h2><p class="sub">Placeholder plans for this mock. Final prices are yours to set.</p>
 <div class="tg"><span id="tm" class="on">Monthly</span><button id="tg" aria-pressed="false" aria-label="Toggle yearly billing"><i></i></button><span id="ty">Yearly <em>save 20%</em></span></div>
 <div class="plans">
@@ -650,13 +679,13 @@ section.sec{padding:16px 0 60px}.final{padding:36px 0 64px}.stats{margin:-14px 0
 <div class="fq"><button aria-expanded="false">Can I change plans later?</button><div class="fa"><div><p>Yes. You can move up or down whenever your needs change. These plan details are placeholders until final pricing is set.</p></div></div></div>
 <div class="fq"><button aria-expanded="false">Is there a discount for yearly billing?</button><div class="fa"><div><p>Yes. Switch the toggle at the top of this page to see the yearly price for each plan.</p></div></div></div>
 </div></div>
-<div class="pend"><h2>Ready to build what's next?</h2><div class="cta"><a class="btn pri" href="#forge">Try Forge</a><a class="btn sec" href="#/about">About VEXDYN</a></div></div>
+<div class="pend"><h2>Ready to build what's next?</h2><div class="cta"><a class="btn pri" href="#forge">Try Forge</a><a class="btn sec" href="/about">About VEXDYN</a></div></div>
 </div></section></div>
 <div class="page" data-p="about"><section class="sec ph"><div class="wrap">
-<a class="pill" href="#/about" style="pointer-events:none"><b>About</b> The story behind VEXDYN</a>
+<a class="pill" href="/about" style="pointer-events:none"><b>About</b> The story behind VEXDYN</a>
 <h2>Built in Kaduna. Made for builders everywhere.</h2><p class="sub">VEXDYN is a tech and AI company that started with one designer, one laptop and a simple belief: great websites should not be reserved for big budgets.</p>
 <div class="ab">
-<aside class="fnd"><div class="av"><span>DA</span></div><h3>David Augustine</h3><p>Founder, VEXDYN</p><div class="tags"><span>Software engineering student</span><span>Web designer and developer</span><span>Kaduna, Nigeria</span></div></aside>
+<aside class="fnd"><div class="av"><span>DA</span></div><h3>David Augustine</h3><p>Founder, VEXDYN</p><div class="tags"><span>Software engineering student</span><span>Web designer and developer</span><span><a href="/privacy">Privacy</a> ·  · Kaduna, Nigeria</span></div></aside>
 <div class="story">
 <p class="ld">VEXDYN began as one person building websites. David Augustine, a software engineering student in Kaduna, Nigeria, started out as a freelance web designer and developer, creating sites for local and online clients.</p>
 <p>Working under his earlier studio name, DA Noctis Studio, he kept meeting the same problems. Businesses waited weeks for a simple site. Owners could not tell if their pages were fast or easy to find. Brands had no consistent look from one place to the next. So he started building premium website templates and small tools to solve those problems for his own clients first.</p>
@@ -668,17 +697,52 @@ section.sec{padding:16px 0 60px}.final{padding:36px 0 64px}.stats{margin:-14px 0
 <h2 style="margin-top:90px">What we believe.</h2>
 <div class="grid"><div class="cell"><svg class="ic" viewBox="0 0 24 24"><use href="#i-compass"/></svg><h3>Builders first</h3><p>We make what we would want to use, and we test it on real projects.</p></div><div class="cell"><svg class="ic" viewBox="0 0 24 24"><use href="#i-shield"/></svg><h3>Honest and clear</h3><p>No jargon and no hidden steps. You always know what is happening.</p></div><div class="cell"><svg class="ic" viewBox="0 0 24 24"><use href="#i-users"/></svg><h3>Open to everyone</h3><p>Good tools should work for a student in Kaduna as well as a team abroad.</p></div></div>
 <div class="grid g2" style="margin-top:16px"><div class="cell"><svg class="ic" viewBox="0 0 24 24"><use href="#i-spark"/></svg><h3>Our mission</h3><p>Help anyone turn an idea into a real, fast, good-looking website, with AI doing the heavy lifting.</p></div><div class="cell"><svg class="ic" viewBox="0 0 24 24"><use href="#i-bolt"/></svg><h3>Our vision</h3><p>A single ecosystem where you design, build, check and grow online without juggling ten tools.</p></div></div>
-<div class="contact"><h2 style="margin:0">Say hello.</h2><input placeholder="Your email"><textarea rows="4" placeholder="Tell us what you're building"></textarea><a class="btn pri" href="#" style="align-self:flex-start">Send message</a></div>
-<div class="pend"><h2>Build what's next with us.</h2><div class="cta"><a class="btn pri" href="#forge">Try Forge</a><a class="btn sec" href="#/pricing">See pricing</a></div></div>
+<form class="contact" id="cf" novalidate><h2 style="margin:0">Say hello.</h2>
+<input name="name" placeholder="Your name (optional)" autocomplete="name" maxlength="80" aria-label="Your name">
+<input name="email" type="email" placeholder="Your email" autocomplete="email" maxlength="120" required aria-label="Your email">
+<textarea name="message" rows="4" placeholder="Tell us what you're building" maxlength="4000" required aria-label="Your message"></textarea>
+<input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+<button class="btn pri" id="cbtn" type="submit" style="align-self:flex-start">Send message</button>
+<p class="cnote">By sending this you agree to our <a href="/privacy">Privacy Policy</a>.</p>
+<p class="cmsg" id="cmsg" role="status" aria-live="polite"></p></form>
+<div class="pend"><h2>Build what's next with us.</h2><div class="cta"><a class="btn pri" href="#forge">Try Forge</a><a class="btn sec" href="/pricing">See pricing</a></div></div>
 </div></section></div>
+<div class="page" data-p="privacy"><section class="sec ph"><div class="wrap"><a class="pill" href="/privacy" style="pointer-events:none"><b>Legal</b> Your privacy</a>
+<h2>Privacy Policy.</h2><p class="sub">Last updated October 15, 2026.</p>
+<div class="doc">
+<p>VEXDYN ("we", "us") is a tech and AI company based in Kaduna, Nigeria. This page explains what information this website collects, why, and what choices you have.</p>
+<h3>What we collect</h3>
+<ul><li><b>Contact form.</b> If you write to us, we receive your email, your message, and your name if you give it.</li>
+<li><b>Visit statistics.</b> We use Cloudflare Web Analytics to see how many people visit, which pages they open, their country, device type, where they came from, and how fast the site loads. It is built to be privacy-first and to work without tracking you across other sites.</li>
+<li><b>Technical data.</b> Our hosting provider, Cloudflare, processes basic data such as your IP address to deliver the site and keep it secure.</li></ul>
+<h3>How we use it</h3>
+<p>We use your message to reply to you. We use visit statistics to understand what is working and to improve the site. We do not sell your information.</p>
+<h3>Who else handles it</h3>
+<ul><li><b>Cloudflare</b> hosts this website and provides visit statistics.</li>
+<li><b>Resend</b> delivers the contact form message to our inbox.</li>
+<li><b>Google Fonts</b> supplies the typefaces on this site, so your browser requests font files from Google.</li></ul>
+<p>Our product sites (Forge, Nyven, X-Ray and Brand-in-a-Box) are separate websites and may have their own privacy policies.</p>
+<h3>Cookies</h3>
+<p>This website does not set its own cookies.</p>
+<h3>How long we keep it</h3>
+<p>We keep contact messages for as long as we need them to reply and keep a record. You can ask us to delete yours at any time.</p>
+<h3>Your choices</h3>
+<p>You can ask to see, correct or delete the information we hold about you. Write to us using the contact form on our <a href="/about">About page</a>.</p>
+<h3>Children</h3>
+<p>This website is not directed at children.</p>
+<h3>Changes</h3>
+<p>If we change this policy, we will update the date at the top of this page.</p></div></div></section></div>
+<div class="page" data-p="404"><section class="sec ph"><div class="wrap"><a class="pill" href="/" style="pointer-events:none"><b>404</b> Page not found</a>
+<h2>This page does not exist.</h2><p class="sub">The link may be old or typed wrong. Go back home or see pricing.</p>
+<div class="cta"><a class="btn pri" href="/">Back to home</a><a class="btn sec" href="/pricing">See pricing</a></div></div></section></div>
 </main>
 
 <footer><div class="wrap">
 <div class="ftop"><div class="fb"><img src="/assets/brand/vexdyn-symbol.png" alt="VEXDYN symbol" width="40" height="36" decoding="async"><p>A tech and AI company building tools, agents and an assistant for the web.</p><small>BUILD WHAT'S NEXT</small></div>
 <div class="fcols">
-<div><b>Products</b><a href="#products">Forge</a><a href="#products">X-Ray</a><a href="#products">Brand-in-a-Box</a><a href="#products">Lab</a></div>
-<div><b>AI</b><a href="#showcase">Nyven</a><a href="#showcase">Agents</a></div>
-<div><b>Company</b><a href="#/about">About</a><a href="#/pricing">Pricing</a><a href="#/about">Contact</a></div>
+<div><b>Products</b><a href="https://vexdyn-forge.pages.dev/" target="_blank" rel="noopener">Forge</a><a href="https://vexdyn-xray.pages.dev/" target="_blank" rel="noopener">X-Ray</a><a href="https://brand-in-a-box.pages.dev/" target="_blank" rel="noopener">Brand-in-a-Box</a><span class="soon-f">Lab · soon</span></div>
+<div><b>AI</b><a href="https://nyven-v1.pages.dev/" target="_blank" rel="noopener">Nyven</a><a href="https://nyven-v1.pages.dev/" target="_blank" rel="noopener">Agents</a></div>
+<div><b>Company</b><a href="/about">About</a><a href="/pricing">Pricing</a><a href="/about">Contact</a><a href="/privacy">Privacy</a></div>
 <div><b>Community</b><a href="#">Discord</a><a href="#">X</a></div>
 </div></div>
 <div class="wmw rv"><img class="wm" src="/assets/brand/vexdyn-wordmark-large.png" alt="VEXDYN" width="2028" height="268" loading="lazy" decoding="async"></div>
@@ -785,12 +849,15 @@ onView('ny',async function loop(){
 
 const mt=$('mt');mt.innerHTML+=mt.innerHTML;
 const pgs=[...document.querySelectorAll('.page')];
-function route(){const h=location.hash.replace('#/','').replace('#','');const id=pgs.some(x=>x.dataset.p===h)?h:(h===''?'home':null);
-  if(id){pgs.forEach(x=>x.classList.toggle('on',x.dataset.p===id));scrollTo(0,0)}
-  const cur=pgs.find(x=>x.classList.contains('on')).dataset.p;
-  document.querySelectorAll('.links a[data-r]').forEach(a=>a.classList.toggle('act',a.dataset.r===cur));
-  if(!id&&h){if(cur!=='home'){pgs.forEach(x=>x.classList.toggle('on',x.dataset.p==='home'))}const el=document.getElementById(h);if(el)setTimeout(()=>el.scrollIntoView({behavior:'smooth'}),60)}}
-addEventListener('hashchange',route);route();
+const TITLES={home:"VEXDYN — Build what's next",pricing:'Pricing — VEXDYN',about:'About — VEXDYN',privacy:'Privacy Policy — VEXDYN','404':'Page not found — VEXDYN'};
+const PATHS={home:'/',pricing:'/pricing',about:'/about',privacy:'/privacy'};
+const STRICT=true;
+function pidFromUrl(){const hs=location.hash.replace(/^#\/?/,'');if(hs&&pgs.some(x=>x.dataset.p===hs))return hs;const seg=location.pathname.replace(/\/+$/,'').split('/').pop();if(pgs.some(x=>x.dataset.p===seg))return seg;return(STRICT&&seg&&!/\.html?$/.test(seg))?'404':'home'}
+const cn=document.querySelector('link[rel=canonical]'),ou=document.querySelector('meta[property="og:url"]'),ORI=cn?new URL(cn.href).origin:'';
+function show(id){pgs.forEach(x=>x.classList.toggle('on',x.dataset.p===id));document.querySelectorAll('.links a[data-r]').forEach(a=>a.classList.toggle('act',a.dataset.r===id));document.title=TITLES[id];if(PATHS[id]){if(cn)cn.href=ORI+PATHS[id];if(ou)ou.content=ORI+PATHS[id]}}
+function go(id,keep,noPush){if(id==='company')id='about';if(id!=='404'&&!PATHS[id])id='home';const was=pidFromUrl();show(id);if(!keep)scrollTo({top:0,behavior:'instant'});if(!noPush&&was!==id&&PATHS[id]){try{history.pushState(null,'',PATHS[id])}catch(e){}}}
+show(pidFromUrl());
+addEventListener('popstate',()=>go(pidFromUrl(),false,true));
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
 document.querySelectorAll('.hero-in>*,.card,.cell,.price,.step,.sub,.marq,.wmw,.vsc,.ptbl,.pend').forEach(el=>{el.classList.add('rv');el.style.transitionDelay=([...el.parentNode.children].indexOf(el)%4)*90+'ms';io.observe(el)});
 addEventListener('pointermove',e=>{const c=e.target.closest&&e.target.closest('.cell,.price');if(c){const r=c.getBoundingClientRect();c.style.setProperty('--x',e.clientX-r.left+'px');c.style.setProperty('--y',e.clientY-r.top+'px')}});
@@ -820,12 +887,10 @@ if(!RM&&matchMedia('(pointer:fine)').matches){let tg=scrollY,cu=scrollY,raf=0;
 const tgb=$('tg');tgb.addEventListener('click',()=>{const y=tgb.getAttribute('aria-pressed')!=='true';tgb.setAttribute('aria-pressed',y);
   document.querySelectorAll('.amt b').forEach(b=>b.textContent=y?b.dataset.y:b.dataset.m);document.querySelectorAll('.amt span').forEach(x=>x.textContent=y?'/month, billed yearly':'/month');
   $('tm').classList.toggle('on',!y);$('ty').classList.toggle('on',y)});
-function go(id,keep){if(id==='company')id='about';if(!pgs.some(x=>x.dataset.p===id))id='home';
-  pgs.forEach(x=>x.classList.toggle('on',x.dataset.p===id));document.querySelectorAll('.links a[data-r]').forEach(a=>a.classList.toggle('act',a.dataset.r===id));
-  if(!keep)scrollTo({top:0,behavior:'instant'});try{history.replaceState(null,'','#/'+(id==='home'?'':id))}catch(e){}}
-document.addEventListener('click',e=>{const a=e.target.closest('a[href^="#"]');if(!a)return;e.preventDefault();closeMenu();const h=a.getAttribute('href');if(h==='#')return;
-  if(h.startsWith('#/')){go(h.slice(2)||'home');return}
-  const el=$(h.slice(1));if(!el)return;const home=pgs[0].classList.contains('on');if(!home)go('home',true);setTimeout(()=>el.scrollIntoView({behavior:'smooth'}),home?70:130)});
+document.addEventListener('click',e=>{const a=e.target.closest('a[href]');if(!a||a.target==='_blank'||e.metaKey||e.ctrlKey||e.shiftKey||e.button)return;const h=a.getAttribute('href');
+  if(h==='#'){e.preventDefault();return}
+  if(h[0]==='/'&&h[1]!=='/'){const pth=h.replace(/\/+$/,'')||'/',id=Object.keys(PATHS).find(k=>PATHS[k]===pth);if(id){e.preventDefault();closeMenu();go(id)}return}
+  if(h[0]==='#'){e.preventDefault();closeMenu();const el=$(h.slice(1));if(!el)return;const home=pgs[0].classList.contains('on');if(!home)go('home',true);setTimeout(()=>el.scrollIntoView({behavior:'smooth'}),home?70:130)}});
 document.addEventListener('pointerover',e=>{const c=e.target.closest&&e.target.closest('.cell,.price');if(c)c.style.transitionDelay='0s'});
 
 /* ---- Forge editor demo ---- */
@@ -881,6 +946,16 @@ vrun.addEventListener('click',e=>{if(e.isTrusted){vman=1;vTok++;vcur.classList.r
 pcta.addEventListener('click',e=>{if(!e.isTrusted)return;const o=pcta.classList.toggle('ok');pcta.textContent=o?'Added ✓':'Shop now'});
 if(RM){vRender(0);vsc.classList.add('open');vrun.classList.add('on')}else onView('vsc',vLoop);
 
+const cf=$('cf');
+if(cf)cf.addEventListener('submit',async e=>{e.preventDefault();const msg=$('cmsg'),btn=$('cbtn'),d=Object.fromEntries(new FormData(cf));
+  const bad=(t,f)=>{msg.className='cmsg err';msg.textContent=t;if(f)f.focus()};msg.className='cmsg';msg.textContent='';
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test((d.email||'').trim()))return bad('Please enter a valid email.',cf.email);
+  if((d.message||'').trim().length<5)return bad('Please write a short message.',cf.message);
+  btn.disabled=true;btn.textContent='Sending…';
+  try{const r=await fetch('/api/contact',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(d)});const j=await r.json().catch(()=>({}));
+    if(r.ok&&j.ok){cf.reset();msg.className='cmsg ok';msg.textContent='Thanks. Your message was sent. We will reply soon.'}else bad(j.error||'Could not send right now. Please try again.')}
+  catch(err){bad('Could not send right now. Please try again.')}
+  btn.disabled=false;btn.textContent='Send message'});
 const nav=$('nav'),bg=$('bg');
 function setMenu(o){nav.classList.toggle('open',o);document.body.classList.toggle('lock',o);bg.setAttribute('aria-expanded',o);bg.setAttribute('aria-label',o?'Close menu':'Open menu')}
 function closeMenu(){if(nav.classList.contains('open'))setMenu(false)}
