@@ -518,6 +518,41 @@ button.btn{font-family:inherit;cursor:pointer}button.btn:disabled{opacity:.6;cur
 .doc p{margin:0 0 14px}.doc ul{padding-left:20px;margin:0 0 14px}.doc li{margin-bottom:8px}
 .doc li b{color:var(--text)}.doc a{color:var(--acc);text-decoration:underline}
 .cnote{margin:0;font-size:12.5px;color:#6a6a78}.cnote a,.legal a{text-decoration:underline}.legal a:hover{color:var(--text)}
+
+/* ===== Auth pages ===== */
+.auth-page{min-height:calc(100svh - 60px);display:flex;align-items:center;padding:48px 0 72px}
+.auth-card{width:100%;max-width:420px;margin:0 auto;padding:32px 28px;border:1px solid var(--line);border-radius:18px;background:var(--panel)}
+.auth-card h1{font-size:clamp(24px,4vw,32px);letter-spacing:-.03em;margin:0 0 8px}
+.auth-card .lead{color:var(--mute);font-size:14px;margin:0 0 28px;line-height:1.55}
+.auth-card label{display:block;font-size:13px;font-weight:600;margin:0 0 6px;color:var(--text)}
+.auth-card .field{margin:0 0 16px}
+.auth-card input{width:100%;padding:12px 14px;border-radius:10px;border:1px solid var(--line);background:#0a0a0d;color:var(--text);font:inherit;font-size:15px}
+.auth-card input:focus{outline:none;border-color:var(--acc)}
+.auth-card .row-actions{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:4px 0 20px;font-size:13px;color:var(--mute)}
+.auth-card .row-actions a{color:var(--mute);text-decoration:underline}
+.auth-card .row-actions a:hover{color:var(--text)}
+.auth-card .btn{width:100%;justify-content:center;margin-top:4px}
+.auth-card .switch{margin:20px 0 0;text-align:center;font-size:14px;color:var(--mute)}
+.auth-card .switch a{color:var(--text);text-decoration:underline}
+.auth-msg{display:none;margin:0 0 16px;padding:12px 14px;border-radius:10px;font-size:13.5px;line-height:1.45}
+.auth-msg.on{display:block}
+.auth-msg.err{background:rgba(255,80,80,.1);border:1px solid rgba(255,100,100,.25);color:#ffb4b4}
+.auth-msg.ok{background:rgba(56,225,198,.1);border:1px solid rgba(56,225,198,.28);color:#9af0e0}
+.auth-msg.info{background:rgba(124,108,255,.12);border:1px solid rgba(124,108,255,.28);color:#c8c0ff}
+nav .auth-actions{display:flex;align-items:center;gap:10px}
+nav .auth-actions .btn{padding:9px 16px}
+nav .btn.ghost{background:transparent;border-color:var(--line);color:var(--text)}
+nav .btn.ghost:hover{border-color:var(--mute)}
+.mcta-auth{margin-top:18px;display:flex;flex-direction:column;gap:10px}
+.mcta-auth .btn{justify-content:center;width:100%}
+@media(max-width:900px){
+  nav .auth-actions{display:none}
+  .auth-card{padding:28px 20px}
+}
+@media(min-width:901px){
+  .links .mcta,.links .mcta-auth{display:none}
+}
+
 </style>
 </head>
 <body><svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
@@ -535,8 +570,22 @@ button.btn{font-family:inherit;cursor:pointer}button.btn:disabled{opacity:.6;cur
 </defs></svg>
 <div id="pb"></div>
 <nav id="nav"><div class="wrap"><a class="logo" href="/" aria-label="VEXDYN home"><img class="logo-symbol" src="/assets/brand/vexdyn-symbol.png" alt="" width="33" height="30" decoding="async"><img class="logo-word" src="/assets/brand/vexdyn-wordmark.png" alt="VEXDYN" width="98" height="13" decoding="async"></a>
-<div class="links" id="mnav"><a href="#products">Products</a><a href="#forge">Forge</a><a href="#showcase">Nyven</a><a href="#showcase">Agents</a><a href="/pricing" data-r="pricing">Pricing</a><a href="/about" data-r="about">About</a><a class="btn pri mcta" href="#forge">Get started</a></div>
-<a class="btn pri dcta" href="#forge">Get started</a>
+<div class="links" id="mnav">
+<a href="#products" style="--i:0">Products</a>
+<a href="#forge" style="--i:1">Forge</a>
+<a href="#showcase" style="--i:2">Nyven</a>
+<a href="#showcase" style="--i:3">Agents</a>
+<a href="/pricing" data-r="pricing" style="--i:4">Pricing</a>
+<a href="/about" data-r="about" style="--i:5">About</a>
+<div class="mcta-auth" style="--i:6">
+<a class="btn ghost" href="/signin" data-r="signin">Sign in</a>
+<a class="btn pri" href="/signup" data-r="signup">Get started</a>
+</div>
+</div>
+<div class="auth-actions">
+<a class="btn ghost dcta" href="/signin" data-r="signin">Sign in</a>
+<a class="btn pri dcta" href="/signup" data-r="signup">Get started</a>
+</div>
 <button class="burger" id="bg" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mnav"><span></span><span></span></button></div></nav>
 
 
@@ -732,6 +781,52 @@ button.btn{font-family:inherit;cursor:pointer}button.btn:disabled{opacity:.6;cur
 <p>This website is not directed at children.</p>
 <h3>Changes</h3>
 <p>If we change this policy, we will update the date at the top of this page.</p></div></div></section></div>
+
+<div class="page" data-p="signin"><section class="auth-page"><div class="wrap">
+<div class="auth-card">
+<h1>Sign in</h1>
+<p class="lead">Welcome back. Sign in to your VEXDYN account.</p>
+<div class="auth-msg" id="si-msg" role="alert"></div>
+<form id="si-form" novalidate>
+<div class="field"><label for="si-email">Email</label><input id="si-email" name="email" type="email" autocomplete="email" required placeholder="you@example.com"></div>
+<div class="field"><label for="si-pass">Password</label><input id="si-pass" name="password" type="password" autocomplete="current-password" required minlength="8" placeholder="Your password"></div>
+<div class="row-actions"><span></span><a href="/signup">Need an account?</a></div>
+<button class="btn pri" type="submit" id="si-btn">Sign in</button>
+</form>
+<p class="switch">New here? <a href="/signup">Create an account</a></p>
+</div>
+</div></section></div>
+
+<div class="page" data-p="signup"><section class="auth-page"><div class="wrap">
+<div class="auth-card">
+<h1>Create account</h1>
+<p class="lead">Join VEXDYN. One account for the products that help you build what&apos;s next.</p>
+<div class="auth-msg" id="su-msg" role="alert"></div>
+<form id="su-form" novalidate>
+<div class="field"><label for="su-name">Name</label><input id="su-name" name="name" type="text" autocomplete="name" placeholder="Your name"></div>
+<div class="field"><label for="su-email">Email</label><input id="su-email" name="email" type="email" autocomplete="email" required placeholder="you@example.com"></div>
+<div class="field"><label for="su-pass">Password</label><input id="su-pass" name="password" type="password" autocomplete="new-password" required minlength="8" placeholder="At least 8 characters"></div>
+<div class="field"><label for="su-pass2">Confirm password</label><input id="su-pass2" name="passwordConfirm" type="password" autocomplete="new-password" required minlength="8" placeholder="Repeat password"></div>
+<button class="btn pri" type="submit" id="su-btn">Create account</button>
+</form>
+<p class="switch">Already have an account? <a href="/signin">Sign in</a></p>
+</div>
+</div></section></div>
+
+<div class="page" data-p="verify"><section class="auth-page"><div class="wrap">
+<div class="auth-card">
+<h1>Verify your email</h1>
+<p class="lead">We sent a verification link if this address is new. Enter the code from the email, or request another.</p>
+<div class="auth-msg" id="ve-msg" role="alert"></div>
+<form id="ve-form" novalidate>
+<div class="field"><label for="ve-email">Email</label><input id="ve-email" name="email" type="email" autocomplete="email" required placeholder="you@example.com"></div>
+<div class="field"><label for="ve-code">Verification code</label><input id="ve-code" name="code" type="text" autocomplete="one-time-code" placeholder="Code from email"></div>
+<button class="btn pri" type="submit" id="ve-btn">Verify email</button>
+</form>
+<div class="row-actions" style="margin-top:16px"><button type="button" class="btn sec" id="ve-resend" style="width:auto">Resend code</button><a href="/signin">Back to sign in</a></div>
+</div>
+</div></section></div>
+
 <div class="page" data-p="404"><section class="sec ph"><div class="wrap"><a class="pill" href="/" style="pointer-events:none"><b>404</b> Page not found</a>
 <h2>This page does not exist.</h2><p class="sub">The link may be old or typed wrong. Go back home or see pricing.</p>
 <div class="cta"><a class="btn pri" href="/">Back to home</a><a class="btn sec" href="/pricing">See pricing</a></div></div></section></div>
@@ -849,8 +944,8 @@ onView('ny',async function loop(){
 
 const mt=$('mt');mt.innerHTML+=mt.innerHTML;
 const pgs=[...document.querySelectorAll('.page')];
-const TITLES={home:"VEXDYN — Build what's next",pricing:'Pricing — VEXDYN',about:'About — VEXDYN',privacy:'Privacy Policy — VEXDYN','404':'Page not found — VEXDYN'};
-const PATHS={home:'/',pricing:'/pricing',about:'/about',privacy:'/privacy'};
+const TITLES={home:"VEXDYN — Build what's next",pricing:'Pricing — VEXDYN',about:'About — VEXDYN',privacy:'Privacy Policy — VEXDYN',signin:'Sign in — VEXDYN',signup:'Create account — VEXDYN',verify:'Verify email — VEXDYN','404':'Page not found — VEXDYN'};
+const PATHS={home:'/',pricing:'/pricing',about:'/about',privacy:'/privacy',signin:'/signin',signup:'/signup',verify:'/verify'};
 const STRICT=true;
 function pidFromUrl(){const hs=location.hash.replace(/^#\/?/,'');if(hs&&pgs.some(x=>x.dataset.p===hs))return hs;const seg=location.pathname.replace(/\/+$/,'').split('/').pop();if(pgs.some(x=>x.dataset.p===seg))return seg;return(STRICT&&seg&&!/\.html?$/.test(seg))?'404':'home'}
 const cn=document.querySelector('link[rel=canonical]'),ou=document.querySelector('meta[property="og:url"]'),ORI=cn?new URL(cn.href).origin:'';
@@ -963,6 +1058,147 @@ bg.addEventListener('click',()=>setMenu(!nav.classList.contains('open')));
 addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu()});
 addEventListener('resize',()=>{if(innerWidth>900)closeMenu()});
 document.addEventListener('click',e=>{if(nav.classList.contains('open')&&!e.target.closest('nav'))closeMenu()});
+
+/* ---- VEXDYN Auth (Workers backend) ---- */
+(function(){
+  const API='https://vexdyn-backend.blaisepatrick556.workers.dev';
+  const TOKEN_KEY='vexdyn_session';
+  const USER_KEY='vexdyn_user';
+
+  function getToken(){try{return localStorage.getItem(TOKEN_KEY)||''}catch(e){return ''}}
+  function setSession(token,user){
+    try{
+      if(token)localStorage.setItem(TOKEN_KEY,token);else localStorage.removeItem(TOKEN_KEY);
+      if(user)localStorage.setItem(USER_KEY,JSON.stringify(user));else localStorage.removeItem(USER_KEY);
+    }catch(e){}
+  }
+  function clearSession(){setSession('','')}
+
+  async function api(path,opts){
+    const headers=Object.assign({'Content-Type':'application/json'},(opts&&opts.headers)||{});
+    const token=getToken();
+    if(token){headers['Authorization']='Bearer '+token;headers['X-Session-Token']=token}
+    const res=await fetch(API+path,{method:(opts&&opts.method)||'GET',headers,body:opts&&opts.body?JSON.stringify(opts.body):undefined,credentials:'omit'});
+    let data=null;
+    try{data=await res.json()}catch(e){data={ok:false,error:'Unexpected response from server.'}}
+    return {res,data};
+  }
+
+  function showMsg(id,type,text){
+    const el=$(id);if(!el)return;
+    el.className='auth-msg on '+(type||'info');
+    el.textContent=text||'';
+  }
+  function clearMsg(id){const el=$(id);if(el){el.className='auth-msg';el.textContent=''}}
+  function setBusy(btn,busy,label){if(!btn)return;btn.disabled=!!busy;if(label)btn.textContent=label}
+
+  // Sign in
+  const siForm=$('si-form');
+  if(siForm)siForm.addEventListener('submit',async e=>{
+    e.preventDefault();clearMsg('si-msg');
+    const email=$('si-email').value.trim();
+    const password=$('si-pass').value;
+    if(!email||!password){showMsg('si-msg','err','Enter your email and password.');return}
+    setBusy($('si-btn'),true,'Signing in…');
+    try{
+      const {res,data}=await api('/auth/login',{method:'POST',body:{email,password}});
+      if(res.ok && data && (data.ok!==false)){
+        const token=data.token||data.sessionToken||data.session_token||(data.session&&data.session.token)||'';
+        const user=data.user||data.account||{email};
+        if(token)setSession(token,user);
+        showMsg('si-msg','ok',data.message||'Signed in.');
+        setTimeout(()=>{try{go('home')}catch(e){location.href='/'}},600);
+      }else{
+        showMsg('si-msg','err',(data&&(data.error||data.message))||'Could not sign in. Check your details or try again later.');
+      }
+    }catch(err){
+      showMsg('si-msg','err','Network error. Check your connection and try again.');
+    }finally{setBusy($('si-btn'),false,'Sign in')}
+  });
+
+  // Sign up
+  const suForm=$('su-form');
+  if(suForm)suForm.addEventListener('submit',async e=>{
+    e.preventDefault();clearMsg('su-msg');
+    const name=$('su-name').value.trim();
+    const email=$('su-email').value.trim();
+    const password=$('su-pass').value;
+    const passwordConfirm=$('su-pass2').value;
+    if(!email||!password){showMsg('su-msg','err','Email and password are required.');return}
+    if(password.length<8){showMsg('su-msg','err','Password must be at least 8 characters.');return}
+    if(password!==passwordConfirm){showMsg('su-msg','err','Passwords do not match.');return}
+    setBusy($('su-btn'),true,'Creating account…');
+    try{
+      const body={email,password};
+      if(name)body.name=name;
+      body.passwordConfirm=passwordConfirm;
+      const {res,data}=await api('/auth/register',{method:'POST',body});
+      if(res.ok && data && (data.ok!==false)){
+        const token=data.token||data.sessionToken||data.session_token||'';
+        if(token)setSession(token,data.user||{email,name});
+        showMsg('su-msg','ok',data.message||'Account created. Check your email to verify.');
+        if(data.requiresVerification!==false){
+          const ve=$('ve-email');if(ve)ve.value=email;
+          setTimeout(()=>{try{go('verify')}catch(e){location.href='/verify'}},700);
+        }else{
+          setTimeout(()=>{try{go('home')}catch(e){location.href='/'}},700);
+        }
+      }else{
+        showMsg('su-msg','err',(data&&(data.error||data.message))||'Could not create account. Try again later.');
+      }
+    }catch(err){
+      showMsg('su-msg','err','Network error. Check your connection and try again.');
+    }finally{setBusy($('su-btn'),false,'Create account')}
+  });
+
+  // Verify email
+  const veForm=$('ve-form');
+  if(veForm)veForm.addEventListener('submit',async e=>{
+    e.preventDefault();clearMsg('ve-msg');
+    const email=$('ve-email').value.trim();
+    const code=$('ve-code').value.trim();
+    if(!email){showMsg('ve-msg','err','Enter your email.');return}
+    setBusy($('ve-btn'),true,'Verifying…');
+    try{
+      const body={email};if(code){body.code=code;body.token=code}
+      const {res,data}=await api('/auth/verify-email',{method:'POST',body});
+      if(res.ok && data && data.ok!==false){
+        showMsg('ve-msg','ok',data.message||'Email verified. You can sign in.');
+        setTimeout(()=>{try{go('signin')}catch(e){location.href='/signin'}},800);
+      }else{
+        showMsg('ve-msg','err',(data&&(data.error||data.message))||'Verification failed.');
+      }
+    }catch(err){showMsg('ve-msg','err','Network error.')}
+    finally{setBusy($('ve-btn'),false,'Verify email')}
+  });
+  const veResend=$('ve-resend');
+  if(veResend)veResend.addEventListener('click',async()=>{
+    clearMsg('ve-msg');
+    const email=$('ve-email').value.trim();
+    if(!email){showMsg('ve-msg','err','Enter your email first.');return}
+    veResend.disabled=true;
+    try{
+      const {res,data}=await api('/auth/resend-verification',{method:'POST',body:{email}});
+      if(res.ok && data && data.ok!==false)showMsg('ve-msg','ok',data.message||'Verification email sent.');
+      else showMsg('ve-msg','err',(data&&(data.error||data.message))||'Could not resend.');
+    }catch(err){showMsg('ve-msg','err','Network error.')}
+    finally{veResend.disabled=false}
+  });
+
+  // Optional: reflect session on load (non-blocking)
+  (async()=>{
+    const token=getToken();
+    if(!token)return;
+    try{
+      const {res,data}=await api('/auth/me');
+      if(res.status===401||(data&&data.code==='unauthenticated')){clearSession();return}
+      if(res.ok && data && data.ok!==false && data.user){
+        try{localStorage.setItem(USER_KEY,JSON.stringify(data.user))}catch(e){}
+      }
+    }catch(e){}
+  })();
+})();
+
 </script>
 </body>
 </html>
