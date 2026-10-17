@@ -95,3 +95,10 @@ dist/                      prebuilt output (git-ignored; rebuilt by npm run buil
 - Fonts (Sora, JetBrains Mono) load from Google Fonts. System fonts are the fallback.
 - Pricing, stats, FAQ and About copy are placeholders to edit in `index.html`.
 - Discord and X in the footer, and the pricing buttons, are still placeholders (`href="#"`).
+
+## Accounts (sign up / sign in)
+
+The auth pages (`/signup`, `/signin`, `/verify-email`, `/forgot-password`, `/reset-password`) talk to the separate backend Worker:
+`https://vexdyn-backend.blaisepatrick556.workers.dev` (set as `API` near "VEXDYN Auth" in `index.html`).
+
+For this to work, the backend must allow this website's address. In the backend project's `wrangler.toml`, set `APP_BASE_URL` and the first item of `ALLOWED_ORIGINS` to this site's address, then run `npm run deploy` in the backend. If it is wrong, sign up shows "Could not reach the server".
