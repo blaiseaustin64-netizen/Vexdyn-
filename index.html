@@ -558,7 +558,7 @@ button.btn{font-family:inherit;cursor:pointer}button.btn:disabled{opacity:.6;cur
 .ax-tabs a.on{color:var(--text)}
 .ax-pill{position:absolute;top:4px;bottom:4px;left:4px;width:calc(50% - 4px);background:var(--panel);border:1px solid var(--line);border-radius:9px;transition:transform .28s cubic-bezier(.4,0,.2,1)}
 .ax-tabs[data-mode="signup"] .ax-pill{transform:translateX(100%)}
-.ax-main h1{font-size:clamp(22px,2.5vw,27px);letter-spacing:-.02em;margin:0 0 6px}
+.ax-main h1{max-width:none;font-size:clamp(22px,2.5vw,27px);letter-spacing:-.02em;margin:0 0 6px}
 .ax-sub{margin:0 0 20px;color:var(--mute);font-size:14.5px;line-height:1.5}
 .ax-google[hidden]{display:none}
 .ax-gbtn{display:flex;justify-content:center;min-height:44px}
@@ -590,6 +590,21 @@ button.btn{font-family:inherit;cursor:pointer}button.btn:disabled{opacity:.6;cur
 .ax-switch a{color:var(--text);text-decoration:underline}
 @media(max-width:820px){.ax-shell{grid-template-columns:1fr}.ax-side{display:none}.ax-main{padding:30px 20px}.ax-mobsym{display:block!important}}
 .ax-mobsym{display:none;width:52px;margin:0 auto 20px}
+.ax-code{font-size:28px;letter-spacing:.5em;text-align:center;font-variant-numeric:tabular-nums;padding-left:calc(14px + .5em)!important}
+.ax-timer{text-align:center;font-size:14px;color:var(--mute);min-height:20px}
+.ax-timer b{color:var(--text);font-variant-numeric:tabular-nums}
+.ax-timer.exp{color:#ff6b78}
+.ax-link{background:none;border:0;color:var(--text);text-decoration:underline;text-underline-offset:3px;cursor:pointer;font:inherit;font-size:13.5px;padding:0}
+.ax-link:disabled{opacity:.5;cursor:default}
+.ax-prof{width:100%;max-width:440px;margin:0 auto;border:1px solid var(--line);border-radius:20px;background:var(--panel);padding:36px 30px;text-align:center}
+.ax-av{width:76px;height:76px;margin:0 auto 16px;border-radius:50%;display:grid;place-items:center;font-size:30px;font-weight:700;color:#0a0a0d;background:linear-gradient(135deg,#f5f5f7,#a7a7b0)}
+.ax-prof h1{font-size:clamp(22px,3vw,27px);letter-spacing:-.02em;margin:0 0 4px;word-break:break-word}
+.ax-meta{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:24px 0}
+.ax-meta div{background:#19191f;border:1px solid var(--line);border-radius:12px;padding:14px 10px}
+.ax-meta span{display:block;font-size:12px;color:var(--mute);margin-bottom:4px}
+.ax-meta b{font-size:14px}
+.ax-pact{display:grid;gap:10px}
+.ax-pact .btn{justify-content:center;width:100%}
 nav .auth-actions{display:flex;align-items:center;gap:10px}
 nav .auth-actions .btn{padding:9px 16px}
 nav .btn.ghost{background:transparent;border-color:var(--line);color:var(--text)}
@@ -840,19 +855,7 @@ nav .btn.ghost:hover{border-color:var(--mute)}
 
 <div class="page" data-p="signup"><section class="auth-page"><div class="wrap"><div class="ax-shell"><aside class="ax-side"><img class="ax-word" src="/assets/brand/vexdyn-wordmark.png" alt="VEXDYN"><div><img class="ax-sym" src="/assets/brand/vexdyn-symbol.png" alt="" width="60" height="55"><h2>Build what&rsquo;s next.</h2><p>One account for all your VEXDYN tools, ready the moment you sign in.</p><ul class="ax-pts"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg>Secure, encrypted sign-in</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg>Set up in under a minute</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg>Fast and reliable, wherever you are</li></ul></div><div class="ax-foot">&copy; 2026 VEXDYN</div></aside><div class="ax-main"><img class="ax-mobsym" src="/assets/brand/vexdyn-symbol.png" alt="VEXDYN"><div class="ax-tabs" data-mode="signup"><span class="ax-pill"></span><a href="/signin">Log in</a><a href="/signup" class="on">Sign up</a></div><h1>Create your account</h1><p class="ax-sub">Start building in minutes. No credit card required.</p><div class="auth-msg" id="su-msg" role="alert"></div><div class="ax-google" data-google hidden><div class="ax-gbtn" data-gbtn></div><div class="ax-or">or continue with email</div></div><form id="su-form" novalidate><div class="ax-f"><label class="l" for="su-name">Full name</label><div class="ax-inp"><input id="su-name" type="text" autocomplete="name" placeholder="Your name"></div></div><div class="ax-f"><label class="l" for="su-email">Email</label><div class="ax-inp"><input id="su-email" type="email" autocomplete="email" placeholder="you@company.com" required></div></div><div class="ax-f"><label class="l" for="su-pass">Password</label><div class="ax-inp"><input id="su-pass" class="pad" type="password" autocomplete="new-password" placeholder="Create a password" required><button class="ax-eye" type="button" data-eye="su-pass" aria-label="Show password"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg></button></div><div class="ax-meter"><i></i><i></i><i></i><i></i></div><div class="ax-mtxt" id="su-mtxt">Use 8+ characters with a letter and a number.</div></div><label class="ax-chk"><input type="checkbox" id="su-terms"><span class="ax-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></span><span>I agree to the <a class="lnk" href="/privacy">Privacy Policy</a>.</span></label><button class="btn ax-go" type="submit" id="su-btn">Create account</button></form><p class="ax-switch">Already have an account? <a href="/signin">Log in</a></p></div></div></div></section></div>
 
-<div class="page" data-p="verify"><section class="auth-page"><div class="wrap">
-<div class="auth-card">
-<h1>Verify your email</h1>
-<p class="lead">Open the link in the email we sent you and this page verifies you automatically. If the link did not work, paste the code from it below, or ask for a new email.</p>
-<div class="auth-msg" id="ve-msg" role="alert"></div>
-<form id="ve-form" novalidate>
-<div class="field"><label for="ve-email">Email</label><input id="ve-email" name="email" type="email" autocomplete="email" required placeholder="you@example.com"></div>
-<div class="field"><label for="ve-code">Verification code</label><input id="ve-code" name="code" type="text" autocomplete="one-time-code" placeholder="Code from email"></div>
-<button class="btn pri" type="submit" id="ve-btn">Verify email</button>
-</form>
-<div class="row-actions" style="margin-top:16px"><button type="button" class="btn sec" id="ve-resend" style="width:auto">Send a new email</button><a href="/signin">Back to sign in</a></div>
-</div>
-</div></section></div>
+<div class="page" data-p="verify"><section class="auth-page"><div class="wrap"><div class="ax-shell"><aside class="ax-side"><img class="ax-word" src="/assets/brand/vexdyn-wordmark.png" alt="VEXDYN"><div><img class="ax-sym" src="/assets/brand/vexdyn-symbol.png" alt="" width="60" height="55"><h2>Build what&rsquo;s next.</h2><p>One account for all your VEXDYN tools, ready the moment you sign in.</p><ul class="ax-pts"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg>Secure, encrypted sign-in</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg>Set up in under a minute</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg>Fast and reliable, wherever you are</li></ul></div><div class="ax-foot">&copy; 2026 VEXDYN</div></aside><div class="ax-main"><img class="ax-mobsym" src="/assets/brand/vexdyn-symbol.png" alt="VEXDYN"><h1>Check your email</h1><p class="ax-sub">We sent a 6-digit code to your email. Enter it below to verify your account.</p><div class="auth-msg" id="ve-msg" role="alert"></div><form id="ve-form" novalidate><div class="ax-f"><label class="l" for="ve-email">Email</label><div class="ax-inp"><input id="ve-email" type="email" autocomplete="email" placeholder="you@company.com" required></div></div><div class="ax-f"><label class="l" for="ve-code">6-digit code</label><div class="ax-inp"><input id="ve-code" class="ax-code" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="6" autocomplete="one-time-code" placeholder="000000"></div></div><div class="ax-timer" id="ve-timer" aria-live="polite"></div><button class="btn ax-go" type="submit" id="ve-btn">Verify email</button></form><div class="ax-row" style="margin-top:18px"><button type="button" class="ax-link" id="ve-resend">Send a new code</button><a class="lnk" href="/signin">Back to log in</a></div></div></div></div></section></div>
 
 <div class="page" data-p="forgot"><section class="auth-page"><div class="wrap"><div class="auth-card">
 <h1>Forgot password</h1>
@@ -876,6 +879,8 @@ nav .btn.ghost:hover{border-color:var(--mute)}
 </form>
 <p class="switch"><a href="/signin">Back to sign in</a></p>
 </div></div></section></div>
+
+<div class="page" data-p="profile"><section class="auth-page"><div class="wrap"><div class="ax-prof"><div class="ax-av" id="pf-av">V</div><h1 id="pf-name">Your profile</h1><p class="ax-sub" id="pf-email" style="margin:0"></p><div class="ax-meta"><div><span>Email status</span><b id="pf-ver">Email verified</b></div><div><span>Member since</span><b id="pf-since">&mdash;</b></div></div><div class="ax-pact"><a class="btn sec" href="/">Back to home</a><button class="btn ax-go" id="pf-out" type="button">Sign out</button></div></div></div></section></div>
 
 <div class="page" data-p="404"><section class="sec ph"><div class="wrap"><a class="pill" href="/" style="pointer-events:none"><b>404</b> Page not found</a>
 <h2>This page does not exist.</h2><p class="sub">The link may be old or typed wrong. Go back home or see pricing.</p>
@@ -994,8 +999,8 @@ onView('ny',async function loop(){
 
 const mt=$('mt');mt.innerHTML+=mt.innerHTML;
 const pgs=[...document.querySelectorAll('.page')];
-const TITLES={home:"VEXDYN — Build what's next",pricing:'Pricing — VEXDYN',about:'About — VEXDYN',privacy:'Privacy Policy — VEXDYN',signin:'Sign in — VEXDYN',signup:'Create account — VEXDYN',verify:'Verify email — VEXDYN',forgot:'Forgot password — VEXDYN',reset:'New password — VEXDYN','404':'Page not found — VEXDYN'};
-const PATHS={home:'/',pricing:'/pricing',about:'/about',privacy:'/privacy',signin:'/signin',signup:'/signup',verify:'/verify-email',forgot:'/forgot-password',reset:'/reset-password'};
+const TITLES={home:"VEXDYN — Build what's next",pricing:'Pricing — VEXDYN',about:'About — VEXDYN',privacy:'Privacy Policy — VEXDYN',signin:'Sign in — VEXDYN',signup:'Create account — VEXDYN',verify:'Verify email — VEXDYN',forgot:'Forgot password — VEXDYN',reset:'New password — VEXDYN',profile:'Your profile — VEXDYN','404':'Page not found — VEXDYN'};
+const PATHS={home:'/',pricing:'/pricing',about:'/about',privacy:'/privacy',signin:'/signin',signup:'/signup',verify:'/verify-email',forgot:'/forgot-password',reset:'/reset-password',profile:'/profile'};
 const STRICT=true;
 function pidFromUrl(){const hs=location.hash.replace(/^#\/?/,'');if(hs&&pgs.some(x=>x.dataset.p===hs))return hs;const ALIAS={'verify-email':'verify','forgot-password':'forgot','reset-password':'reset'};const seg0=location.pathname.replace(/\/+$/,'').split('/').pop(),seg=ALIAS[seg0]||seg0;if(pgs.some(x=>x.dataset.p===seg))return seg;return(STRICT&&seg&&!/\.html?$/.test(seg))?'404':'home'}
 const cn=document.querySelector('link[rel=canonical]'),ou=document.querySelector('meta[property="og:url"]'),ORI=cn?new URL(cn.href).origin:'';
@@ -1189,7 +1194,7 @@ document.addEventListener('click',e=>{if(nav.classList.contains('open')&&!e.targ
       if(res.ok && data && (data.ok!==false)){
         const token=data.token||data.sessionToken||data.session_token||'';
         if(token)setSession(token,data.user||{email,name});
-        showMsg('su-msg','ok',data.message||'Account created. Check your email to verify.');
+        showMsg('su-msg','ok','Account created. We sent a 6-digit code to your email.');startCountdown((data&&data.expiresInSeconds)||300);
         if(data.requiresVerification!==false){
           const ve=$('ve-email');if(ve)ve.value=email;
           setTimeout(()=>{try{go('verify')}catch(e){location.href='/verify'}},700);
@@ -1204,27 +1209,42 @@ document.addEventListener('click',e=>{if(nav.classList.contains('open')&&!e.targ
     }finally{setBusy($('su-btn'),false,'Create account')}
   });
 
-  // Verify email
+  // Verify email with the 6-digit code
   const veForm=$('ve-form');
   if(veForm)veForm.addEventListener('submit',async e=>{
     e.preventDefault();clearMsg('ve-msg');
     const email=$('ve-email').value.trim();
-    const code=$('ve-code').value.trim();
+    const code=$('ve-code').value.replace(/\D/g,'');
     if(!email){showMsg('ve-msg','err','Enter your email.');return}
+    if(code.length!==6){showMsg('ve-msg','err','Enter the 6-digit code from your email.');return}
     setBusy($('ve-btn'),true,'Verifying…');
     try{
-      const body={email};if(code){body.code=code;body.token=code}
-      const {res,data}=await api('/auth/verify-email',{method:'POST',body});
+      const {res,data}=await api('/auth/verify-email',{method:'POST',body:{email,code}});
       if(res.ok && data && data.ok!==false){
+        try{sessionStorage.removeItem(VKEY)}catch(_){}
         const vt=data.sessionToken||data.token||'';
-        if(vt){setSession(vt,data.user||{email});showMsg('ve-msg','ok','Email verified. You are signed in.');setTimeout(()=>go('home'),900)}
-        else{showMsg('ve-msg','ok',data.message||'Email verified. You can sign in.');setTimeout(()=>go('signin'),900)}
+        if(vt){setSession(vt,data.user||{email},true);showMsg('ve-msg','ok','Email verified. You are signed in.');setTimeout(()=>go('home'),900)}
+        else{showMsg('ve-msg','ok',data.message||'Email verified. You can log in.');setTimeout(()=>go('signin'),900)}
       }else{
         showMsg('ve-msg','err',(data&&(data.error||data.message))||'Verification failed.');
       }
     }catch(err){showMsg('ve-msg','err','Could not reach the server. Please try again.')}
     finally{setBusy($('ve-btn'),false,'Verify email')}
   });
+  const vc=$('ve-code');if(vc)vc.addEventListener('input',()=>{vc.value=vc.value.replace(/\D/g,'').slice(0,6)});
+
+  // 5-minute countdown for the code
+  const VKEY='vexdyn_verify_until';
+  function startCountdown(sec){try{sessionStorage.setItem(VKEY,String(Date.now()+sec*1000))}catch(e){}tickCountdown()}
+  function tickCountdown(){
+    const box=$('ve-timer');if(!box)return;
+    let until=0;try{until=+sessionStorage.getItem(VKEY)||0}catch(e){}
+    if(!until){box.textContent='';box.classList.remove('exp');return}
+    const left=Math.max(0,Math.round((until-Date.now())/1000));
+    if(left>0){box.classList.remove('exp');box.innerHTML='Code expires in <b>'+Math.floor(left/60)+':'+String(left%60).padStart(2,'0')+'</b>'}
+    else{box.classList.add('exp');box.textContent='This code has expired. Send a new one.'}
+  }
+  setInterval(tickCountdown,1000);tickCountdown();
   const veResend=$('ve-resend');
   if(veResend)veResend.addEventListener('click',async()=>{
     clearMsg('ve-msg');
@@ -1233,10 +1253,10 @@ document.addEventListener('click',e=>{if(nav.classList.contains('open')&&!e.targ
     veResend.disabled=true;
     try{
       const {res,data}=await api('/auth/resend-verification',{method:'POST',body:{email}});
-      if(res.ok && data && data.ok!==false)showMsg('ve-msg','ok',data.message||'Verification email sent.');
-      else showMsg('ve-msg','err',(data&&(data.error||data.message))||'Could not resend.');
+      if(res.ok && data && data.ok!==false){showMsg('ve-msg','ok','A new code is on its way. Check your email.');startCountdown((data&&data.expiresInSeconds)||300)}
+      else showMsg('ve-msg','err',(data&&(data.error||data.message))||'Could not send a new code.');
     }catch(err){showMsg('ve-msg','err','Could not reach the server. Please try again.')}
-    finally{veResend.disabled=false}
+    finally{setTimeout(()=>{veResend.disabled=false},20000)}
   });
 
   // Show / hide password buttons
@@ -1283,14 +1303,8 @@ document.addEventListener('click',e=>{if(nav.classList.contains('open')&&!e.targ
   function signedIn(){return !!getToken()}
   function refreshAuth(){
     document.querySelectorAll('[data-si]').forEach(a=>{a.style.display=signedIn()?'none':''});
-    document.querySelectorAll('[data-cta]').forEach(a=>{if(signedIn()){a.textContent='Sign out';a.setAttribute('href','#signout')}else{a.textContent='Get started';a.setAttribute('href','/signup')}});
+    document.querySelectorAll('[data-cta]').forEach(a=>{if(signedIn()){a.textContent='Profile';a.setAttribute('href','/profile')}else{a.textContent='Get started';a.setAttribute('href','/signup')}});
   }
-  document.addEventListener('click',async e=>{
-    const a=e.target.closest('[data-cta]');if(!a||!signedIn())return;
-    e.preventDefault();e.stopImmediatePropagation();closeMenu();
-    try{await api('/auth/logout',{method:'POST'})}catch(_){}
-    clearSession();go('home');
-  },true);
 
   // Forgot password
   const fgForm=$('fg-form');
@@ -1325,14 +1339,30 @@ document.addEventListener('click',e=>{if(nav.classList.contains('open')&&!e.targ
     finally{setBusy($('rs-btn'),false,'Save password')}
   });
 
-  // Email link: /verify-email?token=...&email=...  → verify automatically
-  (function(){
-    if(pidFromUrl()!=='verify')return;
-    const q=new URLSearchParams(location.search),t=q.get('token'),em=q.get('email');
-    if(t&&em&&veForm){$('ve-email').value=em;$('ve-code').value=t;
-      try{history.replaceState(null,'','/verify-email')}catch(e){}
-      if(veForm.requestSubmit)veForm.requestSubmit();}
-  })();
+  // Profile page
+  function fillProfile(u){
+    const name=((u&&u.displayName)||'').trim()||((u&&u.email)||'').split('@')[0]||'Your profile';
+    $('pf-name').textContent=name;$('pf-email').textContent=(u&&u.email)||'';
+    $('pf-av').textContent=(name[0]||'V').toUpperCase();
+    $('pf-ver').textContent=(u&&u.emailVerified===false)?'Not verified':'Email verified';
+    let since='\u2014';try{if(u&&u.createdAt)since=new Date(u.createdAt).toLocaleDateString(undefined,{year:'numeric',month:'long',day:'numeric'})}catch(e){}
+    $('pf-since').textContent=since;
+  }
+  async function loadProfile(){
+    if(pidFromUrl()!=='profile')return;
+    if(!signedIn()){try{go('signin')}catch(e){}return}
+    try{const u=JSON.parse(localStorage.getItem(USER_KEY)||'null');if(u)fillProfile(u)}catch(e){}
+    try{
+      const {res,data}=await api('/auth/me');
+      if(res.status===401){clearSession();go('signin');return}
+      if(res.ok&&data&&data.user){fillProfile(data.user);try{localStorage.setItem(USER_KEY,JSON.stringify(data.user))}catch(e){}}
+    }catch(e){}
+  }
+  const pfOut=$('pf-out');
+  if(pfOut)pfOut.addEventListener('click',async()=>{try{await api('/auth/logout',{method:'POST'})}catch(_){}clearSession();go('home')});
+  loadProfile();
+  document.addEventListener('click',()=>setTimeout(loadProfile,60));
+  addEventListener('popstate',()=>setTimeout(loadProfile,60));
   refreshAuth();
 
   // Optional: reflect session on load (non-blocking)
