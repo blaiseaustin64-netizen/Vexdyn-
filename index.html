@@ -3,25 +3,60 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="/assets/brand/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/brand/favicon-16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/brand/favicon-32.png">
-<link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="48x48" href="/assets/brand/favicon-48.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/brand/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/assets/brand/icon-512.png">
 <meta name="theme-color" content="#0a0a0d">
-<meta name="description" content="VEXDYN is a tech and AI company. Forge, X-Ray, Brand-in-a-Box, Lab, Nyven and Agents. Build what's next.">
+<meta name="description" content="VEXDYN builds AI-powered products for the modern web. Create, launch and grow with technology designed to move you forward.">
 <link rel="canonical" href="%SITE_URL%/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="VEXDYN">
-<meta property="og:title" content="VEXDYN — Build what's next">
-<meta property="og:description" content="A tech and AI company. Forge, X-Ray, Brand-in-a-Box, Nyven and Agents: tools for building on the web.">
+<meta property="og:title" content="VEXDYN | Technology & AI Company">
+<meta property="og:description" content="VEXDYN builds AI-powered products for the modern web. Create, launch and grow with technology designed to move you forward.">
 <meta property="og:url" content="%SITE_URL%/">
 <meta property="og:image" content="%SITE_URL%/assets/brand/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="VEXDYN logo with the line Build what's next">
+<meta property="og:image:alt" content="VEXDYN — Technology & AI Company">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="VEXDYN — Build what's next">
-<meta name="twitter:description" content="A tech and AI company. Forge, X-Ray, Brand-in-a-Box, Nyven and Agents.">
+<meta name="twitter:title" content="VEXDYN | Technology & AI Company">
+<meta name="twitter:description" content="VEXDYN builds AI-powered products for the modern web. Create, launch and grow with technology designed to move you forward.">
 <meta name="twitter:image" content="%SITE_URL%/assets/brand/og-image.png">
-<title>VEXDYN — Build what's next</title>
+<title>VEXDYN | Technology & AI Company</title>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://vexdyn.tech/#organization",
+      "name": "VEXDYN",
+      "url": "https://vexdyn.tech/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://vexdyn.tech/assets/brand/vexdyn-logo-512.png",
+        "width": 512,
+        "height": 512
+      },
+      "description": "VEXDYN builds AI-powered products for the modern web. Create, launch and grow with technology designed to move you forward."
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://vexdyn.tech/#website",
+      "name": "VEXDYN",
+      "url": "https://vexdyn.tech/",
+      "description": "VEXDYN builds AI-powered products for the modern web. Create, launch and grow with technology designed to move you forward.",
+      "publisher": {
+        "@id": "https://vexdyn.tech/#organization"
+      },
+      "inLanguage": "en"
+    }
+  ]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -999,7 +1034,7 @@ onView('ny',async function loop(){
 
 const mt=$('mt');mt.innerHTML+=mt.innerHTML;
 const pgs=[...document.querySelectorAll('.page')];
-const TITLES={home:"VEXDYN — Build what's next",pricing:'Pricing — VEXDYN',about:'About — VEXDYN',privacy:'Privacy Policy — VEXDYN',signin:'Sign in — VEXDYN',signup:'Create account — VEXDYN',verify:'Verify email — VEXDYN',forgot:'Forgot password — VEXDYN',reset:'New password — VEXDYN',profile:'Your profile — VEXDYN','404':'Page not found — VEXDYN'};
+const TITLES={home:"VEXDYN | Technology & AI Company",pricing:'Pricing — VEXDYN',about:'About — VEXDYN',privacy:'Privacy Policy — VEXDYN',signin:'Sign in — VEXDYN',signup:'Create account — VEXDYN',verify:'Verify email — VEXDYN',forgot:'Forgot password — VEXDYN',reset:'New password — VEXDYN',profile:'Your profile — VEXDYN','404':'Page not found — VEXDYN'};
 const PATHS={home:'/',pricing:'/pricing',about:'/about',privacy:'/privacy',signin:'/signin',signup:'/signup',verify:'/verify-email',forgot:'/forgot-password',reset:'/reset-password',profile:'/profile'};
 const STRICT=true;
 function pidFromUrl(){const hs=location.hash.replace(/^#\/?/,'');if(hs&&pgs.some(x=>x.dataset.p===hs))return hs;const ALIAS={'verify-email':'verify','forgot-password':'forgot','reset-password':'reset'};const seg0=location.pathname.replace(/\/+$/,'').split('/').pop(),seg=ALIAS[seg0]||seg0;if(pgs.some(x=>x.dataset.p===seg))return seg;return(STRICT&&seg&&!/\.html?$/.test(seg))?'404':'home'}
