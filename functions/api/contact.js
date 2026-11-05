@@ -1,20 +1,18 @@
 // Cloudflare Pages Function: POST /api/contact
-// Sends the contact form to your inbox using Resend (https://resend.com).
+// Forwards validated messages to a Google Apps Script web app, which
+// delivers them to Gmail via GmailApp (no Resend).
 //
 // Set these in Cloudflare Pages → Settings → Variables and Secrets:
-//   RESEND_API_KEY  (secret)  your Resend API key
-//   CONTACT_TO      (text)    the email that receives messages, e.g. you@gmail.com
-//   CONTACT_FROM    (text)    optional, e.g. "VEXDYN <hello@yourdomain.com>"
-//                             (needs a domain verified in Resend; if empty we use Resend's test sender)
+//   CONTACT_SCRIPT_URL  (secret)  Apps Script web app URL (.../exec)
+//   CONTACT_SECRET      (secret)  shared token verified by the script
+//
+// Never put the Gmail address, script URL, or token in frontend code.
 
 const json = (data, status = 200) =>
   new Response(JSON.stringify(data), {
     status,
     headers: { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store' },
   })
-
-const esc = (s) =>
-  String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]))
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/
 
@@ -42,27 +40,42 @@ export async function onRequestPost({ request, env }) {
   if (!EMAIL.test(email)) return json({ ok: false, error: 'Please enter a valid email.' }, 400)
   if (message.length < 5) return json({ ok: false, error: 'Please write a short message.' }, 400)
 
-  if (!env.RESEND_API_KEY || !env.CONTACT_TO) {
+  const scriptUrl = env.CONTACT_SCRIPT_URL
+  const secret = env.CONTACT_SECRET
+  if (!scriptUrl || !secret) {
     return json({ ok: false, error: 'Contact form is not set up yet.' }, 500)
   }
 
-  const from = env.CONTACT_FROM || 'VEXDYN Website <onboarding@resend.dev>'
-  const who = name || email
+  let res
+  try {
+    res = await fetch(scriptUrl, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({
+        token: secret,
+        name: name || 'Visitor',
+        email,
+        message,
+      }),
+    })
+  } catch {
+    return json({ ok: false, error: 'Could not send right now. Please try again.' }, 502)
+  }
 
-  const res = await fetch('https://api.resend.com/emails', {
-    method: 'POST',
-    headers: { Authorization: `Bearer ${env.RESEND_API_KEY}`, 'content-type': 'application/json' },
-    body: JSON.stringify({
-      from,
-      to: [env.CONTACT_TO],
-      reply_to: email,
-      subject: `New message from ${who}`,
-      text: `From: ${who} <${email}>\n\n${message}`,
-      html: `<p><strong>From:</strong> ${esc(who)} &lt;${esc(email)}&gt;</p><p style="white-space:pre-wrap">${esc(message)}</p>`,
-    }),
-  })
+  let payload = {}
+  try {
+    payload = await res.json()
+  } catch {
+    payload = {}
+  }
 
-  if (!res.ok) return json({ ok: false, error: 'Could not send right now. Please try again.' }, 502)
+  if (!res.ok || !payload.ok) {
+    return json(
+      { ok: false, error: payload.error || 'Could not send right now. Please try again.' },
+      502
+    )
+  }
+
   return json({ ok: true })
 }
 

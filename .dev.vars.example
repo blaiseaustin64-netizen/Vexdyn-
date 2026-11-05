@@ -1,5 +1,7 @@
 # Copy to .dev.vars for local testing with `npx wrangler pages dev dist`
 # (on Cloudflare, set these in Pages → Settings → Variables and Secrets)
-RESEND_API_KEY=re_xxxxxxxxxxxxxxxx
-CONTACT_TO=you@example.com
-CONTACT_FROM=VEXDYN <hello@yourdomain.com>
+#
+# Google Apps Script web app URL (Deploy → Web app → .../exec)
+CONTACT_SCRIPT_URL=https://script.google.com/macros/s/XXXXXXXX/exec
+# Shared secret — must match the token in your Apps Script
+CONTACT_SECRET=replace-with-a-long-random-string
