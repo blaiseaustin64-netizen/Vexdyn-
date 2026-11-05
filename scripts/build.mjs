@@ -4,14 +4,17 @@ import { join } from 'node:path'
 const root = process.cwd()
 const dist = join(root, 'dist')
 
-// Site address used in share tags (Open Graph). Set SITE_URL in Cloudflare Pages
-// (e.g. https://vexdyn.com). If missing, Cloudflare's CF_PAGES_URL is used.
-const site = (process.env.SITE_URL || process.env.CF_PAGES_URL || '').replace(/\/$/, '')
+// Official domain for canonical URLs, Open Graph, sitemap and robots.
+// Prefer SITE_URL (set in Cloudflare Pages). Fall back to the production domain.
+// Never use a *.pages.dev preview URL for canonical/sitemap.
+const OFFICIAL = 'https://vexdyn.tech'
+const raw = (process.env.SITE_URL || '').replace(/\/$/, '')
+const site = (raw && !/\.pages\.dev$/i.test(raw) ? raw : OFFICIAL)
 
 rmSync(dist, { recursive: true, force: true })
 mkdirSync(dist, { recursive: true })
 
-// public assets (images, robots.txt, _headers)
+// public assets (images, robots.txt, _headers, sitemap.xml)
 const pub = join(root, 'public')
 if (existsSync(pub)) cpSync(pub, dist, { recursive: true })
 
@@ -20,17 +23,16 @@ let html = readFileSync(join(root, 'index.html'), 'utf8')
 html = html.replaceAll('%SITE_URL%', site)
 writeFileSync(join(dist, 'index.html'), html)
 
-// sitemap + robots (only when the site address is known)
-if (site) {
-  const pages = ['/', '/pricing', '/about', '/privacy']
-  const today = new Date().toISOString().slice(0, 10)
-  writeFileSync(join(dist, 'sitemap.xml'),
-    '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
-    pages.map((p) => `  <url><loc>${site}${p}</loc><lastmod>${today}</lastmod></url>`).join('\n') + '\n</urlset>\n')
-  const robots = join(dist, 'robots.txt')
-  const base = existsSync(robots) ? readFileSync(robots, 'utf8').trimEnd() : 'User-agent: *\nAllow: /'
-  writeFileSync(robots, base + `\n\nSitemap: ${site}/sitemap.xml\n`)
-}
+// Always write sitemap + robots with the canonical domain
+const pages = ['/', '/pricing', '/about', '/privacy']
+const today = new Date().toISOString().slice(0, 10)
+writeFileSync(join(dist, 'sitemap.xml'),
+  '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
+  pages.map((p) => `  <url><loc>${site}${p}</loc><lastmod>${today}</lastmod><changefreq>${p === '/' ? 'weekly' : p === '/privacy' ? 'yearly' : 'monthly'}</changefreq><priority>${p === '/' ? '1.0' : p === '/privacy' ? '0.5' : '0.8'}</priority></url>`).join('\n') +
+  '\n</urlset>\n')
+const robots = join(dist, 'robots.txt')
+const base = existsSync(robots) ? readFileSync(robots, 'utf8').replace(/\n*Sitemap:.*$/m, '').trimEnd() : 'User-agent: *\nAllow: /'
+writeFileSync(robots, base + `\n\nSitemap: ${site}/sitemap.xml\n`)
 
 console.log('Build complete → dist/')
-console.log('  site url for share tags:', site || '(not set, using relative links)')
+console.log('  site url for share tags / sitemap:', site)
